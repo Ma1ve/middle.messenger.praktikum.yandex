@@ -3,15 +3,15 @@
   height: 100%;
 
   &__list {
-    &-header-wrapper {
-      display: flex;
-      align-items: center;
-    }
     width: 450px;
     background: #fbfbfb;
     height: 100%;
     border-right: 1px solid #eaeaea;
-    padding: 20px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
+    &-header-wrapper {
+      display: flex;
+      align-items: center;
+    }
     &-header_left {
       padding: 0px 10px;
     }

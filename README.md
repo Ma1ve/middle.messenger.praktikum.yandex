@@ -4,7 +4,7 @@
 
 - Ссылка на прототип проекта находится в [Figma](<https://www.figma.com/file/zdz0Xx0vvfUfVxJAtP5cyw/Chat_external_link-(Copy)?type=design&node-id=1-2&t=PXivSqJXneHc7oUe-0>)
 
-- Ссылка для просмотра проекта на хостинге [Netlify](https://sprint-1--tangerine-cupcake-6bdf48.netlify.app/)
+- Ссылка для просмотра проекта на хостинге [Netlify](https://tangerine-cupcake-6bdf48.netlify.app/)
 
 ## Установка
 

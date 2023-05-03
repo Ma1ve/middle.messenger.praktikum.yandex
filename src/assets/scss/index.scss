@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Inter';
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+}
+
+.link__chat {
+  height: 37px;
+  color: #fff;
+  cursor: pointer;
+  background: #3369f3;
+  border: none;
+  border-radius: 8px;
+  margin-top: 115px;
+  transition: all 1s;
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+@import '../../partials/page404/page404.scss';
+@import '../../partials/page500/page500.scss';
+@import '../../partials/login/login.scss';
+@import '../../partials/registration/registration.scss';
+@import '../../partials/profile/profile.scss';
+@import '../../partials/chat/chat.scss';

@@ -1,0 +1,32 @@
+<html lang='en'>
+ {{> components/head }}
+  <body>
+    <section class='chat'>
+      <div class='chat__list'>
+          <header>
+            {{> chat/components/header-left }}
+          </header>
+         
+            <div class='chat__list-messages'>
+
+              {{> chat/components/message-1 }}
+            
+              {{> chat/components/message-2 }}
+              
+              {{> chat/components/message-3 }}
+
+              <a href='./chat-message.hbs'> 
+                <div class='chat__list-message'>
+                  {{> chat/components/message-4 }}
+                </div>
+              </a> 
+            </div>
+      </div>
+       <div class='chat__message-list'>
+        <main>
+          <div class='chat__message-nothing'>Выберите чат чтобы отправить сообщение</div>
+        </main>
+       </div>
+    </section>
+  </body>
+</html>

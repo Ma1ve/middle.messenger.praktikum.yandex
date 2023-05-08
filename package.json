@@ -24,6 +24,7 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "typescript": "^5.0.4"
   }
 }

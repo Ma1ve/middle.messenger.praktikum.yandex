@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: $color-overflow;
   }
   &-modal {
     position: absolute;
@@ -17,17 +17,17 @@
     width: 340px;
     min-height: 257px;
 
-    background: #ffffff;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    background: $white-color;
+    box-shadow: 0px 0px 6px $color-box-shadow;
     border-radius: 12px;
 
     padding: 40px 30px;
     &__title {
       text-align: center;
-      color: #1e1e1e;
+      color: $title-color;
       font-weight: 500;
       &-error {
-        color: #ff2f2f;
+        color: $error-color;
       }
     }
     &__file {
@@ -35,13 +35,13 @@
       width: 122px;
       font-size: 14px;
       text-decoration-line: underline;
-      color: #3369f3;
+      color: $base-color;
       font-weight: 500;
       margin: 43px auto 0px;
       cursor: pointer;
       margin-bottom: 45px;
       &-success {
-        color: #8d8d8d;
+        color: $color-modal-title;
         text-decoration-line: none;
         font-size: 16px;
         font-weight: 400;
@@ -54,20 +54,20 @@
     &__btn {
       width: 100%;
       height: 37px;
-      background: #3369f3;
+      background: $base-color;
       border-radius: 8px;
       border: none;
       font-weight: 500;
-      color: #ffffff;
+      color: $white-color;
       cursor: pointer;
       :hover {
         transform: scale(110%);
-        color: #205cf3;
+        color: $color-hover-btn-modal;
       }
     }
     &__error {
       font-weight: 500;
-      color: #ff2f2f;
+      color: $error-color;
       text-align: center;
       margin-top: 13px;
       font-size: 13px;
@@ -80,11 +80,11 @@
   &__panel {
     position: relative;
     width: 64px;
-    background: #fbfbfb;
+    background: $color-panel;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0.3px 0.3px 0.4px black;
+    box-shadow: 0.3px 0.3px 0.4px $dark-color;
     &-circle {
       transition: all 0.3s;
       cursor: pointer;
@@ -105,7 +105,7 @@
         width: 130px;
         height: 130px;
         border-radius: 100%;
-        background: #efefef;
+        background: $color-background-grey;
         transition: all 1s;
         margin: 0 auto;
         cursor: pointer;
@@ -115,14 +115,14 @@
         align-items: center;
 
         &:hover {
-          background: #000000;
+          background: $dark-color;
           opacity: 0.5;
         }
 
         &_absolute {
           display: none;
           position: absolute;
-          background: #000000;
+          background: $dark-color;
           opacity: 0.5;
           width: 100%;
           height: 100%;
@@ -134,7 +134,7 @@
         font-weight: 600;
         font-size: 16px;
         text-align: center;
-        color: #1e1e1e;
+        color: $title-color;
       }
     }
 
@@ -145,19 +145,19 @@
       display: flex;
       align-items: center;
       height: 40px;
-      border-bottom: 1px solid #eaeaea;
+      border-bottom: 1px solid $border-color;
       &-title {
         font-weight: 500;
-        color: #3369f3;
+        color: $base-color;
         text-decoration: none;
         &:hover {
-          color: #6f98ff;
+          color: $color-hover-modal-title;
         }
         &_red {
-          color: #ff0000;
+          color: $error-color;
           text-decoration: none;
           &:hover {
-            color: #ff7272;
+            color: $error-hover-color;
           }
         }
       }
@@ -176,15 +176,15 @@
       width: 280px;
       margin: 60px auto 0px auto;
       height: 37px;
-      background: #3369f3;
+      background: $base-color;
       border-radius: 8px;
       border: none;
       font-weight: 500;
-      color: #ffffff;
+      color: $white-color;
       cursor: pointer;
       transition: 0.6s;
       &:hover {
-        background: #1e59ed;
+        background: $color-hover-btn-save;
       }
       &_mt160 {
         margin-top: 160px;
@@ -197,14 +197,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $border-color;
     &-title {
       font-weight: 500;
-      color: #1e1e1e;
+      color: $title-color;
     }
     &-desc {
       font-weight: 400;
-      color: #1e1e1e;
+      color: $title-color;
       border: none;
       width: 125px;
       font-weight: 500;
@@ -219,7 +219,7 @@
   font-weight: 600;
 
   &::-webkit-input-placeholder {
-    color: #6a6969;
+    color: $color-profile-placeholder;
     font-size: 18px;
     letter-spacing: 1.2px;
   }
@@ -229,7 +229,7 @@
   font-weight: 600;
   text-align: right;
   &::-webkit-input-placeholder {
-    color: #6a6969;
+    color: $color-profile-placeholder;
     font-weight: 700;
     // font-size: 18px;
     // letter-spacing: 1.2px;

@@ -4,9 +4,9 @@
 
   &__list {
     width: 450px;
-    background: #fbfbfb;
+    background: $color-panel;
     height: 100%;
-    border-right: 1px solid #eaeaea;
+    border-right: 1px solid $border-color;
     padding: 15px 0px 0px 0px;
     &-header-wrapper {
       display: flex;
@@ -31,7 +31,7 @@
     }
     &-title {
       font-size: 13px;
-      color: #999999;
+      color: $color-title-second;
       margin-right: 8px;
       line-height: 5px;
     }
@@ -39,7 +39,7 @@
       position: relative;
     }
     &-input {
-      background: #efefef;
+      background: $color-background-grey;
       border-radius: 5px;
       height: 32px;
       width: 100%;
@@ -48,7 +48,7 @@
 
       font-weight: 600;
       font-size: 12px;
-      color: #1e1e1e;
+      color: $title-color;
     }
     &-icon::after {
       position: absolute;
@@ -73,11 +73,11 @@
       display: flex;
       justify-content: space-between;
       padding: 12px 10px;
-      border-top: 1px solid #eaeaea;
-      border-bottom: 1px solid #eaeaea;
+      border-top: 1px solid $border-color;
+      border-bottom: 1px solid $border-color;
       cursor: pointer;
       &.active {
-        background: #e4edfd;
+        background: $message-active-color;
       }
       &-wrapper {
         display: flex;
@@ -85,12 +85,12 @@
       &-img {
         width: 47px;
         height: 47px;
-        background: #efefef;
+        background: $color-background-grey;
       }
       &-avatar {
         width: 47px;
         height: 47px;
-        background: #efefef;
+        background: $color-background-grey;
         border-radius: 100%;
       }
       &-user {
@@ -100,28 +100,28 @@
         font-weight: 600;
         font-size: 13px;
         line-height: 13px;
-        color: #1e1e1e;
+        color: $title-color;
       }
       &-text {
         margin-top: 5px;
         font-weight: 500;
         font-size: 12px;
         line-height: 15px;
-        color: #999999;
+        color: $color-title-second;
         width: 190px;
         word-wrap: break-word;
       }
       &-clock {
         font-weight: 500;
         font-size: 11px;
-        color: #999999;
+        color: $color-title-second;
       }
       &-notification {
         text-align: center;
         min-width: 20px;
         height: 20px;
-        background: #3369f3;
-        color: #fff;
+        background: $base-color;
+        color: $white-color;
         border-radius: 5px;
 
         margin: 14px auto 0px auto;
@@ -131,7 +131,7 @@
         align-items: center;
       }
       span {
-        color: black;
+        color: $dark-color;
       }
     }
   }
@@ -149,7 +149,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #999999;
+    color: $color-title-second;
   }
   &__message {
     &-img-wrapper {
@@ -163,9 +163,9 @@
         font-size: 12px;
 
         text-align: right;
-        color: #999999;
+        color: $color-title-second;
         &.active {
-          color: #3369f3;
+          color: $base-color;
         }
       }
       &-text {
@@ -178,9 +178,9 @@
         font-size: 14px;
         background: #f8f8f8;
 
-        color: #1e1e1e;
+        color: $title-color;
         &.active {
-          background: #e4edfd;
+          background: $message-active-color;
           // justify-content: ;
         }
       }
@@ -216,7 +216,7 @@
       font-weight: 500;
       font-size: 13px;
       text-align: center;
-      color: #999999;
+      color: $color-title-second;
     }
     &-header {
       &-wrapper {
@@ -229,18 +229,18 @@
         align-items: center;
         padding: 10px 20px;
         height: 55px;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid $border-color;
       }
       &-avatar {
         width: 34px;
         height: 34px;
-        background: #efefef;
+        background: $color-background-grey;
         border-radius: 100%;
       }
       &-name {
         font-weight: 600;
         font-size: 13px;
-        color: #1e1e1e;
+        color: $title-color;
         margin-left: 10px;
       }
       &-menu {
@@ -252,7 +252,7 @@
           position: absolute;
           width: 4px;
           height: 4px;
-          background: black;
+          background: $dark-color;
           border-radius: 100%;
           top: 50%;
           transform: translateX(-50%);
@@ -278,7 +278,7 @@
     margin-top: 30px;
     height: 55px;
     padding: 10px 20px;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid $border-color;
     &__active {
       &-clip {
         margin-top: 15px;
@@ -292,23 +292,23 @@
       z-index: 2;
       width: 162px;
       height: 128px;
-      background: #fff;
+      background: $white-color;
       border-radius: 12px;
       padding: 0 15px;
       bottom: 70px;
-      box-shadow: 0 0 6px #00000024;
+      box-shadow: 0 0 6px $dark-color;
     }
     &__input {
       margin: 0 10px;
       width: 100%;
       height: 32px;
-      background: #efefef;
+      background: $color-background-grey;
       border-radius: 30px;
       border: none;
       padding-left: 20px;
       font-size: 13px;
       font-weight: 600;
-      color: #1e1e1e;
+      color: $title-color;
     }
     &__img {
       &-clip {
@@ -339,8 +339,8 @@
   left: -185px;
   top: 60px;
 
-  background: #ffffff;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  background: $white-color;
+  box-shadow: 0px 0px 6px $color-box-shadow;
   border-radius: 12px;
 
   padding: 0 15px 15px 15px;
@@ -356,10 +356,10 @@
       font-weight: 600;
       font-size: 12px;
       line-height: 14px;
-      color: #1e1e1e;
+      color: $title-color;
       transition: 0.3s;
       &:hover {
-        color: #3369f3;
+        color: $base-color;
       }
     }
   }
@@ -374,7 +374,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: $color-overflow;
   }
   &-modal {
     position: absolute;
@@ -384,36 +384,36 @@
     width: 340px;
     min-height: 257px;
 
-    background: #ffffff;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    background: $white-color;
+    box-shadow: 0px 0px 6px $color-box-shadow;
     border-radius: 12px;
 
     padding: 40px 30px;
     &__input {
       width: 100%;
       border: none;
-      border-bottom: 1px solid #3369f3;
+      border-bottom: 1px solid $base-color;
       padding: 7px 0px;
       font-weight: 600;
       font-size: 13px;
       outline: none;
       &:focus {
-        border-bottom: 1px solid #003c8a;
+        border-bottom: 1px solid $base-color;
       }
     }
     &__label {
       font-weight: 500;
       font-size: 11px;
-      color: #999999;
+      color: $color-title-second;
     }
 
     &__title {
       text-align: center;
-      color: #1e1e1e;
+      color: $title-color;
       font-weight: 500;
       margin-bottom: 40px;
       &-error {
-        color: #ff2f2f;
+        color: $error-color;
       }
     }
     &__file {
@@ -421,13 +421,13 @@
       width: 122px;
       font-size: 14px;
       text-decoration-line: underline;
-      color: #3369f3;
+      color: $base-color;
       font-weight: 500;
       margin: 43px auto 0px;
       cursor: pointer;
       margin-bottom: 45px;
       &-success {
-        color: #8d8d8d;
+        color: $color-modal-title;
         text-decoration-line: none;
         font-size: 16px;
         font-weight: 400;
@@ -441,20 +441,20 @@
       margin-top: 30px;
       width: 100%;
       height: 37px;
-      background: #3369f3;
+      background: $base-color;
       border-radius: 8px;
       border: none;
       font-weight: 500;
-      color: #ffffff;
+      color: $white-color;
       cursor: pointer;
       :hover {
         transform: scale(110%);
-        color: #205cf3;
+        color: $color-hover-btn-modal;
       }
     }
     &__error {
       font-weight: 500;
-      color: #ff2f2f;
+      color: $error-color;
       text-align: center;
       margin-top: 13px;
       font-size: 13px;
@@ -463,19 +463,19 @@
 }
 
 .img-time {
-  background: rgba(82, 82, 82, 0.5);
+  background: $color-img-time;
   border-radius: 30px;
   padding: 4px;
   right: 10px;
   bottom: 10px;
   font-size: 11px;
-  color: white;
+  color: $white-color;
 }
 
 .chat-form__active-clip:hover > .span-menu__active-block-title {
-  color: #3369f3;
+  color: $base-color;
 }
 
 .span-menu__active-block:hover > .span-menu__active-block-title {
-  color: #3369f3;
+  color: $base-color;
 }

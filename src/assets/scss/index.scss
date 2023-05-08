@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 *,
 *::before,
 *::after {
@@ -24,9 +26,9 @@ select:focus {
 
 .link__chat {
   height: 37px;
-  color: #fff;
+  color: $white-color;
   cursor: pointer;
-  background: #3369f3;
+  background: $base-color;
   border: none;
   border-radius: 8px;
   margin-top: 115px;

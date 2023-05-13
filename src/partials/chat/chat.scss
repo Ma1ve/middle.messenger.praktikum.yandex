@@ -52,7 +52,7 @@
     }
     &-icon::after {
       position: absolute;
-      content: url('../img/search.svg');
+      content: url("../img/search.svg");
       width: 20px;
       height: 20px;
       left: 10px;
@@ -296,7 +296,7 @@
       border-radius: 12px;
       padding: 0 15px;
       bottom: 70px;
-      box-shadow: 0 0 6px $dark-color;
+      box-shadow: 0 0 6px $color-box-shadow;
     }
     &__input {
       margin: 0 10px;

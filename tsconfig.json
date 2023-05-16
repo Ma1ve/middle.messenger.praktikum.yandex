@@ -11,7 +11,7 @@
     "allowUnreachableCode": false,
     "noUnusedParameters": true,
     "noUnusedLocals": true
-  }
-  // "exclude": ["node_modules", "dist", "server.js"],
-  // "include": ["src/**/*.ts"]
+  },
+  "exclude": ["node_modules", "dist", "server.js"],
+  "include": ["src/**/*.ts"]
 }

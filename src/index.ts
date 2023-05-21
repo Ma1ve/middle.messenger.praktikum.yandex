@@ -12,5 +12,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const login = new Login();
 
-  renderDom("#app", page404);
+  renderDom("#app", login);
 });

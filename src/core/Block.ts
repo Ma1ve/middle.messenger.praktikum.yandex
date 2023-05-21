@@ -89,15 +89,15 @@ class Block {
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
+    //* ДОБАВИЛ
+    if (this.componentDidUpdate(oldProps, newProps)) {
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
     // const response = this.componentDidUpdate(oldProps, newProps);
     // if (!response) {
     //   return;
     // }
     // this._render();
-    //* ДОБАВИЛ
-    if (this.componentDidUpdate(oldProps, newProps)) {
-      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
@@ -139,7 +139,7 @@ class Block {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([name, component]) => {
-      propsAndStubs[name] = `<div data-id="${component.id}"/>`;
+      propsAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });
 
     const html = template(propsAndStubs);
@@ -176,7 +176,7 @@ class Block {
     };
 
     Object.keys(events).forEach((eventName) => {
-      this._element!.addEventListener(eventName, events[eventName]);
+      this._element?.addEventListener(eventName, events[eventName]);
     });
   }
 

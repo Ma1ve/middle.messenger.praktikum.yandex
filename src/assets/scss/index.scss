@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 *,
 *::before,
@@ -13,9 +13,13 @@ html {
   height: 100%;
 }
 
+#app {
+  height: 100%;
+}
+
 body {
   height: 100%;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 input:focus,
@@ -41,9 +45,9 @@ select:focus {
   text-decoration: none;
 }
 
-@import '../../partials/page404/page404.scss';
-@import '../../partials/page500/page500.scss';
-@import '../../partials/login/login.scss';
-@import '../../partials/registration/registration.scss';
-@import '../../partials/profile/profile.scss';
-@import '../../partials/chat/chat.scss';
+@import "../../partials/page404/page404.scss";
+@import "../../partials/page500/page500.scss";
+@import "../../partials/login/login.scss";
+@import "../../partials/registration/registration.scss";
+@import "../../partials/profile/profile.scss";
+@import "../../partials/chat/chat.scss";

@@ -1,23 +1,8 @@
-// import Block from "./Block.js";
+import Block from "./Block";
 
-// export default function renderDom(block: Block) {
-//   const root = document.querySelector("#app");
+export function renderDom(rootSelector: string, block: Block) {
+  const root = document.querySelector(rootSelector);
 
-//   root!.innerHTML = "";
-//   root!.appendChild(block.getContent());
-// }
-
-export function render(query, block) {
-  const root = document.querySelector(query);
-
-  // Можно завязаться на реализации вашего класса Block
-  root.appendChild(block.getContent());
-
-  console.log(13);
-
-  root.innerHTML = "131";
-
-  // block.dispatchComponentDidMount();
-
-  return root;
+  root!.innerHTML = "";
+  root!.append(block.getContent()!);
 }

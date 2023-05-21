@@ -1,26 +1,16 @@
-// import renderDom from "./core/renderDom";
+import Page404 from "./pages/Page404";
+import Page500 from "./pages/Page500";
+import Login from "./pages/Login";
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   // renderDom();
-// });
+import { renderDom } from "./core/renderDom";
+import { Input } from "./components/Input/input";
 
-import Button from "./components/button/Button";
-import { render } from "./core/renderDOM";
+window.addEventListener("DOMContentLoaded", () => {
+  const page404 = new Page404();
 
-const button = new Button({
-  className: "my-class",
-  child: "Click me",
+  const page500 = new Page500();
+
+  const login = new Login();
+
+  renderDom("#app", page404);
 });
-
-// app — это class дива в корне DOM
-render("#app", button);
-
-console.log(123);
-
-// Через секунду контент изменится сам, достаточно обновить пропсы
-// setTimeout(() => {
-//   button.setProps({
-//     className: "otherClass",
-//     child: "Click me, please",
-//   });
-// }, 1000);

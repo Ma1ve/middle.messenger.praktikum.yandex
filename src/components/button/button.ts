@@ -1,5 +1,6 @@
 import Block from "../../core/Block";
 import template from "./button.hbs";
+
 import "./button.scss";
 
 interface ButtonProps {
@@ -13,7 +14,7 @@ interface ButtonProps {
 
 export class Button extends Block {
   constructor(props: ButtonProps) {
-    super("div", props);
+    super(props);
   }
 
   render() {

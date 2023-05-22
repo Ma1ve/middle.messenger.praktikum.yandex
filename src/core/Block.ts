@@ -130,8 +130,6 @@ class Block {
 
     this._element = fragment.firstElementChild as HTMLElement;
 
-    console.log(this._element);
-
     this._addEvents();
   }
 

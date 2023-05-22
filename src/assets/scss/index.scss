@@ -45,9 +45,16 @@ select:focus {
   text-decoration: none;
 }
 
-@import "../../partials/page404/page404.scss";
-@import "../../partials/page500/page500.scss";
-@import "../../partials/login/login.scss";
-@import "../../partials/registration/registration.scss";
-@import "../../partials/profile/profile.scss";
-@import "../../partials/chat/chat.scss";
+// @import "../../partials/page404/page404.scss";
+// @import "../../partials/page500/page500.scss";
+// @import "../../partials/login/login.scss";
+// @import "../../partials/registration/registration.scss";
+// @import "../../partials/profile/profile.scss";
+// @import "../../partials/chat/chat.scss";
+
+@import "../../pages/Page404/page404.scss";
+@import "../../pages/Page500/page500.scss";
+@import "../../pages/Login/login.scss";
+@import "../../pages/Registration/registration.scss";
+@import "../../pages/Profile/profile.scss";
+@import "../../pages/Chat/chat.scss";

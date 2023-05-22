@@ -18,7 +18,7 @@ export class Login extends Block {
       label: "Логин",
       name: "login",
       type: "text",
-      classInput: "form-login__input error-login__input",
+      classInput: "input form-login__input error-login__input",
       placeholder: "iamevvva",
       errorText: "",
     });
@@ -28,20 +28,20 @@ export class Login extends Block {
       label: "Пароль",
       name: "password",
       type: "password",
-      classInput: "form-login__input error-password__input",
+      classInput: "input form-login__input error-password__input",
       placeholder: "•••••••••••",
       errorText: "",
     });
 
     this.children.linkEntry = new Link({
-      href: "/partials",
+      href: "/chat",
       class: "link__chat",
       label: "Вход",
     });
 
     this.children.linkRegistration = new Link({
-      href: "/partials",
-      class: "form-login__link",
+      href: "/registration",
+      class: "link form-login__link",
       label: "Нет аккаунта?",
     });
   }

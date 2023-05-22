@@ -11,8 +11,8 @@ export class Page500 extends Block {
 
   init() {
     this.children.link = new Link({
-      class: "not-found__wrapper-link",
-      href: "./chat",
+      class: "link not-found__wrapper-link",
+      href: "/chat",
       label: "Назад к чатам",
     });
   }

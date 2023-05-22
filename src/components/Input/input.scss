@@ -1,0 +1,73 @@
+@import "../../assets/scss/variables";
+
+.input {
+  width: 100%;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.form-registration__input {
+  // width: 100%;
+  // border: none;
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  // font-weight: 500;
+  // font-size: 13px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.form-login__input {
+  // width: 100%;
+  // border: none;
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  // font-weight: 500;
+  // font-size: 13px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.chat__list-input {
+  background: $color-background-grey;
+  border-radius: 5px;
+  height: 32px;
+  // width: 100%;
+  // border: none;
+  padding-left: 35px;
+
+  font-weight: 600;
+  font-size: 12px;
+  color: $title-color;
+}
+
+.chat-form__input {
+  margin: 0 10px;
+  // width: 100%;
+  height: 32px;
+  background: $color-background-grey;
+  border-radius: 30px;
+  // border: none;
+  padding-left: 20px;
+  // font-size: 13px;
+  font-weight: 600;
+  color: $title-color;
+}
+
+.chat-modal__input {
+  // width: 100%;
+  // border: none;
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  font-weight: 600;
+  // font-size: 13px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $base-color;
+  }
+}

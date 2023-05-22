@@ -1,6 +1,8 @@
 import Block from "../../core/Block";
 import template from "./input.hbs";
 
+import "./input.scss";
+
 interface InputProps {
   classDiv: string;
   label: string;

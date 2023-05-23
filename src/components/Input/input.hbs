@@ -1,5 +1,5 @@
 <div class="{{classDiv}}">
-  <label for="my-input" class="form-registration__title">{{label}}</label>
+  <label for="my-input" class="{{classLabel}}">{{label}}</label>
   <input
     id="my-input"
     name="{{name}}"
@@ -7,6 +7,11 @@
     class="{{classInput}}"
     placeholder="{{placeholder}}"
     value="{{value}}"
+    {{#if readonly}}
+    readonly
+    {{/if}}
   />
-  <div class="error-input"></div>
+  <div class="error-input {{classError}}"></div>
 </div>
+
+

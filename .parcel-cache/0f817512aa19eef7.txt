@@ -60,8 +60,8 @@
 143C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\node_modules\css-tree\cjs\syntax\scope\value.cjs121436361000000000 0
 125C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\caniuse-lite\data\features\filesystem.js121436361000000000 0
 159C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\scope-manager\dist\lib\es2015.symbol.wellknown.d.ts.map121436361000000000 0
-76C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist133293231930305515 1
-96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Chat\chat.scss133292327372286214 0
+76C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist133293305310198689 1
+96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Chat\chat.scss133293234549109227 0
 151C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@csstools\media-query-list-parser\dist\util\to-lower-case-a-z.d.ts121436361000000000 0
 113C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\domutils\lib\manipulation.js121436361000000000 0
 134C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\Makefile121436361000000000 0
@@ -211,7 +211,7 @@
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\path-type\license121436361000000000 0
 122C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\utils\findFontFamily.js121436361000000000 0
 118C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\eslint\node_modules\debug\LICENSE121436361000000000 0
-110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Registration\registration.ts133292689396793986 0
+110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Registration\registration.ts133293286624214031 0
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\assets\img\img-readme\sc2.png133274985951094669 0
 136C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint-scss\src\rules\at-mixin-pattern\README.md121436361000000000 0
 106C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\for-each\package.json133280508160871015 0
@@ -255,7 +255,7 @@
 97C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\error-symbol133274423215511800 1
 120C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\es-abstract\2022\Number\toString.js121436361000000000 0
 141C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\selector-anb-no-unmatchable\index.js121436361000000000 0
-96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Login\login.ts133292695390400439 0
+96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Login\login.ts133293286774151484 0
 129C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\dist\src\calculateSpanningCellWidth.js121436361000000000 0
 111C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@babel\highlight\README.md121012626000000000 0
 89C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\core\Block.ts133291707132788604 0
@@ -427,7 +427,7 @@
 125C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\color-no-invalid-hex133280657276552133 1
 134C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\partials\registration\components\form\input-first_name.hbs133274985951314720 0
 129C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\partials\registration\components\form\input-login.hbs133274985951314720 0
-110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.scss133293228642198536 0
+110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.scss133293276869263135 0
 134C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\caniuse-lite\data\features\css-scroll-timeline.js121436361000000000 0
 140C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\js-sdsl\dist\esm\container\HashContainer\HashSet.js.map133239333860000000 0
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\cross-spawn133280507254203942 1
@@ -473,7 +473,7 @@
 138C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\function-disallowed-list\index.js121436361000000000 0
 149C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\node_modules\css-tree\cjs\syntax\node\UnicodeRange.cjs121436361000000000 0
 116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\css-tree\lib\syntax\node\Nth.js121436361000000000 0
-117C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.hbs133292372843513183 0
+117C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.hbs133293280917854108 0
 135C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\node_modules\css-tree\lib\utils\clone.js121436361000000000 0
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\partials\profile\profile.scss133280348896292453 0
 159C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\docs\rules\no-import-type-side-effects.md121436361000000000 0
@@ -642,7 +642,7 @@
 121C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\object.assign\test\implementation.js121436361000000000 0
 163C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\function-linear-gradient-no-nonstandard-direction\index.js121436361000000000 0
 115C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\which-typed-array\CHANGELOG.md121436361000000000 0
-109C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.hbs133292732126098275 0
+109C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.hbs133293284263401344 0
 114C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\partials\chat\components\message-4.hbs133274985951204688 0
 127C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\uri-js\dist\esnext\schemes\urn-uuid.js.map121436361000000000 0
 113C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\uuid\dist\esm-node\native.js121436361000000000 0
@@ -656,7 +656,7 @@
 113C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\optimizer-terser\src133274422781045109 1
 119C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\remarkable\lib\rules_core\block.js132089810050000000 0
 116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\caniuse-lite\data\regions\BY.js121436361000000000 0
-118C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.scss133293228708248116 0
+118C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.scss133293276816080740 0
 107C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\safe-regex\.travis.yml130677139180000000 0
 107C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\is-path-inside\license121436361000000000 0
 126C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\lib\runtime\re2.ts121436361000000000 0
@@ -767,7 +767,7 @@
 154C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\lib\refs\json-schema-2020-12\meta\content.json121436361000000000 0
 95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\ansi-black133274423208547966 1
 90C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\bytes133274420908402738 1
-116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.ts133292357673598301 0
+116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfilePassword\profilePassword.ts133293303802740262 0
 115C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\which-boxed-primitive\index.js121436361000000000 0
 119C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\core\src\CommittedAsset.js121436361000000000 0
 91C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\eslint133280507253713816 1
@@ -786,7 +786,7 @@
 111C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\fast-json-stable-stringify133280507253257151 1
 117C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\eslint\lib\rules\sort-imports.js121436361000000000 0
 115C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\normalize-package-data\AUTHORS121436361000000000 0
-108C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.ts133292733972389323 0
+108C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ProfileData\profileData.ts133293303712112633 0
 117C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\ajv\lib\compile\error_classes.js121436361000000000 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\srcset\index.d.ts121436361000000000 0
 119C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\core\lib\Transformation.js121436361000000000 0
@@ -825,12 +825,12 @@
 104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\path-parse\index.js121436361000000000 0
 108C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\resolve\example\sync.js121436361000000000 0
 143C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\dist\vocabularies\applicator\not.js121436361000000000 0
-102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Profile\profile.scss133293231926964054 0
+102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Profile\profile.scss133293277457556920 0
 151C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\scope-manager\dist\scope\FunctionTypeScope.d.ts121436361000000000 0
 121C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\node_modules\ms\license.md121436361000000000 0
 131C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\no-eol-whitespace\index.js121436361000000000 0
 104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\moment\locale\jv.js121436361000000000 0
-100C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Profile\profile.ts133293231747174158 0
+100C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Profile\profile.ts133293303783057186 0
 116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\caniuse-lite\data\regions\BH.js121436361000000000 0
 149C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\lib\vocabularies\validation\limitItems.ts121436361000000000 0
 124C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\utility-types\dist\utility-types.js.map121436361000000000 0
@@ -856,7 +856,7 @@
 139C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\stylelint\lib\rules\valueListCommaWhitespaceChecker.js121436361000000000 0
 140C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\meow\node_modules\type-fest\source\merge-exclusive.d.ts121436361000000000 0
 116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\source-map\dist\wasm.js121436361000000000 0
-102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Page500\page500.scss133292323270078493 0
+102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Page500\page500.scss133293233799460489 0
 152C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\prefer-function-type.js121436361000000000 0
 110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\uuid\dist\esm-node\nil.js121436361000000000 0
 110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\function-bind\.travis.yml131483795110000000 0
@@ -872,7 +872,7 @@
 136C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\read-pkg\node_modules\type-fest\source\mutable.d.ts121436361000000000 0
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\object.pick133274423213779146 1
 93C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\get-port133274422831666172 1
-102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Page404\page404.scss133292323353617469 0
+102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Page404\page404.scss133293233978433285 0
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\yocto-queue133280507254233933 1
 137C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest_enc.c121436361000000000 0
 122C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\tsutils\node_modules\tslib\tslib.html121436361000000000 0
@@ -923,7 +923,7 @@
 116C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@types\semver\functions\gt.d.ts133280461780000000 0
 128C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\handlebars-helper-create-frame\package.json133274423211058556 0
 137C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\js-sdsl\dist\cjs\container\OtherContainer\Queue.d.ts133239333760000000 0
-98C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Login\login.scss133292324610162986 0
+98C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Login\login.scss133293234058678036 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\sass\types\legacy133274424502996867 1
 167C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\typescript-estree\dist\create-program\createSourceFile.d.ts.map121436361000000000 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\urix\package.json133274423210228342 0
@@ -932,9 +932,9 @@
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ChatEmpty\chatEmpty.hbs133292376271272177 0
 110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\resolve\test\resolver\baz133280653474063486 1
 157C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\no-unsafe-enum-comparison.js121436361000000000 0
-106C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ChatEmpty\chatEmpty.scss133292377335602408 0
+106C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ChatEmpty\chatEmpty.scss133293234349735769 0
 100C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Link\index.ts133290983148115390 0
-104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ChatEmpty\chatEmpty.ts133292377610787225 0
+104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\ChatEmpty\chatEmpty.ts133293310948415846 0
 106C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\postcss\lib\root.d.ts121436361000000000 0
 95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\pages\Chat\chat.hbs133292388038352121 0
 106C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\object-keys\README.md121436361000000000 0
@@ -1022,7 +1022,7 @@
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\resolve\.eslintrc121436361000000000 0
 92C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input133290563214520483 1
 122C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\typescript\lib\lib.es2015.symbol.d.ts121436361000000000 0
-105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Button\button.scss133292351088686428 0
+105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Button\button.scss133293236696795030 0
 91C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Link133291696076857965 1
 108C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\es-abstract\2020\max.js121436361000000000 0
 119C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\fastest-levenshtein\.eslintrc.json121436361000000000 0
@@ -1079,7 +1079,7 @@
 112C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\es-abstract\2015\MakeDay.js121436361000000000 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\to-regex\index.js131639341680000000 0
 158C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\dist\refs\json-schema-2019-09\meta\validation.json121436361000000000 0
-101C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Link\link.scss133292343520216610 0
+101C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Link\link.scss133293236379104206 0
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\fs.realpath133274423215371802 1
 118C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\es-abstract\2015\IsPropertyKey.js121436361000000000 0
 92C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\reusify133280507253277135 1
@@ -1094,7 +1094,7 @@
 104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\moment\locale\my.js121436361000000000 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\tslib\LICENSE.txt121436361000000000 0
 111C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\node-releases\package.json133274422833234111 0
-102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.hbs133292704442810550 0
+102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.hbs133293298299553531 0
 149C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\unset-value\node_modules\has-value\node_modules\isobject\LICENSE130740568500000000 0
 93C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\chokidar133274424505645602 1
 180C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-package-redirect-down\foo\bar133274422801649773 1
@@ -1111,18 +1111,18 @@
 120C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\to-regex\node_modules\is-descriptor133274423211588666 1
 98C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\rimraf\bin.js121436361000000000 0
 100C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\assets\img\file-clip.svg133274985951084661 0
-103C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.scss133293230161441319 0
+103C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.scss133293305308128230 0
 130C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\grapheme-splitter\tests\GraphemeBreakTest.txt121436361000000000 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\typescript\lib\es133280424402114984 1
 94C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\html-tags133280653488462652 1
 122C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\es-abstract\2016\DetachArrayBuffer.js121436361000000000 0
-101C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.ts133292724838968934 0
+101C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\Input\input.ts133293298221756918 0
 110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\resolve\test\mock_sync.js121436361000000000 0
-110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\InfoBlock\infoBlock.hbs133291807072299401 0
+110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\InfoBlock\infoBlock.hbs133293247199287477 0
 103C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\urix\test\index.js130381809500000000 0
 104C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\uuid\dist\native.js121436361000000000 0
 95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\decamelize133280653487476495 1
-109C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\InfoBlock\infoBlock.ts133292705648187276 0
+109C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\src\components\InfoBlock\infoBlock.ts133293240663651528 0
 102C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\csso\dist\csso.js121436361000000000 0
 153C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\docs\rules\no-restricted-imports.md121436361000000000 0
 136C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\table\node_modules\ajv\dist\runtime\ucs2length.d.ts121436361000000000 0
@@ -9941,7 +9941,7 @@
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\moment\locale\tzl.js121436361000000000 0
 142C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@parcel\core\test\fixtures\duplicate-targets\package.json121436361000000000 0
 110C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\moment\locale\tzm-latn.js121436361000000000 0
-94C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.7155fac2.js133293231930285506 0
+94C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.7155fac2.js133293305310168655 0
 107C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\moment\locale\ug-cn.js121436361000000000 0
 103C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\map-visit\index.js131362477340000000 0
 108C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\fs-exists-sync\index.js131046542130000000 0
@@ -16059,7 +16059,7 @@
 165C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\index.js.map121436361000000000 0
 169C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\parse-options.js121436361000000000 0
 162C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\schema.js121436361000000000 0
-87C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.html133292442511566362 0
+87C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.html133293271107130604 0
 166C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\schema.js.map121436361000000000 0
 161C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\types.js121436361000000000 0
 165C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\node_modules\@typescript-eslint\eslint-plugin\dist\rules\naming-convention-utils\types.js.map121436361000000000 0
@@ -17114,7 +17114,7 @@
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\delete.ef88720e.svg133274930491034928 0
 99C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\file-clip.7ebfe7b5.svg133284922541547769 0
 99C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\file-clip.da385138.svg133274930491034928 0
-95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.6ab6ad64.css133293231930155508 0
+95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.6ab6ad64.css133293305309928622 0
 95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.a99e16a6.css133274930491535046 0
 99C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.a99e16a6.css.map133274930491605074 0
 95C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\index.b60c5fad.css133284922541547769 0
@@ -17134,7 +17134,7 @@
 100C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\profile.1ef37b7d.js.map133284922541767829 0
 101C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\registration.2aad1b0a.js133284922541507744 0
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\registration.2aad1b0a.js.map133284922541767829 0
-96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\search.6973a302.svg133293231930155508 0
+96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\search.6973a302.svg133293305309908636 0
 105C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\search.6973a302.svg.24204.7y133292387204027511 0
 96C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\search.7afcccf3.svg133284922541387737 0
 97C:\Users\User\Desktop\YandexPracticum\middle.messenger.praktikum.yandex\dist\template.125b8cad.js133287387703310451 0

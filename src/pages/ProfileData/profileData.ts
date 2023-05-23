@@ -7,7 +7,7 @@ import Input from "../../components/Input";
 
 import template from "./profileData.hbs";
 
-import { focusin, focusout } from "../../core/validation";
+import { focusin, focusout, submit } from "../../core/validation";
 
 import "./profileData.scss";
 
@@ -22,11 +22,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputEmail = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Почта",
       name: "email",
       type: "email",
-      classInput: "input form-registration__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "pochta@yandex.ru",
       events: {
         focusin,
@@ -35,11 +37,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputLogin = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Логин",
       name: "login",
       type: "text",
-      classInput: "input form-registration__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "ivanivanov",
       events: {
         focusin,
@@ -48,11 +52,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputFirstName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Имя",
       name: "first_name",
       type: "text",
-      classInput: "input form-registration__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Илья",
       events: {
         focusin,
@@ -61,11 +67,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputSecondName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Фамилия",
       name: "second_name",
       type: "text",
-      classInput: "input form-registration__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Иванов",
       events: {
         focusin,
@@ -74,11 +82,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputChatName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Имя в чате",
       name: "chat_name",
       type: "text",
-      classInput: "input form-registration__input error-password__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Илья",
       events: {
         focusin,
@@ -87,11 +97,13 @@ export class ProfileData extends Block {
     });
 
     this.children.inputTelephone = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Телефон",
       name: "phone",
       type: "text",
-      classInput: "input form-registration__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "89859521400",
       events: {
         focusin,
@@ -99,57 +111,10 @@ export class ProfileData extends Block {
       },
     });
 
-    // this.children.infoBlock_1 = new InfoBlock({
-    //   label: "Почта",
-    //   name: "email",
-    //   type: "email",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "pochta@yandex.ru",
-    // });
-
-    // this.children.infoBlock_2 = new InfoBlock({
-    //   label: "Логин",
-    //   name: "login",
-    //   type: "text",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "ivanivanov",
-    // });
-
-    // this.children.infoBlock_3 = new InfoBlock({
-    //   label: "Имя",
-    //   name: "first_name",
-    //   type: "text",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "Илья",
-    // });
-
-    // this.children.infoBlock_4 = new InfoBlock({
-    //   label: "Фамилия",
-    //   name: "second_name",
-    //   type: "text",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "Иванов",
-    // });
-
-    // this.children.infoBlock_5 = new InfoBlock({
-    //   label: "Имя в чате",
-    //   name: "display_name",
-    //   type: "text",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "Илья",
-    // });
-
-    // this.children.infoBlock_6 = new InfoBlock({
-    //   label: "Телефон",
-    //   name: "phone",
-    //   type: "text",
-    //   class: "form-info__block-desc profile profile__placeholder",
-    //   value: "+7 (909) 967 30 30",
-    // });
-
     this.children.buttonSave = new Button({
       label: "Сохранить",
       class: "button form-info__btn-save",
+      events: { click: submit },
     });
   }
   render() {

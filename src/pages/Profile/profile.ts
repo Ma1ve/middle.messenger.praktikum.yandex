@@ -20,66 +20,76 @@ export class Profile extends Block {
     });
 
     this.children.inputEmail = new Input({
-      classDiv: "form-registration__wrapper form-registration__title",
+      classDiv: "form-info__block",
       label: "Почта",
       name: "email",
       type: "email",
-      classInput: "input form-profile__input error-registration__input ",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "pochta@yandex.ru",
+      readonly: true,
     });
 
     this.children.inputLogin = new Input({
-      classDiv: "form-registration__wrapper form-registration__title ",
+      classDiv: "form-info__block",
       label: "Логин",
       name: "login",
       type: "text",
-      classInput: "input form-profile__input error-registration__input",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "ivanivanov",
+      readonly: true,
     });
 
     this.children.inputFirstName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title ",
+      classDiv: "form-info__block",
       label: "Имя",
       name: "first_name",
       type: "text",
-      classInput: "input form-profile__input error-registration__input ",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Илья",
+      readonly: true,
     });
 
     this.children.inputSecondName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title ",
+      classDiv: "form-info__block",
       label: "Фамилия",
       name: "second_name",
       type: "text",
-      classInput: "input form-profile__input error-registration__input ",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Иванов",
+      readonly: true,
     });
 
     this.children.inputChatName = new Input({
-      classDiv: "form-registration__wrapper form-registration__title ",
+      classDiv: "form-info__block",
       label: "Имя в чате",
       name: "chat_name",
       type: "text",
-      classInput: "input form-profile__input error-password__input ",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
       value: "Илья",
+      readonly: true,
     });
 
     this.children.inputTelephone = new Input({
-      classDiv: "form-registration__wrapper form-registration__title ",
+      classDiv: "form-info__block",
       label: "Телефон",
       name: "phone",
       type: "text",
-      classInput: "input form-profile__input error-registration__input",
-      value: "8-(999)-999-999",
+      classLabel: "form-info__block-title",
+      classError: "error-input_bt",
+      classInput: "form-info__block-desc profile-password__placeholder",
+      value: "89859521400",
+      readonly: true,
     });
-
-    // this.children.inputPassword = new Input({
-    //   classDiv: "form-registration__wrapper form-registration__title",
-    //   label: "Пароль",
-    //   name: "password",
-    //   type: "password",
-    //   classInput: "input form-registration__input error-password__input",
-    // });
 
     this.children.linkChangeData = new Link({
       href: "/profile/data",

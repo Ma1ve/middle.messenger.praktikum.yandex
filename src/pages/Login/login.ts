@@ -20,6 +20,7 @@ export class Login extends Block {
       label: "Логин",
       name: "login",
       type: "text",
+      classLabel: "form-registration__title",
       classInput: "input form-login__input error-login__input",
       placeholder: "iamevvva",
       events: {
@@ -33,6 +34,7 @@ export class Login extends Block {
       label: "Пароль",
       name: "password",
       type: "password",
+      classLabel: "form-registration__title",
       classInput: "input form-login__input error-password__input",
       placeholder: "•••••••••••",
       events: {

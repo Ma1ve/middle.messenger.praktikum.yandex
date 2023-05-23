@@ -13,6 +13,7 @@ interface InfoBlockProps {
   class: string;
   value?: string;
   placeholder?: string;
+  events?: Record<string, (e: InputEvent) => void>;
 }
 
 export class InfoBlock extends Block {

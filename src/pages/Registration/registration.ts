@@ -116,6 +116,7 @@ export class Registration extends Block {
       label: "Почта",
       name: "email",
       type: "email",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-registration__input",
       placeholder: "pochta@yandex.ru",
       events: {
@@ -129,6 +130,7 @@ export class Registration extends Block {
       label: "Логин",
       name: "login",
       type: "text",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-registration__input",
       placeholder: "iamevvva",
       events: {
@@ -142,6 +144,7 @@ export class Registration extends Block {
       label: "Имя",
       name: "first_name",
       type: "text",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-registration__input",
       placeholder: "Ева",
       events: {
@@ -155,6 +158,7 @@ export class Registration extends Block {
       label: "Фамилия",
       name: "second_name",
       type: "text",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-registration__input",
       placeholder: "Варнакова",
       events: {
@@ -168,6 +172,7 @@ export class Registration extends Block {
       label: "Телефон",
       name: "phone",
       type: "text",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-registration__input",
       placeholder: "8-(999)-999-999",
       events: {
@@ -181,6 +186,7 @@ export class Registration extends Block {
       label: "Пароль",
       name: "password",
       type: "password",
+      classLabel: "form-registration__title",
       classInput: "input form-registration__input error-password__input",
       placeholder: "•••••••••••",
       events: {

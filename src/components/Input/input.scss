@@ -12,8 +12,15 @@
   // border: none;
   border-bottom: 1px solid $base-color;
   padding: 7px 0px;
-  // font-weight: 500;
-  // font-size: 13px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.form-profile__input {
+  border-bottom: 1px solid #999;
+  padding: 7px 0px;
   outline: none;
   &:focus {
     border-bottom: 1px solid $color-focus-input;
@@ -70,4 +77,43 @@
   &:focus {
     border-bottom: 1px solid $base-color;
   }
+}
+
+// .error {
+//   display: block;
+//   color: $error-color;
+//   &-registration {
+//     position: absolute;
+//     font-weight: 400;
+//     font-size: 12px;
+//     bottom: -20px;
+//     // color: red;
+//     &__input {
+//       // color: red;
+//     }
+//   }
+//   &-password {
+//     position: absolute;
+//     font-weight: 400;
+//     font-size: 12px;
+//     bottom: -20px;
+//     &__input {
+//       // color: red;
+//     }
+//   }
+// }
+
+.error-input {
+  position: absolute;
+  font-weight: 400;
+  font-size: 12px;
+  bottom: -21px;
+  color: red;
+  &__bottom_30 {
+    bottom: -30px;
+  }
+}
+
+.input-profile {
+  font-weight: 600;
 }

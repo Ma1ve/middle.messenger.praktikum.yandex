@@ -169,7 +169,8 @@
 }
 
 .form-info {
-  width: 510px;
+  // width: 510px;
+  width: 350px;
   margin-top: 60px;
   /* &__btn {
     &-save {
@@ -237,4 +238,11 @@
     // font-size: 18px;
     // letter-spacing: 1.2px;
   }
+}
+
+.form-profile__input {
+}
+
+.profile__text_center {
+  text-align: center;
 }

@@ -9,8 +9,9 @@ interface InputProps {
   name: string;
   type: string;
   classInput: string;
-  placeholder: string;
-  errorText: null | string;
+  placeholder?: string;
+  value?: string;
+  events?: Record<string, (e: InputEvent) => void>;
 }
 
 export class Input extends Block {

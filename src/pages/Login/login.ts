@@ -5,6 +5,8 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Link from "../../components/Link";
 
+import { focusin, focusout, submit } from "../../core/validation";
+
 import "./login.scss";
 
 export class Login extends Block {
@@ -20,7 +22,10 @@ export class Login extends Block {
       type: "text",
       classInput: "input form-login__input error-login__input",
       placeholder: "iamevvva",
-      errorText: "",
+      events: {
+        focusin,
+        focusout,
+      },
     });
 
     this.children.inputPassword = new Input({
@@ -30,13 +35,23 @@ export class Login extends Block {
       type: "password",
       classInput: "input form-login__input error-password__input",
       placeholder: "•••••••••••",
-      errorText: "",
+      events: {
+        focusin,
+        focusout,
+      },
     });
 
-    this.children.linkEntry = new Link({
-      href: "/chat",
-      class: "link__chat",
-      label: "Вход",
+    // this.children.linkEntry = new Link({
+    //   href: "/chat",
+    //   class: "link__chat",
+    //   label: "Вход",
+    // });
+
+    this.children.buttonLogin = new Button({
+      class: "button form-login__btn",
+      type: "submit",
+      label: "Войти",
+      events: { click: submit },
     });
 
     this.children.linkRegistration = new Link({

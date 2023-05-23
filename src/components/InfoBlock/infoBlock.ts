@@ -1,4 +1,7 @@
 import Block from "../../core/Block";
+
+import Input from "../Input";
+
 import template from "./infoBlock.hbs";
 
 import "./infoBlock.scss";

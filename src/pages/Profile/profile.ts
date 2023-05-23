@@ -3,6 +3,7 @@ import Block from "../../core/Block";
 import Avatar from "../../components/Avatar";
 import Link from "../../components/Link";
 import InfoBlock from "../../components/InfoBlock";
+import Input from "../../components/Input";
 
 import template from "./profile.hbs";
 
@@ -18,53 +19,67 @@ export class Profile extends Block {
       name: "Илья",
     });
 
-    this.children.infoBlock_1 = new InfoBlock({
+    this.children.inputEmail = new Input({
+      classDiv: "form-registration__wrapper form-registration__title",
       label: "Почта",
       name: "email",
       type: "email",
-      class: "form-info__block-desc profile profile__placeholder",
+      classInput: "input form-profile__input error-registration__input ",
       value: "pochta@yandex.ru",
     });
 
-    this.children.infoBlock_2 = new InfoBlock({
+    this.children.inputLogin = new Input({
+      classDiv: "form-registration__wrapper form-registration__title ",
       label: "Логин",
       name: "login",
       type: "text",
-      class: "form-info__block-desc profile profile__placeholder",
+      classInput: "input form-profile__input error-registration__input",
       value: "ivanivanov",
     });
 
-    this.children.infoBlock_3 = new InfoBlock({
+    this.children.inputFirstName = new Input({
+      classDiv: "form-registration__wrapper form-registration__title ",
       label: "Имя",
       name: "first_name",
       type: "text",
-      class: "form-info__block-desc profile profile__placeholder",
+      classInput: "input form-profile__input error-registration__input ",
       value: "Илья",
     });
 
-    this.children.infoBlock_4 = new InfoBlock({
+    this.children.inputSecondName = new Input({
+      classDiv: "form-registration__wrapper form-registration__title ",
       label: "Фамилия",
       name: "second_name",
       type: "text",
-      class: "form-info__block-desc profile profile__placeholder",
+      classInput: "input form-profile__input error-registration__input ",
       value: "Иванов",
     });
 
-    this.children.infoBlock_5 = new InfoBlock({
+    this.children.inputChatName = new Input({
+      classDiv: "form-registration__wrapper form-registration__title ",
       label: "Имя в чате",
-      name: "display_name",
+      name: "chat_name",
       type: "text",
-      class: "form-info__block-desc profile profile__placeholder",
+      classInput: "input form-profile__input error-password__input ",
       value: "Илья",
     });
 
-    this.children.infoBlock_6 = new InfoBlock({
+    this.children.inputTelephone = new Input({
+      classDiv: "form-registration__wrapper form-registration__title ",
       label: "Телефон",
       name: "phone",
       type: "text",
-      class: "form-info__block-desc profile profile__placeholder",
-      value: "+7 (909) 967 30 30",
+      classInput: "input form-profile__input error-registration__input",
+      value: "8-(999)-999-999",
     });
+
+    // this.children.inputPassword = new Input({
+    //   classDiv: "form-registration__wrapper form-registration__title",
+    //   label: "Пароль",
+    //   name: "password",
+    //   type: "password",
+    //   classInput: "input form-registration__input error-password__input",
+    // });
 
     this.children.linkChangeData = new Link({
       href: "/profile/data",

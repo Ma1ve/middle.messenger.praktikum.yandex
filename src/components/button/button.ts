@@ -7,9 +7,7 @@ interface ButtonProps {
   label: string;
   class: string;
   type?: string;
-  events?: {
-    click: (e: Event) => void;
-  };
+  events?: Record<string, (e: InputEvent) => void>;
 }
 
 export class Button extends Block {

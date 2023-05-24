@@ -1,11 +1,13 @@
 import Block from "../../core/Block";
 
 import Avatar from "../../components/Avatar";
-import InfoBlock from "../../components/InfoBlock";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import Img from "../../components/Img";
 
 import template from "./profileData.hbs";
+
+import imgBackArrow from "../../assets/img/back-arrow.png";
 
 import { focusin, focusout, submit } from "../../core/validation";
 
@@ -115,6 +117,14 @@ export class ProfileData extends Block {
       label: "Сохранить",
       class: "button form-info__btn-save",
       events: { click: submit },
+    });
+
+    this.children.imgBackArrow = new Img({
+      srcImg: imgBackArrow,
+      class: "profile__panel-circle",
+      alt: "back-arrow",
+      width: "35",
+      height: "35",
     });
   }
   render() {

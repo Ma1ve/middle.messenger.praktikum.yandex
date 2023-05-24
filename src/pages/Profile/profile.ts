@@ -2,10 +2,12 @@ import Block from "../../core/Block";
 
 import Avatar from "../../components/Avatar";
 import Link from "../../components/Link";
-import InfoBlock from "../../components/InfoBlock";
 import Input from "../../components/Input";
+import Img from "../../components/Img";
 
 import template from "./profile.hbs";
+
+import imgBackArrow from "../../assets/img/back-arrow.png";
 
 import "./profile.scss";
 
@@ -108,8 +110,16 @@ export class Profile extends Block {
       class: "link profile__info-block-title_red",
       label: "Выйти",
     });
+
+    this.children.imgBackArrow = new Img({
+      srcImg: imgBackArrow,
+      class: "profile__panel-circle",
+      alt: "back-arrow",
+      width: "35",
+      height: "35",
+    });
   }
   render() {
-    return this.compile(template, {});
+    return this.compile(template, { ...this.props });
   }
 }

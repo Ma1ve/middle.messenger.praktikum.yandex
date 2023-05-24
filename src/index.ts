@@ -23,31 +23,40 @@ window.addEventListener("DOMContentLoaded", () => {
 
   switch (window.location.pathname) {
     case "/login": {
-      return renderDom("#app", login);
+      renderDom("#app", login);
+      break;
     }
     case "/registration": {
-      return renderDom("#app", registration);
+      renderDom("#app", registration);
+      break;
     }
     case "/chat": {
-      return renderDom("#app", chatEmpty);
+      renderDom("#app", chatEmpty);
+      break;
     }
     case "/chat/message": {
-      return renderDom("#app", chat);
+      renderDom("#app", chat);
+      break;
     }
     case "/profile": {
-      return renderDom("#app", profile);
+      renderDom("#app", profile);
+      break;
     }
     case "/profile/data": {
-      return renderDom("#app", profileData);
+      renderDom("#app", profileData);
+      break;
     }
     case "/profile/password": {
-      return renderDom("#app", profilePassword);
+      renderDom("#app", profilePassword);
+      break;
     }
     case "/page404": {
-      return renderDom("#app", page404);
+      renderDom("#app", page404);
+      break;
     }
     case "/page500": {
-      return renderDom("#app", page500);
+      renderDom("#app", page500);
+      break;
     }
 
     default: {

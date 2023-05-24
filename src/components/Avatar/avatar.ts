@@ -3,8 +3,11 @@ import template from "./avatar.hbs";
 
 import "./avatar.scss";
 
+import Union from "../../assets/img/union.svg";
+
 interface AvatarProps {
   name: string;
+  img?: string;
 }
 
 export class Avatar extends Block {
@@ -13,6 +16,6 @@ export class Avatar extends Block {
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, { ...this.props, img: Union });
   }
 }

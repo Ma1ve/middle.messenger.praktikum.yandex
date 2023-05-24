@@ -16,13 +16,12 @@ class Block {
   private _element: HTMLElement | null = null;
   private _meta: Record<string, unknown> | null = null;
 
-  constructor(/* tagName = "div", */ childrenAndProps: any = {}) {
+  constructor(childrenAndProps: any = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(childrenAndProps);
 
     this._meta = {
-      // tagName,
       props,
     };
 
@@ -59,7 +58,6 @@ class Block {
   }
 
   private _createResources() {
-    // const { tagName } = this._meta;
     const tagName = "div";
     this._element = this._createDocumentElement(tagName);
   }
@@ -89,15 +87,9 @@ class Block {
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
-    //* ДОБАВИЛ
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-    // const response = this.componentDidUpdate(oldProps, newProps);
-    // if (!response) {
-    //   return;
-    // }
-    // this._render();
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
@@ -121,14 +113,10 @@ class Block {
 
     this._removeEvents();
 
-    //! Убрал тут закомментировал
-    // this._element!.innerHTML = "";
+    const newElement = fragment.firstElementChild as HTMLElement;
+    this._element!.replaceWith(newElement);
 
-    // this._element!.append(fragment);
-
-    //* Добавил
-
-    this._element = fragment.firstElementChild as HTMLElement;
+    this._element = newElement;
 
     this._addEvents();
   }
@@ -153,9 +141,7 @@ class Block {
         return;
       }
 
-      //*ДОБАВИЛ ТУТ
       component.getContent()?.append(...Array.from(stub.childNodes));
-      //*ДОБАВИЛ ТУТ
 
       stub.replaceWith(component.getContent()!);
     });
@@ -167,7 +153,6 @@ class Block {
     return new DocumentFragment();
   }
 
-  //? УБРАЛ И ДОБАВИЛ СВЕРХУ
   private _addEvents() {
     const { events = {} } = this.props as {
       events: Record<string, () => void>;

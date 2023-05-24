@@ -4,13 +4,14 @@
 
       <div class="profile__panel">
         <a href="/chat">
-          <img
+          {{! <img
             src="../../assets/img/back-arrow.png"
             alt="back-arrow"
             width="35"
             height="35"
             class="profile__panel-circle"
-          />
+          /> }}
+          {{{imgBackArrow}}}
         </a>
       </div>
 
@@ -19,20 +20,13 @@
 
           {{{avatar}}}
 
-          <form action="#" class="form-info">
-            {{!-- {{{infoBlock_1}}}
-            {{{infoBlock_2}}}
-            {{{infoBlock_3}}}
-            {{{infoBlock_4}}}
-            {{{infoBlock_5}}}
-            {{{infoBlock_6}}} --}}
+          <form class="form-info" id="myForm">
             {{{inputEmail}}}
             {{{inputLogin}}}
             {{{inputFirstName}}}
             {{{inputSecondName}}}
             {{{inputChatName}}}
             {{{inputTelephone}}}
-
           </form>
 
           <div class="profile__info-change">

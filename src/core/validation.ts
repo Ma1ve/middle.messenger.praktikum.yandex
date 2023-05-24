@@ -59,18 +59,6 @@ export const submit = (event: Event): void => {
   event.preventDefault();
   const inputs = document.getElementsByTagName("input");
 
-  // const isValid = Array.from(inputs).every((inputElement) => {
-  //   const { regExp } = validationInputs[inputElement.name];
-  //   console.log(inputElement.name);
-  //   if (!regExp.test(inputElement.value)) {
-  //     //! Очищает значение input, если не соответствует регулярному выражению
-
-  //     inputElement.value = "";
-  //   }
-  //   //! Возвращает true, если значение input соответствует регулярному выражению, иначе false
-  //   return regExp.test(inputElement.value);
-  // });
-
   const isValid = Array.from(inputs).every((inputElement) => {
     const { regExp } = validationInputs[inputElement.name];
     console.log(inputElement.name);
@@ -85,6 +73,7 @@ export const submit = (event: Event): void => {
   });
 
   if (isValid) {
+    const form = document.getElementById("myForm") as HTMLFormElement;
     const data: Record<string, string> = {};
     Array.from(inputs).forEach((input) => {
       data[input.name] = input.value;
@@ -96,7 +85,10 @@ export const submit = (event: Event): void => {
     ) {
       window.location.href = "/chat";
     }
+
     console.log(data);
+    //! Нужно для отправки формы
+    // form?.submit();
   }
 };
 
@@ -107,5 +99,3 @@ export const focusin = (event: InputEvent): void => {
 export const focusout = (event: InputEvent): void => {
   validationCheck(event);
 };
-
-// export { focusout, focusin, submit };

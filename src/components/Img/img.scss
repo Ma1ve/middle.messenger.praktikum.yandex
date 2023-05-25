@@ -1,0 +1,36 @@
+@import "../../assets/scss/variables";
+
+.profile__panel-circle {
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(110%);
+  }
+}
+
+.chat-form__active-clip:hover > .span-menu__active-block-title {
+  color: $base-color;
+}
+
+.chat__img_ml20 {
+  margin-left: 20px;
+}
+
+.chat-form__img-arrow {
+  cursor: pointer;
+  transform: rotate(180deg);
+  transition: 0.4s;
+  &:hover {
+    transform: rotate(90deg);
+    transform: scale(1.2);
+  }
+}
+
+.chat-list__block-img {
+  transition: 0.3s;
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}

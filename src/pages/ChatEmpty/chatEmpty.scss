@@ -172,7 +172,6 @@
         color: $title-color;
         &.active {
           background: $message-active-color;
-          // justify-content: ;
         }
       }
       &-img {
@@ -268,7 +267,7 @@
     align-items: center;
     margin-top: 30px;
     height: 55px;
-    padding: 10px 20px;
+    padding: 50px 20px 0;
     border-top: 1px solid $border-color;
     &__active {
       &-clip {
@@ -446,9 +445,13 @@
 }
 
 .chat__message-block {
-  height: calc(100vh - 240px);
+  height: calc(100vh - 270px);
 }
 
 .notification-dn {
   display: none;
+}
+
+.chat__img_ml20 {
+  margin-left: 20px;
 }

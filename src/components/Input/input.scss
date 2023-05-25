@@ -76,12 +76,17 @@
     bottom: -30px;
   }
   &_bt {
-    bottom: -8px;
+    bottom: -1px;
+  }
+  &__message {
+    bottom: 42px;
+    left: 15px;
   }
 }
 
 // Input profiles
 .form-info__block {
+  position: relative;
   width: 100%;
   height: 45px;
   display: flex;
@@ -98,5 +103,19 @@
     border: none;
     width: 125px;
     font-weight: 500;
+  }
+  &_fz18 {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+}
+
+.profile-password__placeholder {
+  font-weight: 600;
+
+  &::-webkit-input-placeholder {
+    color: $color-profile-placeholder;
+    font-size: 18px;
+    letter-spacing: 1.5px;
   }
 }

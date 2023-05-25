@@ -7,9 +7,10 @@ import "./img.scss";
 interface ImgProps {
   srcImg: string;
   class?: string;
-  alt?: string;
+  alt: string;
   width?: string;
   height?: string;
+  events?: Record<string, (e: MouseEvent) => void>;
 }
 
 export class Img extends Block {

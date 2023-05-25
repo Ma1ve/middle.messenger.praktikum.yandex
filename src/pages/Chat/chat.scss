@@ -268,7 +268,7 @@
     align-items: center;
     margin-top: 30px;
     height: 55px;
-    padding: 10px 20px;
+    padding: 50px 20px 0;
     border-top: 1px solid $border-color;
     &__active {
       &-clip {
@@ -290,7 +290,7 @@
       box-shadow: 0 0 6px $color-box-shadow;
     }
 
-    &__img {
+    /* &__img {
       &-clip {
         cursor: pointer;
         transition: 0.5s;
@@ -307,7 +307,7 @@
           transform: scale(1.2);
         }
       }
-    }
+    } */
   }
 }
 
@@ -329,8 +329,7 @@
     display: flex;
     align-items: center;
     margin-top: 15px;
-    &-img {
-    }
+
     &-title {
       margin-left: 10px;
       font-weight: 600;
@@ -446,9 +445,18 @@
 }
 
 .chat__message-block {
-  height: calc(100vh - 240px);
+  height: calc(100vh - 270px);
 }
 
 .notification-dn {
   display: none;
+}
+
+.chat__img_ml20 {
+  margin-left: 20px;
+}
+
+.chat__block-input_w100 {
+  width: 100%;
+  position: relative;
 }

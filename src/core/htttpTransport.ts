@@ -61,7 +61,7 @@ class HTTPTransporttsts {
   request = (
     url: string,
     options: Options,
-    timeout: number = 5000
+    timeout = 5000
   ): Promise<XMLHttpRequest> => {
     const { headers = {}, method, data } = options;
 

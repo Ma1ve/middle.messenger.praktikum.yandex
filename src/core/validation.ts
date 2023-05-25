@@ -5,17 +5,26 @@ interface Patterns {
 
 const validationInputs: Record<string, Patterns> = {
   login: {
-    regExp: /^(?!^\d+)[a-zA-z0-9-_]{3,20}$/,
+    regExp: /^(?!^\d+)[a-zA-Z0-9-_]{3,20}$/,
     errorMessage: "Логин должен содержать от 3 до 20 символов",
   },
   phone: {
-    regExp: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/,
+    regExp: /^((8|\+7)[ -]?)?(\(?\d{3}\)?[ -]?)?[\d -]{10,15}$/,
     errorMessage: "Номер состоит из цифр от 10 до 15 символов",
   },
   password: {
     regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
     errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
   },
+  newPassword: {
+    regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+    errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
+  },
+  repeatNewPassword: {
+    regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+    errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
+  },
+
   first_name: {
     regExp: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
     errorMessage: "Первая буква заглавная, без пробелов и цифр",
@@ -25,7 +34,7 @@ const validationInputs: Record<string, Patterns> = {
     errorMessage: "Первая буква заглавная, без пробелов и цифр",
   },
   email: {
-    regExp: /^[A-Za-z0-9\-]+@[A-Za-z]+(\.[A-Za-z]+)+$/,
+    regExp: /^[A-Za-z0-9-]+@[A-Za-z]+(\.[A-Za-z]+)+$/,
     errorMessage: "Введите корректный email",
   },
   message: {
@@ -55,47 +64,47 @@ const validationCheck = (event: InputEvent): void => {
   }
 };
 
-export const submit = (event: Event): void => {
-  event.preventDefault();
-  const inputs = document.getElementsByTagName("input");
-
-  const isValid = Array.from(inputs).every((inputElement) => {
-    const { regExp } = validationInputs[inputElement.name];
-    console.log(inputElement.name);
-    if (!regExp.test(inputElement.value)) {
-      //! Очищает значение input, если не соответствует регулярному выражению
-
-      inputElement.value = "";
-    }
-    //! Возвращает true, если значение input соответствует регулярному выражению, иначе false
-    console.log(regExp.test(inputElement.value));
-    return regExp.test(inputElement.value);
-  });
-
-  if (isValid) {
-    const form = document.getElementById("myForm") as HTMLFormElement;
-    const data: Record<string, string> = {};
-    Array.from(inputs).forEach((input) => {
-      data[input.name] = input.value;
-    });
-    //! Пока что сделал так, когда все поля заполнены правильно, и мы находимся на страницу login перекидывает на страницу chat
-    if (
-      window.location.pathname === "/login" ||
-      window.location.pathname === "/"
-    ) {
-      window.location.href = "/chat";
-    }
-
-    console.log(data);
-    //! Нужно для отправки формы
-    // form?.submit();
-  }
-};
-
 export const focusin = (event: InputEvent): void => {
   validationCheck(event);
 };
 
 export const focusout = (event: InputEvent): void => {
   validationCheck(event);
+};
+
+export const submit = (event: Event): void => {
+  event.preventDefault();
+
+  const formInputs = document.querySelectorAll<HTMLInputElement>("#my-input");
+
+  const data: Record<string, string> = {};
+  formInputs.forEach((input: HTMLInputElement) => {
+    const error = input.parentElement?.querySelector(".error-input");
+    const currentValidationInput = validationInputs[input.name];
+
+    const { regExp } = currentValidationInput;
+
+    if (input.value === "" || !regExp.test(input.value)) {
+      error!.textContent = currentValidationInput.errorMessage;
+    } else {
+      error!.textContent = "";
+      data[input.name] = input.value;
+      // if (data[input.name]) {
+      //   data[input.name].push(input.value);
+      // } else {
+      //   data[input.name] = [input.value];
+      // }
+    }
+  });
+
+  if (Object.keys(data).length === formInputs.length) {
+    console.log(data);
+    //! Сделал так, чтобы пользователь когда правильно заполнял форму переходил в чат
+    if (
+      window.location.pathname === "/login" ||
+      window.location.pathname === "/"
+    ) {
+      window.location.href = "/chat";
+    }
+  }
 };

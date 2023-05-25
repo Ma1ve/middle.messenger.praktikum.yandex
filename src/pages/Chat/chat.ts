@@ -2,6 +2,7 @@ import Block from "../../core/Block";
 
 import Message from "../../components/Message";
 import Img from "../../components/Img";
+import Input from "../../components/Input";
 
 import template from "./chat.hbs";
 
@@ -14,6 +15,8 @@ import imgPhotoClip from "../../assets/img/photo-clip.svg";
 import imgFileClip from "../../assets/img/file-clip.svg";
 import imgLocationClip from "../../assets/img/location-clip.svg";
 import imgBackArrow from "../../assets/img/back-arrow.png";
+
+import { focusin, focusout, submit } from "../../core/validation";
 
 import "./chat.scss";
 
@@ -49,13 +52,25 @@ export class Chat extends Block {
     });
 
     this.children.message_4 = new Message({
-      name: "Андрей",
-      text: "Изображение",
+      name: "Илья",
+      text: "Круто",
       time: "Пт",
-      spanText: "",
+      spanText: "Вы: ",
       classNotificatonDisplayNone: "notification-dn",
       classChoose: "active",
       notificaton: "",
+    });
+
+    this.children.inputMessage = new Input({
+      classDiv: "chat__block-input_w100",
+      label: "",
+      name: "message",
+      type: "text",
+      classLabel: "",
+      classError: "error-input__message",
+      classInput: "input chat-form__input",
+      placeholder: "Cообщение",
+      events: { focusin, focusout },
     });
 
     /* Image */
@@ -127,7 +142,7 @@ export class Chat extends Block {
     });
 
     this.children.imgLocationClip = new Img({
-      srcImg: imgFileClip,
+      srcImg: imgLocationClip,
       class: "span-menu__active-block-img",
       alt: "photo",
       width: "22",
@@ -140,6 +155,7 @@ export class Chat extends Block {
       alt: "photo",
       width: "28",
       height: "28",
+      events: { click: submit },
     });
   }
 

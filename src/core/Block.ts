@@ -10,11 +10,16 @@ class Block {
   } as const;
 
   public id: string | null = makeUUID();
+
   protected props: Record<string, unknown>;
+
   protected children: Record<string, Block>;
+
   private eventBus: () => EventBus;
+
   private _element: HTMLElement | null = null;
-  private _meta: Record<string, unknown> | null = null;
+
+  private readonly _meta: Record<string, unknown> | null = null;
 
   constructor(childrenAndProps: any = {}) {
     const eventBus = new EventBus();
@@ -37,10 +42,15 @@ class Block {
 
   _getChildrenAndProps(childrenAndProps: any) {
     const props: Record<string, any> = {};
-    const children: Record<string, Block> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block) {
+        children[key] = value;
+      } else if (
+        Array.isArray(value) &&
+        value.every((v) => v instanceof Block)
+      ) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -70,13 +80,17 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() {}
+  protected init() {
+    // empty
+  }
 
   private _componentDidMount() {
     this.componentDidMount();
   }
 
-  public componentDidMount() {}
+  public componentDidMount() {
+    // empty
+  }
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -92,11 +106,14 @@ class Block {
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(
+    oldProps: Record<string, unknown>,
+    newProps: Record<string, unknown>
+  ) {
     return true;
   }
 
-  public setProps = (nextProps: any) => {
+  public setProps = (nextProps: Record<string, unknown>) => {
     if (!nextProps) {
       return;
     }
@@ -125,6 +142,19 @@ class Block {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([name, component]) => {
+      if (Array.isArray(component)) {
+        component.forEach((val) => {
+          if (!propsAndStubs[name]) {
+            propsAndStubs[name] = `<div data-id="${val.id}"></div>`;
+          } else {
+            propsAndStubs[
+              name
+            ] = `${propsAndStubs[name]}<div data-id="${val.id}"></div>`;
+          }
+        });
+        return;
+      }
+
       propsAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });
 
@@ -135,15 +165,37 @@ class Block {
     temp.innerHTML = html;
 
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      let stub;
+      if (Array.isArray(component)) {
+        component.forEach((val) => {
+          stub = temp.content.querySelector(`[data-id='${val.id}']`);
+          if (!stub) {
+            return;
+          }
 
-      if (!stub) {
-        return;
+          stub.replaceWith(val.getContent()!);
+        });
+      } else {
+        stub = temp.content.querySelector(`[data-id='${component.id}']`);
+        if (!stub) {
+          return;
+        }
+
+        stub.replaceWith(component.getContent()!);
       }
 
-      component.getContent()?.append(...Array.from(stub.childNodes));
-
-      stub.replaceWith(component.getContent()!);
+      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      // if (!stub) {
+      //   return;
+      // }
+      // component.getContent()?.append(...Array.from(stub.childNodes));
+      // stub.replaceWith(component.getContent()!);
+      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      // if (!stub) {
+      //   return;
+      // }
+      // component.getContent()?.append(...Array.from(stub.childNodes));
+      // stub.replaceWith(component.getContent()!);
     });
 
     return temp.content;
@@ -155,7 +207,7 @@ class Block {
 
   private _addEvents() {
     const { events = {} } = this.props as {
-      events: Record<string, () => void>;
+      events?: Record<string, () => void>;
     };
 
     Object.keys(events).forEach((eventName) => {
@@ -165,7 +217,7 @@ class Block {
 
   private _removeEvents() {
     const { events } = this.props as {
-      events: Record<string, () => void>;
+      events?: Record<string, () => void>;
     };
 
     if (!events || !this._element) {
@@ -182,8 +234,6 @@ class Block {
   }
 
   private _makePropsProxy(props: any) {
-    const self = this;
-
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -195,7 +245,7 @@ class Block {
 
         target[prop] = value;
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {

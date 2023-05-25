@@ -42,10 +42,10 @@ export class ChatEmpty extends Block {
     });
 
     this.children.message_4 = new Message({
-      name: "Андрей",
-      text: "Изображение",
+      name: "Илья",
+      text: "Круто",
       time: "Пт",
-      spanText: "",
+      spanText: "Вы: ",
       classNotificatonDisplayNone: "notification-dn",
       classChoose: "",
       notificaton: "",

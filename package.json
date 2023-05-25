@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "start": "parcel --no-cache src/index.hbs --open --port=3000",
-    "build": "parcel build src/index.hbs",
-    "server": "node server.js",
-    "sprint-2": "parcel src/index.html --no-source-maps --open --port=3000"
+    "start": "parcel --no-cache src/index.html --no-source-maps --open --port=3000",
+    "build": "parcel build src/index.html",
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",

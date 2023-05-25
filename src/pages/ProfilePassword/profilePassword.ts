@@ -4,6 +4,7 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
+import Form from "../../components/Form";
 
 import template from "./profilePassword.hbs";
 
@@ -23,56 +24,116 @@ export class ProfilePassword extends Block {
       name: "Илья",
     });
 
-    this.children.inputOldPassword = new Input({
-      classDiv: "form-info__block",
-      label: "Старый пароль",
-      name: "password",
-      type: "text",
-      classLabel: "form-info__block-title",
-      classError: "error-input_bt",
-      classInput: "form-info__block-desc profile-password__placeholder",
-      placeholder: "••••••••••••",
-      events: {
-        focusin,
-        focusout,
-      },
+    this.children.form = new Form({
+      formClass: "form-info",
+      inputs: [
+        new Input({
+          classDiv: "form-info__block",
+          label: "Старый пароль",
+          name: "password",
+          type: "password",
+          classLabel: "form-info__block-title",
+          classError: "error-input_bt",
+          classInput:
+            "form-info__block-desc profile-password__placeholder form-info__block_fz18",
+          placeholder: "••••••••••••",
+          events: {
+            focusin,
+            focusout,
+          },
+        }),
+
+        new Input({
+          classDiv: "form-info__block",
+          label: "Новый пароль",
+          name: "newPassword",
+          type: "password",
+          classLabel: "form-info__block-title",
+          classError: "error-input_bt",
+          classInput:
+            "form-info__block-desc profile-password__placeholder form-info__block_fz18",
+          placeholder: "••••••••••••",
+          events: {
+            focusin,
+            focusout,
+          },
+        }),
+
+        new Input({
+          classDiv: "form-info__block",
+          label: "Повторите пароль",
+          name: "repeatNewPassword",
+          type: "password",
+          classLabel: "form-info__block-title",
+          classError: "error-input_bt",
+          classInput:
+            "form-info__block-desc profile-password__placeholder form-info__block_fz18",
+          placeholder: "••••••••••••",
+          events: {
+            focusin,
+            focusout,
+          },
+        }),
+      ],
+      buttonClass: "",
+      button: new Button({
+        label: "Сохранить",
+        class: "button form-info__btn-save form-info__btn-save_mt160",
+        events: { click: submit },
+      }),
+      events: { submit },
     });
 
-    this.children.inputNewPassword = new Input({
-      classDiv: "form-info__block",
-      label: "Новый пароль",
-      name: "password",
-      type: "text",
-      classLabel: "form-info__block-title",
-      classError: "error-input_bt",
-      classInput: "form-info__block-desc profile-password__placeholder",
-      placeholder: "••••••••••••",
-      events: {
-        focusin,
-        focusout,
-      },
-    });
+    // this.children.inputOldPassword = new Input({
+    //   classDiv: "form-info__block",
+    //   label: "Старый пароль",
+    //   name: "password",
+    //   type: "text",
+    //   classLabel: "form-info__block-title",
+    //   classError: "error-input_bt",
+    //   classInput: "form-info__block-desc profile-password__placeholder",
+    //   placeholder: "••••••••••••",
+    //   events: {
+    //     focusin,
+    //     focusout,
+    //   },
+    // });
 
-    this.children.inputNewPasswordRetry = new Input({
-      classDiv: "form-info__block",
-      label: "Повторите пароль",
-      name: "password",
-      type: "text",
-      classLabel: "form-info__block-title",
-      classError: "error-input_bt",
-      classInput: "form-info__block-desc profile-password__placeholder",
-      placeholder: "••••••••••••",
-      events: {
-        focusin,
-        focusout,
-      },
-    });
+    // this.children.inputNewPassword = new Input({
+    //   classDiv: "form-info__block",
+    //   label: "Новый пароль",
+    //   name: "newPassword",
+    //   type: "text",
+    //   classLabel: "form-info__block-title",
+    //   classError: "error-input_bt",
+    //   classInput: "form-info__block-desc profile-password__placeholder",
+    //   placeholder: "••••••••••••",
+    //   events: {
+    //     focusin,
+    //     focusout,
+    //   },
+    // });
 
-    this.children.buttonSave = new Button({
-      label: "Сохранить",
-      class: "button form-info__btn-save form-info__btn-save_mt160",
-      events: { click: submit },
-    });
+    // this.children.inputNewPasswordRetry = new Input({
+    //   classDiv: "form-info__block",
+    //   label: "Повторите пароль",
+    //   name: "repeatNewPassword",
+    //   type: "text",
+    //   classLabel: "form-info__block-title",
+    //   classError: "error-input_bt",
+    //   classInput: "form-info__block-desc profile-password__placeholder",
+    //   placeholder: "••••••••••••",
+    //   events: {
+    //     focusin,
+    //     focusout,
+    //   },
+    // });
+
+    // this.children.buttonSave = new Button({
+    //   label: "Сохранить",
+    //   class: "button form-info__btn-save form-info__btn-save_mt160",
+    //   events: { click: submit },
+    // });
 
     this.children.imgBackArrow = new Img({
       srcImg: imgBackArrow,

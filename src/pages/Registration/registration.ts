@@ -1,8 +1,8 @@
 import Block from "../../core/Block";
 
 import Input from "../../components/Input";
-import Button from "../../components/button";
-import Link from "../../components/link";
+import Button from "../../components/Button";
+import Link from "../../components/Link";
 import Form from "../../components/Form";
 
 import template from "./registration.hbs";

@@ -1,7 +1,7 @@
 import Block from "../../core/Block";
 
 import Avatar from "../../components/Avatar";
-import Button from "../../components/Button";
+import Button from "../../components/button";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
 import Form from "../../components/Form";

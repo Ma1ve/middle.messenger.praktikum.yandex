@@ -1,7 +1,7 @@
 import Block from "../../core/Block";
 import template from "./page404.hbs";
 
-import Link from "../../components/Link";
+import Link from "../../components/link";
 
 import "./page404.scss";
 

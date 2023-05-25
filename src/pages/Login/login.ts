@@ -1,9 +1,9 @@
 import Block from "../../core/Block";
 import template from "./login.hbs";
 
-import Button from "../../components/Button";
+import Button from "../../components/button";
 import Input from "../../components/Input";
-import Link from "../../components/Link";
+import Link from "../../components/link";
 import Form from "../../components/Form";
 
 import { focusin, focusout, submit } from "../../core/validation";

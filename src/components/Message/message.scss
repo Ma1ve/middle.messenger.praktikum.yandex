@@ -1,0 +1,71 @@
+@import "../../assets/scss/variables";
+
+.chat__list-message {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 10px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  cursor: pointer;
+  &.active {
+    background: $message-active-color;
+  }
+  &-wrapper {
+    display: flex;
+  }
+  &-img {
+    width: 47px;
+    height: 47px;
+    background: $color-background-grey;
+  }
+  &-avatar {
+    width: 47px;
+    height: 47px;
+    background: $color-background-grey;
+    border-radius: 100%;
+  }
+  &-user {
+    margin-left: 10px;
+  }
+  &-name {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+    color: $title-color;
+  }
+  &-text {
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-title-second;
+    width: 190px;
+    word-wrap: break-word;
+  }
+  &-clock {
+    font-weight: 500;
+    font-size: 11px;
+    color: $color-title-second;
+  }
+  &-notification {
+    text-align: center;
+    min-width: 20px;
+    height: 20px;
+    background: $base-color;
+    color: $white-color;
+    border-radius: 5px;
+
+    margin: 14px auto 0px auto;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  span {
+    color: $dark-color;
+  }
+}
+
+.notification-dn {
+  display: none;
+}

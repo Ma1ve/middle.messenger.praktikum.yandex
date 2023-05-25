@@ -1,4 +1,5 @@
 import Block from "../../core/Block";
+
 import template from "./button.hbs";
 
 import "./button.scss";

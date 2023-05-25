@@ -84,57 +84,6 @@ export class ProfilePassword extends Block {
       events: { submit },
     });
 
-    // this.children.inputOldPassword = new Input({
-    //   classDiv: "form-info__block",
-    //   label: "Старый пароль",
-    //   name: "password",
-    //   type: "text",
-    //   classLabel: "form-info__block-title",
-    //   classError: "error-input_bt",
-    //   classInput: "form-info__block-desc profile-password__placeholder",
-    //   placeholder: "••••••••••••",
-    //   events: {
-    //     focusin,
-    //     focusout,
-    //   },
-    // });
-
-    // this.children.inputNewPassword = new Input({
-    //   classDiv: "form-info__block",
-    //   label: "Новый пароль",
-    //   name: "newPassword",
-    //   type: "text",
-    //   classLabel: "form-info__block-title",
-    //   classError: "error-input_bt",
-    //   classInput: "form-info__block-desc profile-password__placeholder",
-    //   placeholder: "••••••••••••",
-    //   events: {
-    //     focusin,
-    //     focusout,
-    //   },
-    // });
-
-    // this.children.inputNewPasswordRetry = new Input({
-    //   classDiv: "form-info__block",
-    //   label: "Повторите пароль",
-    //   name: "repeatNewPassword",
-    //   type: "text",
-    //   classLabel: "form-info__block-title",
-    //   classError: "error-input_bt",
-    //   classInput: "form-info__block-desc profile-password__placeholder",
-    //   placeholder: "••••••••••••",
-    //   events: {
-    //     focusin,
-    //     focusout,
-    //   },
-    // });
-
-    // this.children.buttonSave = new Button({
-    //   label: "Сохранить",
-    //   class: "button form-info__btn-save form-info__btn-save_mt160",
-    //   events: { click: submit },
-    // });
-
     this.children.imgBackArrow = new Img({
       srcImg: imgBackArrow,
       class: "profile__panel-circle",

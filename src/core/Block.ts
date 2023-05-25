@@ -184,18 +184,6 @@ class Block {
         stub.replaceWith(component.getContent()!);
       }
 
-      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-      // if (!stub) {
-      //   return;
-      // }
-      // component.getContent()?.append(...Array.from(stub.childNodes));
-      // stub.replaceWith(component.getContent()!);
-      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-      // if (!stub) {
-      //   return;
-      // }
-      // component.getContent()?.append(...Array.from(stub.childNodes));
-      // stub.replaceWith(component.getContent()!);
     });
 
     return temp.content;

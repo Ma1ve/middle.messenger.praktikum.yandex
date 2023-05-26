@@ -89,11 +89,6 @@ export const submit = (event: Event): void => {
     } else {
       error!.textContent = "";
       data[input.name] = input.value;
-      // if (data[input.name]) {
-      //   data[input.name].push(input.value);
-      // } else {
-      //   data[input.name] = [input.value];
-      // }
     }
   });
 

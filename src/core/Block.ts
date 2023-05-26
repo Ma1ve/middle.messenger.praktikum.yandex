@@ -13,7 +13,7 @@ class Block {
 
   protected props: Record<string, unknown>;
 
-  protected children: Record<string, Block>;
+  protected children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
 
@@ -95,9 +95,18 @@ class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) =>
-      child.dispatchComponentDidMount()
-    );
+    Object.values(this.children).forEach((child) => {
+    if (child instanceof Block) {
+      child.dispatchComponentDidMount();
+    } else if (Array.isArray(child)) {
+      child.forEach((c) => {
+        if (c instanceof Block) {
+          c.dispatchComponentDidMount();
+        }
+      });
+    }
+
+  });
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {

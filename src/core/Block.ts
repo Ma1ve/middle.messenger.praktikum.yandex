@@ -60,7 +60,7 @@ class Block {
     return { props, children };
   }
 
-  private _registerEvents(eventBus: EventBus) {
+  private _registerEvents(eventBus: any) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -113,6 +113,7 @@ class Block {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+
   }
 
   protected componentDidUpdate(
@@ -268,3 +269,4 @@ class Block {
 }
 
 export default Block;
+

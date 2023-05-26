@@ -116,9 +116,9 @@ class Block {
   }
 
   protected componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>
-  ) {
+    oldProps: any,
+    newProps: any
+  ): boolean {
     return true;
   }
 
@@ -231,6 +231,9 @@ class Block {
   }
 
   private _makePropsProxy(props: any) {
+
+    const self = this;
+
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -242,7 +245,7 @@ class Block {
 
         target[prop] = value;
 
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {

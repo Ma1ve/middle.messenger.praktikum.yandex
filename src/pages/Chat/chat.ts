@@ -19,6 +19,7 @@ import imgBackArrow from "../../assets/img/back-arrow.png";
 import { focusin, focusout, submit } from "../../core/validation";
 
 import "./chat.scss";
+import { Form } from "../../components/Form/form";
 
 export class Chat extends Block {
   constructor() {

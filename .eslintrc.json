@@ -12,6 +12,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-console": "warn",
-    "quotes": ["warn", "double"]
+    "quotes": ["warn", "double"],
+    "@typescript-eslint/no-this-alias": "off"
   }
 }

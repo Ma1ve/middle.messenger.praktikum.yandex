@@ -13,7 +13,7 @@ class Block {
 
   protected props: Record<string, unknown>;
 
-  protected children: Record<string, Block>;
+  protected children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
 
@@ -60,7 +60,7 @@ class Block {
     return { props, children };
   }
 
-  private _registerEvents(eventBus: EventBus) {
+  private _registerEvents(eventBus: any) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -95,21 +95,31 @@ class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) =>
-      child.dispatchComponentDidMount()
-    );
+    Object.values(this.children).forEach((child) => {
+    if (child instanceof Block) {
+      child.dispatchComponentDidMount();
+    } else if (Array.isArray(child)) {
+      child.forEach((c) => {
+        if (c instanceof Block) {
+          c.dispatchComponentDidMount();
+        }
+      });
+    }
+
+  });
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+
   }
 
   protected componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>
-  ) {
+    oldProps: any,
+    newProps: any
+  ): boolean {
     return true;
   }
 
@@ -184,18 +194,6 @@ class Block {
         stub.replaceWith(component.getContent()!);
       }
 
-      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-      // if (!stub) {
-      //   return;
-      // }
-      // component.getContent()?.append(...Array.from(stub.childNodes));
-      // stub.replaceWith(component.getContent()!);
-      // const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-      // if (!stub) {
-      //   return;
-      // }
-      // component.getContent()?.append(...Array.from(stub.childNodes));
-      // stub.replaceWith(component.getContent()!);
     });
 
     return temp.content;
@@ -234,6 +232,9 @@ class Block {
   }
 
   private _makePropsProxy(props: any) {
+
+    const self = this;
+
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -245,7 +246,7 @@ class Block {
 
         target[prop] = value;
 
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
@@ -268,3 +269,4 @@ class Block {
 }
 
 export default Block;
+

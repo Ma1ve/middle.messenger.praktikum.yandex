@@ -328,8 +328,6 @@
     display: flex;
     align-items: center;
     margin-top: 15px;
-    &-img {
-    }
     &-title {
       margin-left: 10px;
       font-weight: 600;
@@ -347,7 +345,7 @@
 .chat {
   &-overflow {
     z-index: 3;
-    display: none; //! display: none
+    display: none; /* display: none */
     position: absolute;
     top: 0;
     left: 0;

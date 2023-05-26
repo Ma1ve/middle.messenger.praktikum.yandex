@@ -1,7 +1,32 @@
 {
+  "extends": "stylelint-config-recommended",
   "plugins": ["stylelint-scss"],
   "rules": {
-    "color-hex-case": "lower"
+    "color-hex-case": "lower",
+    "no-empty-source": null,
+    "rule-empty-line-before": null,
+    "length-zero-no-unit": null,
+    "selector-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "shorthand-property-no-redundant-values": null,
+    "declaration-empty-line-before": null,
+    "declaration-block-no-duplicate-properties": null,
+    "color-function-notation": null,
+    "no-invalid-position-at-import-rule": null,
+    "font-family-name-quotes": null,
+    "no-duplicate-selectors": null
   },
-  "ignoreFiles": ["dist/*"]
+  "ignoreFiles": [
+    "build/*"
+  ],
+  "customSyntax": "postcss-scss",
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ]
 }
+
+
+

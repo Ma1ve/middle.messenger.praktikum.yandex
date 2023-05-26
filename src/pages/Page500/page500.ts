@@ -1,5 +1,7 @@
 import Block from "../../core/Block";
+
 import Link from "../../components/Link";
+
 import template from "./page500.hbs";
 
 import "./page500.scss";

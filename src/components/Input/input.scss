@@ -1,4 +1,4 @@
-@import "../../assets/scss/variables";
+@import url("../../assets/scss/variables");
 
 .input {
   width: 100%;
@@ -84,7 +84,7 @@
   }
 }
 
-// Input profiles
+/*  Input profiles */
 .form-info__block {
   position: relative;
   width: 100%;

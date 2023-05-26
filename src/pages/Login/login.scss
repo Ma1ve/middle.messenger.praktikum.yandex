@@ -1,4 +1,4 @@
-@import "../../assets/scss/variables";
+@import url("../../assets/scss/variables");
 
 .login {
   height: 100%;
@@ -9,7 +9,7 @@
     width: 340px;
     height: 450px;
     background: $white-color;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 14%);
     border-radius: 12px;
     padding: 50px 30px 30px 30px;
     &-text {
@@ -42,7 +42,7 @@
     font-size: 12px;
     bottom: -20px;
     &__input {
-      // color: red;
+      /*  color: red; */
     }
   }
   &-password {
@@ -51,7 +51,7 @@
     font-size: 12px;
     bottom: -20px;
     &__input {
-      // color: red;
+       /* color: red; */
     }
   }
 }

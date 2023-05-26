@@ -1,4 +1,4 @@
-@import "../../assets/scss/variables";
+@import url("../../assets/scss/variables");
 
 .registration {
   height: 100%;
@@ -9,9 +9,9 @@
     width: 340px;
     height: 615px;
     background: $white-color;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 14%);
     border-radius: 12px;
-    padding: 50px 30px 30px 30px;
+    padding: 50px 30px 30px;
     &-text {
       font-weight: 500;
       font-size: 20px;

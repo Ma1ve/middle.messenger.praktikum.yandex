@@ -1,4 +1,4 @@
-@import "../../assets/scss/variables";
+@import url("../../assets/scss/variables");
 
 .chat {
   display: flex;
@@ -172,7 +172,6 @@
         color: $title-color;
         &.active {
           background: $message-active-color;
-          // justify-content: ;
         }
       }
       &-img {
@@ -328,7 +327,7 @@
 .chat {
   &-overflow {
     z-index: 3;
-    display: none; //! display: none
+    display: none;  /* display: none */
     position: absolute;
     top: 0;
     left: 0;

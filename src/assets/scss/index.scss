@@ -1,4 +1,4 @@
-@import url("./variables.scss");
+@import "./variables.scss";
 
 *,
 *::before,
@@ -45,9 +45,9 @@ select:focus {
   text-decoration: none;
 }
 
-@import url("../../pages/Page404/page404.scss");
-@import url("../../pages/Page500/page500.scss");
-@import url("../../pages/Login/login.scss");
-@import url("../../pages/Registration/registration.scss");
-@import url("../../pages/Profile/profile.scss");
-@import url("../../pages/Chat/chat.scss");
+@import "../../pages/Page404/page404.scss";
+@import "../../pages/Page500/page500.scss";
+@import "../../pages/Login/login.scss";
+@import "../../pages/Registration/registration.scss";
+@import "../../pages/Profile/profile.scss";
+@import "../../pages/Chat/chat.scss";

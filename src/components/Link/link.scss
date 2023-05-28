@@ -1,0 +1,29 @@
+@import "../../assets/scss/variables";
+
+.link {
+  display: block;
+  font-weight: 500;
+  text-align: center;
+  color: $base-color;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  font-size: 16px;
+  &:hover {
+    color: $color-hover-link;
+    text-decoration: underline;
+  }
+}
+
+.form-registration__link {
+  margin-top: 14px;
+  font-size: 11px;
+}
+
+.not-found__wrapper-link {
+  margin-top: 69px;
+}
+
+.form-login__link {
+  margin-top: 14px;
+  font-size: 11px;
+}

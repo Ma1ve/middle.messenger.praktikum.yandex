@@ -1,0 +1,62 @@
+@import "../../assets/scss/variables";
+
+.button {
+  width: 100%;
+  background: $base-color;
+  color: $white-color;
+  border-radius: 8px;
+  height: 37px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-registration__btn {
+  margin-top: 40px;
+  transition: all 1s;
+  &:hover {
+    background: $color-hover-btn;
+  }
+}
+
+.form-info__btn {
+  &-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    margin: 60px auto 0px auto;
+    font-weight: 500;
+    transition: 0.6s;
+    &:hover {
+      background: $color-hover-btn-save;
+    }
+    &_mt160 {
+      margin-top: 160px;
+    }
+  }
+}
+
+.profile-modal__btn {
+  font-weight: 500;
+  :hover {
+    transform: scale(110%);
+    color: $color-hover-btn-modal;
+  }
+}
+
+.form-login__btn {
+  margin-top: 115px;
+  transition: all 1s;
+  &:hover {
+    background: $color-hover-btn;
+  }
+}
+
+.chat-modal__btn {
+  margin-top: 30px;
+  font-weight: 500;
+  :hover {
+    transform: scale(110%);
+    color: $color-hover-btn-modal;
+  }
+}

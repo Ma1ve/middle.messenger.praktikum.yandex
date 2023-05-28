@@ -1,0 +1,141 @@
+<section class="chat">
+  <div class="chat__list">
+    <header>
+      <div class="chat__list-header_left">
+        <div class="chat__list-block">
+          {{{imgPlus}}}
+          <div class="chat__list-header-wrapper">
+            <a href="/profile">
+              <div class="chat__list-title">Профиль</div>
+            </a>
+            {{{imgArrowRight}}}
+          </div>
+
+        </div>
+        <div class="chat__list-wrapper">
+          <input
+            type="text"
+            class="input chat__list-input"
+            placeholder="Поиск..."
+          />
+          <i class="chat__list-icon"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="chat__list-messages">
+      {{{message_1}}}
+      {{{message_2}}}
+      {{{message_3}}}
+      {{{message_4}}}
+    </div>
+  </div>
+  <div class="chat__message-list">
+
+    <header>
+      <div class="chat__message-header_right">
+        <div class="chat__message-header-wrapper">
+          <div class="chat__message-header-avatar"></div>
+          <div class="chat__message-header-name">Илья</div>
+
+        </div>
+
+        <div class="chat__message-header-menu">
+          <div class="span-menu active">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="span-menu__active">
+            <div class="span-menu__active-block">
+
+              {{{imgPlusAndSize}}}
+              <div class="span-menu__active-block-title">Добавить пользователя</div>
+            </div>
+
+            <div class="span-menu__active-block">
+
+              {{{imgDelete}}}
+              <div class="span-menu__active-block-title">Удалить пользователя</div>
+            </div>
+
+            <div class="span-menu__active-block">
+
+              {{{imgDelete_1}}}
+              <div class="span-menu__active-block-title">Удалить чат</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="chat__message-date">19 июня</div>
+
+      <div class="chat__message-block">
+        <div class="chat__message-user-block">
+          <div class="chat__message-user-text">Привет! Смотри, тут всплыл
+            интересный кусок лунной космической истории — НАСА в какой-то момент
+            попросила Хассельблад адаптировать модель SWC для полетов на Луну.
+            Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к
+            слову говоря, все тушки этих камер все еще находятся на поверхности
+            Луны, так как астронавты с собой забрали только кассеты с пленкой.
+            Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не
+            так и на ракету они так никогда и не попали. Всего их было
+            произведено 25 штук, одну из них недавно продали на аукционе за
+            45000 евро. Lorem, ipsum dolor sit amet consectetur adipisicing
+            elit. Minus explicabo ducimus eveniet accusantium dolores?
+            <span class="chat__message-user-time">11:56</span></div>
+
+        </div>
+
+        <div class="chat__message-user-block">
+          <div class="chat__message-img-wrapper">
+
+            {{{imgPhoto}}}
+            <div class="chat__message-user-time img-time">11:57</div>
+          </div>
+        </div>
+
+        <div class="chat__message-user-block active">
+          <div class="chat__message-user-text active">Круто!
+            <span class="chat__message-user-time active">11:56</span></div>
+        </div>
+
+      </div>
+    </main>
+    <form class="chat-form">
+      <div class="chat-form__clip-wrapper">
+
+        {{{imgClip}}}
+        <div class="chat-form__clip-menu">
+          <div class="chat-form__active-clip">
+            {{{imgPhotoClip}}}
+            <div class="span-menu__active-block-title">Фото или Видео</div>
+          </div>
+          <div class="chat-form__active-clip">
+
+            {{{imgFileClip}}}
+            <div class="span-menu__active-block-title">Файл</div>
+          </div>
+          <div class="chat-form__active-clip">
+
+            {{{imgLocationClip}}}
+            <div class="span-menu__active-block-title">Локация</div>
+          </div>
+        </div>
+      </div>
+
+      {{{inputMessage}}}
+
+      <div class="chat__img_ml20">
+        {{{imgBackArrow}}}
+      </div>
+
+    </form>
+
+  </div>
+</section>

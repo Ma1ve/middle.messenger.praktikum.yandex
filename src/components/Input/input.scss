@@ -1,0 +1,121 @@
+@import "../../assets/scss/variables";
+
+.input {
+  width: 100%;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.form-registration__input {
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.form-profile__input {
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #999;
+  padding: 7px 0px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.form-login__input {
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $color-focus-input;
+  }
+}
+
+.chat__list-input {
+  background: $color-background-grey;
+  border-radius: 5px;
+  height: 32px;
+  padding-left: 35px;
+  font-weight: 600;
+  font-size: 12px;
+  color: $title-color;
+}
+
+.chat-form__input {
+  margin: 0 10px;
+  height: 32px;
+  background: $color-background-grey;
+  border-radius: 30px;
+  padding-left: 20px;
+  font-weight: 600;
+  color: $title-color;
+}
+
+.chat-modal__input {
+  border-bottom: 1px solid $base-color;
+  padding: 7px 0px;
+  font-weight: 600;
+  outline: none;
+  &:focus {
+    border-bottom: 1px solid $base-color;
+  }
+}
+
+.error-input {
+  position: absolute;
+  font-weight: 400;
+  font-size: 12px;
+  bottom: -21px;
+  color: red;
+  &__bottom_30 {
+    bottom: -30px;
+  }
+  &_bt {
+    bottom: -1px;
+  }
+  &__message {
+    bottom: 42px;
+    left: 15px;
+  }
+}
+
+/*  Input profiles */
+.form-info__block {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+  &-title {
+    font-weight: 500;
+    color: $title-color;
+  }
+  &-desc {
+    font-weight: 400;
+    color: $title-color;
+    border: none;
+    width: 125px;
+    font-weight: 500;
+  }
+  &_fz18 {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+}
+
+.profile-password__placeholder {
+  font-weight: 600;
+
+  &::-webkit-input-placeholder {
+    color: $color-profile-placeholder;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+}

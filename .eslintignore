@@ -1,0 +1,8 @@
+# dependies
+/node_modules
+
+#production
+/dist
+
+#other
+/server.js

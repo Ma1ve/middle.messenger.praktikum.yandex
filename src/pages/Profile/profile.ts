@@ -74,18 +74,6 @@ export class Profile extends Block {
 
         new Input({
           classDiv: "form-info__block",
-          label: "Имя в чате",
-          name: "chat_name",
-          type: "text",
-          classLabel: "form-info__block-title",
-          classError: "error-input_bt",
-          classInput: "form-info__block-desc profile-password__placeholder",
-          value: "Илья",
-          readonly: true,
-        }),
-
-        new Input({
-          classDiv: "form-info__block",
           label: "Телефон",
           name: "phone",
           type: "text",

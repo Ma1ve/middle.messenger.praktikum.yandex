@@ -40,11 +40,7 @@ const validationInputs: Record<string, Patterns> = {
   message: {
     regExp: /^.+$/,
     errorMessage: "Поле не должно быть пустым",
-  },
-  chat_name: {
-    regExp: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
-    errorMessage: "Первая буква заглавная, без пробелов и цифр",
-  },
+  }
 };
 
 const validationCheck = (event: InputEvent): void => {

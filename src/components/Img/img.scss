@@ -34,3 +34,11 @@
     transform: scale(1.1);
   }
 }
+
+.img-dots{
+  transition: .3s;
+  &:hover{
+    // transform: scale(105%);
+    transform: rotate(180deg);
+  }
+}

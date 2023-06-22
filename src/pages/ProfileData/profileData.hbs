@@ -3,10 +3,7 @@
     <div class="profile__wrapper">
 
       <div class="profile__panel">
-        <a href="/profile">
-
           {{{imgBackArrow}}}
-        </a>
       </div>
 
       <div class="profile__info">
@@ -14,14 +11,42 @@
 
           {{{avatar}}}
 
-          {{{form}}}
+          <form class="form-info">
+            {{{inputEmail}}}
+            {{{inputLogin}}}
+            {{{inputFirstName}}}
+            {{{inputSurname}}}
+            {{{inputDisplayName}}}
+            {{{inputPhone}}}
+            {{{button}}}
+          </form>
+          <div class="error_profile-form">{{store.state.profileFormError}}</div>
+          <div class="error_profile-form">{{store.state.avatarFormError}}</div>
+
+
 
         </div>
 
       </div>
     </div>
+    {{{modal}}}
 
-    {{!Тут должнен быть Modal при необходимости  }}
+
+    {{!-- <div class='block-overflow'>
+      <div class='block-modal'>
+        <div class='block-modal__title'>Загрузите файл</div>
+
+        <input class='block-modal__file' type="file" name="avatar" placeholder="Выберите файл" accept="image/*">
+
+        {{{modalButton}}}
+
+        <div class="error_login-form">{{store.state.avatarFormError}}</div>
+
+      </div>
+    </div> --}}
+
+
+
 
   </section>
 </main>

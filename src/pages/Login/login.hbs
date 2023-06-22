@@ -1,9 +1,16 @@
 <section class="login">
   <div class="login__wrapper">
     <div class="login__wrapper-text">Вход</div>
-    <main>
-      
-      {{{form}}}
+    <main class="login-main">
+
+      <form class="form-login">
+        {{{inputLogin}}}
+        {{{inputPassword}}}
+        {{{buttonLogin}}}
+      </form>
+
+      <div class="error_login-form">{{store.state.loginFormError}}</div>
+
       {{{linkRegistration}}}
 
     </main>

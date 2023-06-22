@@ -38,3 +38,10 @@
     color: $title-color;
   }
 }
+
+.img-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  object-fit: cover;
+}

@@ -1,33 +1,76 @@
-export default class EventBus {
-  private listeners: Record<string, (() => void)[]>;
+// export default class EventBus {
+//   private listeners: Record<string, (() => void)[]>;
 
-  constructor() {
-    this.listeners = {};
-  }
+//   constructor() {
+//     this.listeners = {};
+//   }
 
-  on(event: string, callback: () => void): void {
+//   on(event: string, callback: () => void): void {
+//     if (!this.listeners[event]) {
+//       this.listeners[event] = [];
+//     }
+//     this.listeners[event].push(callback);
+//   }
+
+//   off(event: string, callback: () => void): void {
+//     if (!this.listeners[event]) {
+//       throw new Error(`Нет события: ${event}`);
+//     }
+
+//     this.listeners[event] = this.listeners[event].filter(
+//       (listener) => listener !== callback
+//     );
+//   }
+
+//   emit(event: string, ...args: any[]): void {
+//     if (!this.listeners[event]) {
+//       throw new Error(`Нет события: ${event}`);
+//     }
+//     this.listeners[event].forEach((listener) => {
+//       listener(...args);
+//     });
+//   }
+// }
+
+
+export type Listener<T extends unknown[] = any[]> = (...args: T) => void;
+
+export default class EventBus<
+  E extends string = string,
+  M extends { [K in E]: unknown[] } = Record<E, any[]>,
+> {
+  public listeners: { [key in E]?: Listener<M[E]>[] } = {};
+
+  on(event: E, callback: Listener<M[E]>) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].push(callback);
+
+    this.listeners[event]!.push(callback);
   }
 
-  off(event: string, callback: () => void): void {
+  off(event: E, callback: Listener<M[E]>) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event].filter(
-      (listener) => listener !== callback
+    this.listeners[event] = this.listeners[event]!.filter(
+      (listener) => listener !== callback,
     );
   }
 
-  emit(event: string, ...args: any[]): void {
+  emit(event: E, ...args: M[E]) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      return;
+      // throw new Error(`Нет события: ${event}`);
     }
-    this.listeners[event].forEach((listener) => {
+
+    this.listeners[event]!.forEach(function (listener) {
       listener(...args);
     });
+  }
+
+  destroy() {
+    this.listeners = {};
   }
 }

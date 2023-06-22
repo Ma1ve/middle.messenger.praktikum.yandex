@@ -5,7 +5,7 @@ import "./input.scss";
 
 interface InputProps {
   classDiv: string;
-  label: string;
+  label?: string;
   name: string;
   type: string;
   classLabel: string;

@@ -2,7 +2,19 @@
   <div class="registration__wrapper">
     <div class="registration__wrapper-text">Регистрация</div>
     <main>
-      {{{form}}}
+
+      <form class="form-registration">
+        {{{inputEmail}}}
+        {{{inputLogin}}}
+        {{{inputName}}}
+        {{{inputSurname}}}
+        {{{inputPhone}}}
+        {{{inputPassword}}}
+        {{{buttonRegistration}}}
+      </form>
+
+      <div class="error_registration-form">{{store.state.registrationFormError}}</div>
+
       {{{linkLogin}}}
     </main>
   </div>

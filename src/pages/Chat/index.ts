@@ -46,8 +46,8 @@ class Chat extends Block {
     this.props.store.on('changed', (prevState, nextState) => {
       console.log('%cstore UPDATED', 'background: #222; color: #red', nextState);
 
-      this.setProps({ store: nextState });
-        console.log('chats')
+      // this.setProps({ store: nextState });
+
        if (window.store.state.chats) {
 
 

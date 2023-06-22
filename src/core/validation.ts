@@ -83,7 +83,7 @@ const currentApiRequest = (data: Record<string, string>) => {
   const currentRouter = window.location.hash;
 
   switch (currentRouter) {
-    case '': {
+    case '/': {
       window.store.dispatch(AuthController.signIn, data)
       break;
     }

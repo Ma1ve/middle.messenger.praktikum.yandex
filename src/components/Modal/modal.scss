@@ -3,6 +3,7 @@
 .block {
   height: 100%;
   &-overflow {
+    z-index: 1;
     display: none;
     position: absolute;
     top: 0;

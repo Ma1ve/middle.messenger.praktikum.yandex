@@ -17,14 +17,16 @@ class ConnectionWS {
   }
 
   private setListeners() {
+
     if (!this.socket) {
       return;
     }
 
     this.socket.addEventListener('open', () => {
+       window.store.dispatch({ isLoading: true})
       console.log('Соединение установлено');
 
-      window.store.dispatch({ isLoading: true})
+
 
       clearInterval(this.timerId);
       this.setPing();
@@ -34,15 +36,13 @@ class ConnectionWS {
     this.socket.addEventListener('close', (event) => {
       if (event.wasClean) {
         console.log('Соединение закрыто чисто');
-        window.store.dispatch({ isLoading: false, ActiveMessages: [] });
+        window.store.dispatch({ ActiveMessages: [] });
       } else {
-        window.store.dispatch({ isLoading: false })
         console.log('Обрыв соединения');
       }
 
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
 
-       window.store.dispatch({ isLoading: false })
       console.log('Соединение закрыто');
     });
 

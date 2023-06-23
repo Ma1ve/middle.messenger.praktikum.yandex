@@ -49,16 +49,20 @@ class Chat extends Block {
   init() {
 
      // Решил для теста запихнуть логику создания чата и отрисовку сообщений сюда
-    this.props.store.on('changed', (prevState, nextState) => {
+    this.props.store.on('changed', () => {
       // console.log('%cstore UPDATED', 'background: #222; color: #red', nextState);
-
-
        if (this.props.store.state.chats) {
+
 
         this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
 
           //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-          const currentTime = getCurrentTime((chat.last_message as any).time)
+
+          let currentTime;
+          if (chat.last_message) {
+            currentTime = getCurrentTime((chat.last_message as any).time)
+          }
+
 
           //! отрисовываю каждый чат
           return new ChatTab({
@@ -71,26 +75,36 @@ class Chat extends Block {
             notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
             events: {
               click: () => {
+
                 window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
+
                 this.setProps({chatId: chat.id})
                 this.setProps({currentChat: chat})
-
 
               }
             }
           });
       });
+
+
+
     }
 
       if (this.props.store.state.ActiveMessages) {
           //! Отрисовка сообщений в чате (ActiveMessages которые либо были, либо я их отправляю в данный момент)
             this.children.userMessages = this.props.store.state.ActiveMessages.map((message: Message) => {
-            const currentTime = getCurrentTime(message.time)
+
+            let currentTime;
+            if (message.time) {
+              currentTime = getCurrentTime(message.time)
+            }
+
 
             return new UserMessage({
                 userMessage: `${message.content}`,
                 userTime: `${currentTime}`,
-                isOwnUserMessage: `${this.props.store.state.user.id === message.user_id ? 'active': ''}`});
+                isOwnUserMessage: `${this.props.store.state.user?.id === message.user_id ? 'active': ''}`
+              });
             })
           }
     });
@@ -102,7 +116,13 @@ class Chat extends Block {
         this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
 
           //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-          const currentTime = getCurrentTime((chat.last_message as any).time)
+
+          let currentTime;
+          if (chat.last_message) {
+            currentTime = getCurrentTime((chat.last_message as any).time)
+          }
+
+
 
           //! отрисовываю каждый чат
           return new ChatTab({

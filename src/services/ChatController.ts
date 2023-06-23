@@ -45,7 +45,7 @@ class ChatController {
     const endpoint = `${userId}/${chatId}/${responseToken.response.token}`;
     this.socket = new ConnectionWS(endpoint);
 
-    dispatch({isLoading: false})
+    // dispatch({isLoading: false})
 
 
   } catch (error) {

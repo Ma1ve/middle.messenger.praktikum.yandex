@@ -70,9 +70,18 @@
       {{else}}
           {{#if store.state.isLoading}}
             <div class="chat-loader">{{{Loading}}}</div>
+
           {{else}}
-            <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+
+            {{#unless chatId}}
+              <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+            {{else}}
+              <div class="chat__message-nothing"></div>
+            {{/unless}}
+
+
           {{/if}}
+
       {{/if}}
 
 

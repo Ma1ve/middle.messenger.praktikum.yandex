@@ -108,7 +108,7 @@ class Profile extends Block {
        events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#settings/data')
+          this.props.router.go('/settings/data')
         }
       }
 
@@ -121,7 +121,7 @@ class Profile extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#settings/password')
+          this.props.router.go('/settings/password')
         }
       }
     });
@@ -147,7 +147,7 @@ class Profile extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#messenger')
+          this.props.router.go('/messenger')
         }
       }
     })

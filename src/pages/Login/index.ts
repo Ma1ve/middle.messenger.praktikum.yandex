@@ -6,25 +6,24 @@ import Input from "../../components/Input";
 import Link from "../../components/Link";
 
 import { focusin, focusout, submit } from "../../core/validation";
-
-import "./login.scss";
-
 import { withRouter } from "../../utils/withRouter";
 import { withStore } from "../../utils/withStore";
 
-import { login } from "../../services/Auth";
-import AuthController from "../../services/AuthController";
+import "./login.scss";
+
+import { Loading } from "../../components/Loading/loading";
+
 
 interface LoginProps {}
 class Login extends Block {
   constructor(props: LoginProps) {
     super(props);
-    if(this.props.store.state.user) {
-      this.props.router.go('#messenger')
-    }
   }
 
   init() {
+
+    this.children.Loading = new Loading({})
+
     this.children.inputLogin = new Input({
         classDiv: "form-login__wrapper",
         label: "Логин",
@@ -66,7 +65,8 @@ class Login extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#sign-up')
+          this.props.router.go('/sign-up')
+
         }
       }
     });

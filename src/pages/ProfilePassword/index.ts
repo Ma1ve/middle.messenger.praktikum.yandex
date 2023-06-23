@@ -93,7 +93,7 @@ class ProfilePassword extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#settings')
+          this.props.router.go('/settings')
         }
       }
     });

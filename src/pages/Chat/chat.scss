@@ -133,7 +133,7 @@
     width: 100%;
   }
   &__message-nothing {
-    height: calc(100vh - 50px);
+    height: calc(100vh - 170px);
     font-weight: 500;
     font-size: 13px;
     line-height: 12px;
@@ -459,4 +459,12 @@
   &:hover {
     transform: scale(107%);
   }
+}
+
+
+.chat-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

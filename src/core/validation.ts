@@ -80,26 +80,22 @@ export const focusout = (event: InputEvent): void => {
 
 
 const currentApiRequest = (data: Record<string, string>) => {
-  const currentRouter = window.location.hash;
+  const currentRouter = window.location.pathname;
 
   switch (currentRouter) {
     case '/': {
       window.store.dispatch(AuthController.signIn, data)
       break;
     }
-    case '#login': {
-      window.store.dispatch(AuthController.signIn, data)
-      break;
-    }
-    case '#sign-up': {
+    case '/sign-up': {
       window.store.dispatch(AuthController.signUp, data)
       break;
     }
-    case '#settings/data': {
+    case '/settings/data': {
       window.store.dispatch(UserController.updateUser, data)
       break;
     }
-    case '#settings/password': {
+    case '/settings/password': {
       window.store.dispatch(UserController.updatePassword, data)
       break;
     }

@@ -1,7 +1,7 @@
 import AuthApi, { SignInData, SignUpData } from "../api/AuthApi";
-import { UserDTO } from "../api/api.types";
 import { Dispatch } from "../core/Store/store";
 import { AppState } from "../core/Store/store.types";
+import { router } from "../router";
 import { apiHasError} from "../utils/apiHasError";
 import ChatController from "./ChatController";
 
@@ -10,30 +10,32 @@ class AuthController {
   async signIn( dispatch: Dispatch<AppState>, state: AppState, action: SignInData ) {
     try {
 
+      dispatch({ isLoading: true })
+
       const response = await AuthApi.signIn(action);
 
       if (apiHasError(response)) {
-        dispatch({ loginFormError: response.response.reason });
+        dispatch({ isLoading: false, loginFormError: response.response.reason });
         return;
       }
 
       const responseUser = await AuthApi.getUser();
 
-      const responseChats = await ChatController.getChats(dispatch);
-
-      console.log(responseChats, 'responseChats')
-
       dispatch({ loginFormError: null });
 
       if (apiHasError(responseUser)) {
+        dispatch({isLoading: false})
         dispatch(this.logout);
         return;
       }
 
+      await ChatController.getChats(dispatch);
 
-      dispatch({ user: responseUser.response });
+      dispatch({ isLoading: false, user: responseUser.response });
 
-      window.router.go('#messenger');
+      router.go('/messenger');
+
+
 
     } catch (error) {
       console.log(error)
@@ -43,24 +45,36 @@ class AuthController {
   async signUp(dispatch: Dispatch<AppState>, state: AppState, action: SignUpData ) {
     try {
 
+      dispatch({ isLoading: true })
+
       const response = await AuthApi.signUp(action);
 
       if (apiHasError(response)) {
-        dispatch({ registrationFormError: response.response.reason });
+        dispatch({ isLoading: false, registrationFormError: response.response.reason });
         return;
       }
 
-      const responseUser = await AuthApi.getUser();
+      let responseUser = await AuthApi.getUser();
+
+      await ChatController.getChats(dispatch);
 
       dispatch({ registrationFormError: null });
 
       if (apiHasError(responseUser)) {
+         dispatch({ isLoading: false })
         return;
       }
 
-      dispatch({ user: responseUser.response });
 
-      window.router.go('#messenger');
+      let newResponse = responseUser.response;
+
+      if (responseUser.response.display_name === 'null' || !responseUser.response.display_name) {
+        newResponse = {...responseUser.response, display_name: responseUser.response.first_name}
+      }
+
+      dispatch({ isLoading: false, user: newResponse });
+
+      router.go('/messenger');
 
     } catch (error) {
       console.log(error)
@@ -69,12 +83,12 @@ class AuthController {
 
   async logout(dispatch: Dispatch<AppState>) {
     try {
-
+      dispatch({ isLoading: true })
       await AuthApi.logout();
 
-      dispatch({ user: null });
+      dispatch({ isLoading: false, user: null });
 
-      window.router.go('#login');
+      router.go('/');
 
     } catch (error) {
       console.log(error);

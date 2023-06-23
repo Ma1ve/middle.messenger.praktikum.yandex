@@ -14,7 +14,7 @@ class Page500 extends Block {
   init() {
     this.children.link = new Link({
       class: "link not-found__wrapper-link",
-      href: "#messenger",
+      href: "/messenger",
       label: "Назад к чатам",
     });
   }

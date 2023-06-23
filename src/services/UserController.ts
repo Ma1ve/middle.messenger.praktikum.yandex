@@ -2,6 +2,7 @@ import AuthAPI from "../api/AuthApi";
 import UserApi, { SearchUserProps, UpdatePassword, UpdateUserData } from "../api/UserApi";
 import { Dispatch } from "../core/Store/store";
 import { AppState } from "../core/Store/store.types";
+import { router } from "../router";
 import { apiHasError } from "../utils/apiHasError";
 
 class UserController {
@@ -25,7 +26,8 @@ class UserController {
 
       dispatch({ user: responseUser.response });
 
-      window.router.go('#settings');
+      // window.router.go('#settings');
+      router.go('/settings');
 
     } catch (error) {
       console.log(error)
@@ -57,7 +59,8 @@ class UserController {
 
       dispatch({ user: responseUser.response });
 
-      window.router.go('#settings');
+      // window.router.go('#settings');
+      router.go('/settings');
 
 
     } catch (error) {
@@ -82,7 +85,8 @@ class UserController {
 
       dispatch({ passwordFormError: null });
 
-      window.router.go('#settings');
+      // window.router.go('#settings');
+      router.go('/settings');
 
     } catch (error) {
       console.log(error)

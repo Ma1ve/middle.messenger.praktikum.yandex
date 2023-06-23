@@ -1,5 +1,6 @@
 import { BlockClass } from "../core/Block";
 import { HashRouter } from "../core/HashRouter";
+import { router } from "../router";
 
 type WithRouterProps = { router: HashRouter };
 
@@ -9,7 +10,7 @@ export function withRouter<P extends WithRouterProps>(WrapperBlock: BlockClass<P
     public static componentName = WrapperBlock.componentName || WrapperBlock.name
 
     constructor(props: P) {
-      super({...props, router: window.router})
+      super({...props, router: router})
     }
    } as BlockClass<Omit<P, 'router'>>
 }

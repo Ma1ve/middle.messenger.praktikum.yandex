@@ -12,7 +12,7 @@ class Page404 extends Block {
 
   init() {
     this.children.link = new Link({
-      href: "#messenger",
+      href: "/messenger",
       class: "link not-found__wrapper-link",
       label: "Назад к чатам",
     });

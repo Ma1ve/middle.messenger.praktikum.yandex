@@ -10,6 +10,12 @@ export type User = {
   email: string;
 };
 
+export interface Message {
+  time: number;
+  content: string;
+  user_id: number;
+}
+
 export interface IChat {
   id: number;
   title: string;
@@ -28,6 +34,7 @@ export interface IChat {
 }
 
 export interface AppState {
+  appIsInited: boolean;
   loginFormError?: string | null;
   registrationFormError?: string | null;
   profileFormError?: string | null;
@@ -36,6 +43,7 @@ export interface AppState {
   modalFormError?: string | null;
   ActiveMessages?: any;
   currentChat?: IChat
+  isLoading?: boolean;
   user: User | null;
   chats?: any | null
   chatId?: string;

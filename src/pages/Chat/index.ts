@@ -26,10 +26,15 @@ import "./chat.scss";
 
 import ChatController from "../../services/ChatController";
 import { withStore } from "../../utils/withStore";
-import { IChat } from "../../core/Store/store.types";
+import { IChat, Message } from "../../core/Store/store.types";
 
 
 import UserMessage from "../../components/UserMessage";
+import { Loading } from "../../components/Loading/loading";
+import { getCurrentTime } from "../../utils/getCurrentTime";
+
+
+
 
 
 
@@ -42,106 +47,88 @@ class Chat extends Block {
 
 
   init() {
+
      // Решил для теста запихнуть логику создания чата и отрисовку сообщений сюда
     this.props.store.on('changed', (prevState, nextState) => {
-      console.log('%cstore UPDATED', 'background: #222; color: #red', nextState);
-
-      // this.setProps({ store: nextState });
-
-       if (window.store.state.chats) {
+      // console.log('%cstore UPDATED', 'background: #222; color: #red', nextState);
 
 
-        console.log('chats')
-        this.children.chatTabs = window.store.state.chats.map((chat: IChat) => {
+       if (this.props.store.state.chats) {
 
-        //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-        let timeOnly: string = '';
-        if (chat.last_message) {
-            const datetimeObj = new Date((chat.last_message as any).time);
-            timeOnly = datetimeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
 
-        }
+          //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
+          const currentTime = getCurrentTime((chat.last_message as any).time)
 
-        //! отрисовываю каждый чат
-        return new ChatTab({
-          name: `${chat.title}`,
-          text: `${chat.last_message ? chat.last_message.content : '...'}`,
-          time: `${timeOnly ? timeOnly : ''}`,
-          classChoose: `${chat.id === window.store.state.chatId ? 'active': ''}`,
-          spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
-          classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
-          notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
-          events: {
-            click: () => {
-              window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
-              this.setProps({chatId: chat.id})
-              this.setProps({currentChat: chat})
+          //! отрисовываю каждый чат
+          return new ChatTab({
+            name: `${chat.title}`,
+            text: `${chat.last_message ? chat.last_message.content : '...'}`,
+            time: `${currentTime ? currentTime : ''}`,
+            classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
+            spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+            classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
+            notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
+            events: {
+              click: () => {
+                window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
+                this.setProps({chatId: chat.id})
+                this.setProps({currentChat: chat})
+
+
               }
-          }
-        });
+            }
+          });
       });
     }
 
-
-
-
-      if (window.store.state.ActiveMessages) {
+      if (this.props.store.state.ActiveMessages) {
           //! Отрисовка сообщений в чате (ActiveMessages которые либо были, либо я их отправляю в данный момент)
-            this.children.userMessages = window.store.state.ActiveMessages.map(message => {
-
-            let timeOnly: string = '';
-            if (message.time) {
-                const datetimeString = message.time.substring(0, 19);
-                const datetimeObj = new Date(datetimeString);
-                timeOnly = datetimeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-            }
+            this.children.userMessages = this.props.store.state.ActiveMessages.map((message: Message) => {
+            const currentTime = getCurrentTime(message.time)
 
             return new UserMessage({
                 userMessage: `${message.content}`,
-                userTime: `${timeOnly}`,
-                isOwnUserMessage: `${window.store.state.user.id === message.user_id ? 'active': ''}`});
+                userTime: `${currentTime}`,
+                isOwnUserMessage: `${this.props.store.state.user.id === message.user_id ? 'active': ''}`});
             })
           }
-
     });
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     if (this.props.store.state.chats) {
 
         this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
 
-        //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-        let timeOnly: string = '';
-        if (chat.last_message) {
-            const datetimeObj = new Date((chat.last_message as any).time);
-            timeOnly = datetimeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+          //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
+          const currentTime = getCurrentTime((chat.last_message as any).time)
 
-        }
+          //! отрисовываю каждый чат
+          return new ChatTab({
+            name: `${chat.title}`,
+            text: `${chat.last_message ? chat.last_message.content : '...'}`,
+            time: `${currentTime ? currentTime : ''}`,
+            classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
+            spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+            classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
+            notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
+            events: {
+              click: () => {
 
-        //! отрисовываю каждый чат
-        return new ChatTab({
-          name: `${chat.title}`,
-          text: `${chat.last_message ? chat.last_message.content : '...'}`,
-          time: `${timeOnly ? timeOnly : ''}`,
-          classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
-          spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
-          classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
-          notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
-          events: {
-            click: () => {
+                  window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
+                  this.setProps({chatId: chat.id})
+                  this.setProps({currentChat: chat})
+                }
 
-              window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
-              this.setProps({chatId: chat.id})
-              this.setProps({currentChat: chat})
-              }
-
-          }
-        });
+            }
+          });
       });
     }
 
 
 
+    this.children.Loading = new Loading({})
 
     this.children.modalAddChat = new modal({
       modalTitle: 'Создать чат',
@@ -246,7 +233,7 @@ class Chat extends Block {
       events: {
          click: (event) => {
           event.preventDefault();
-          this.props.router.go('#settings')
+          this.props.router.go('/settings')
         }
       }
     })

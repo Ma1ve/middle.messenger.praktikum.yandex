@@ -1,8 +1,12 @@
-<section class="login">
-  <div class="login__wrapper">
-    <div class="login__wrapper-text">Вход</div>
-    <main class="login-main">
 
+<section class="login">
+  {{#if store.state.isLoading}}
+    {{{ Loading }}}
+  {{else}}
+
+    <div class="login__wrapper">
+      <div class="login__wrapper-text">Вход</div>
+      <main class="login-main">
       <form class="form-login">
         {{{inputLogin}}}
         {{{inputPassword}}}
@@ -11,8 +15,11 @@
 
       <div class="error_login-form">{{store.state.loginFormError}}</div>
 
-      {{{linkRegistration}}}
+      </main>
+       {{{linkRegistration}}}
+    </div>
 
-    </main>
-  </div>
+  {{/if}}
 </section>
+
+

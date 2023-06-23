@@ -34,7 +34,7 @@
 
   <div class="chat__message-list">
 
-   {{#if currentChat.id}}
+   {{#if chatId}}
       <header>
         <div class="chat__message-header_right">
           <div class="chat__message-header-wrapper">
@@ -55,8 +55,8 @@
 
 
     <main>
-      {{#if currentChat.chatId}}
-        <div class="chat__message-date">19 июня</div>
+      {{#if userMessages}}
+        {{!-- <div class="chat__message-date">19 июня</div> --}}
 
         <div class="chat__message-block">
 
@@ -66,47 +66,13 @@
           {{/each}}
 
 
-          {{!-- <div class="chat__message-user-block">
-            <div class="chat__message-user-text">Привет! Смотри, тут всплыл
-              интересный кусок лунной космической истории — НАСА в какой-то момент
-              попросила Хассельблад адаптировать модель SWC для полетов на Луну.
-              Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к
-              слову говоря, все тушки этих камер все еще находятся на поверхности
-              Луны, так как астронавты с собой забрали только кассеты с пленкой.
-              Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не
-              так и на ракету они так никогда и не попали. Всего их было
-              произведено 25 штук, одну из них недавно продали на аукционе за
-              45000 евро. Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Minus explicabo ducimus eveniet accusantium dolores?
-              <span class="chat__message-user-time">11:56</span></div>
-
-          </div>
-
-          <div class="chat__message-user-block">
-            <div class="chat__message-img-wrapper">
-
-              {{{imgPhoto}}}
-
-              <div class="chat__message-user-time img-time">11:57</div>
-            </div>
-          </div>
-
-          <div class="chat__message-user-block active">
-            <div class="chat__message-user-text active">Круто!
-              <span class="chat__message-user-time active">11:56</span></div>
-          </div> --}}
-
         </div>
       {{else}}
-         {{!-- <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div> --}}
-
-         <div class="chat__message-block">
-            {{#each userMessages}}
-              {{{this}}}
-            {{/each}}
-         </div>
-
-
+          {{#if store.state.isLoading}}
+            <div class="chat-loader">{{{Loading}}}</div>
+          {{else}}
+            <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+          {{/if}}
       {{/if}}
 
 

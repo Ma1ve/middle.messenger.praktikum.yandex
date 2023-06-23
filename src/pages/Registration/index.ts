@@ -9,18 +9,17 @@ import template from "./registration.hbs";
 import { focusin, focusout, submit } from "../../core/validation";
 import { withStore } from "../../utils/withStore";
 import { withRouter } from "../../utils/withRouter";
-
+import { Loading } from "../../components/Loading/loading";
 
 interface RegistrationProps {}
 class Registration extends Block {
   constructor(props: RegistrationProps) {
     super(props);
-    if(this.props.store.state.user) {
-      this.props.router.go('#messenger')
-    }
   }
 
   init() {
+
+    this.children.Loading = new Loading({})
 
     this.children.inputEmail = new Input({
       classDiv: "form-registration__wrapper form-registration__title",
@@ -125,7 +124,7 @@ class Registration extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('#login')
+          this.props.router.go('/')
         }
       }
     });

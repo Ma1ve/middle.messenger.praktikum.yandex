@@ -17,10 +17,15 @@ class ChatController {
 
   async socketConnection(dispatch: Dispatch<AppState>, state: AppState, action: string) {
   try {
+
+    dispatch({isLoading: true});
+
     const responseToken = await ChatApi.getToken(action)
 
     if (apiHasError(responseToken)) {
-      alert('Token not found')
+      dispatch({isLoading: false});
+      alert('Token not found');
+
       return;
     }
 
@@ -40,6 +45,7 @@ class ChatController {
     const endpoint = `${userId}/${chatId}/${responseToken.response.token}`;
     this.socket = new ConnectionWS(endpoint);
 
+    dispatch({isLoading: false})
 
 
   } catch (error) {
@@ -55,15 +61,17 @@ class ChatController {
   }
 
 
-  async getChats(dispatch?: Dispatch<AppState>) {
+  async getChats(dispatch: Dispatch<AppState>) {
     try {
+
       const response = await ChatApi.getChatInfo()
 
-      if (dispatch) {
+      // if (dispatch) {
          dispatch({ chats: response.response });
-      }
+      // }
 
-      // return response.response;
+
+
     } catch (error) {
       console.log(error)
     }
@@ -72,14 +80,18 @@ class ChatController {
   async createChat(dispatch: Dispatch<AppState>, state: AppState, action: string) {
     try {
 
+      dispatch({isLoading: true});
+
       const response = await ChatApi.createChat(action);
 
        if (apiHasError(response)) {
-        dispatch({ modalFormError: response.response.reason });
+        dispatch({ isLoading: false, modalFormError: response.response.reason });
         return;
       }
 
       await this.getChats(dispatch);
+
+      dispatch({isLoading: false})
 
     } catch (error) {
       console.log(error)
@@ -88,17 +100,20 @@ class ChatController {
 
   async deleteChat(dispatch: Dispatch<AppState>, state: AppState, action: number) {
     try {
+      dispatch({isLoading: true});
 
       const response = await ChatApi.deleteChat(action);
 
        if (apiHasError(response)) {
-        dispatch({ modalFormError: response.response.reason });
+        dispatch({ isLoading: false, modalFormError: response.response.reason });
         return;
       }
 
       dispatch({ modalFormError: null });
 
       this.getChats(dispatch);
+
+      dispatch({ isLoading: false });
 
     } catch (error) {
       console.log(error)
@@ -109,12 +124,14 @@ class ChatController {
   async deleteUser(dispatch: Dispatch<AppState>, state: AppState, action: {loginUser: string, chatId: number}) {
     try {
 
+      dispatch({isLoading: true});
+
       const { loginUser, chatId } = action;
 
       const responseCurrentUser = await UserApi.searchUser(loginUser);
 
       if (!responseCurrentUser.response.length) {
-        dispatch({ modalFormError: 'There is no such user' });
+        dispatch({ isLoading: false, modalFormError: 'There is no such user' });
         return;
       }
 
@@ -130,11 +147,13 @@ class ChatController {
       const responseDeleteUser = await ChatApi.deleteUsers(requestData);
 
       if (apiHasError(responseDeleteUser)) {
-        dispatch({ modalFormError: responseDeleteUser.response.reason });
+        dispatch({ isLoading: false, modalFormError: responseDeleteUser.response.reason });
         return;
       }
 
       this.getChats(dispatch);
+
+      dispatch({ isLoading: false })
 
     } catch (error) {
       console.log(error)
@@ -144,12 +163,14 @@ class ChatController {
   async addUser(dispatch: Dispatch<AppState>, state: AppState, action: {loginUser: string, chatId: number}) {
     try {
 
-        const { loginUser, chatId } = action;
+       dispatch({ isLoading: true });
+
+      const { loginUser, chatId } = action;
 
       const responseCurrentUser = await UserApi.searchUser(loginUser);
 
       if (!responseCurrentUser.response.length) {
-        dispatch({ modalFormError: 'There is no such user' });
+        dispatch({ isLoading: false, modalFormError: 'There is no such user' });
         return;
       }
 
@@ -165,13 +186,13 @@ class ChatController {
       const responseDeleteUser = await ChatApi.addUsers(requestData);
 
       if (apiHasError(responseDeleteUser)) {
-        dispatch({ modalFormError: responseDeleteUser.response.reason });
+        dispatch({ isLoading: false, modalFormError: responseDeleteUser.response.reason });
         return;
       }
 
       this.getChats(dispatch);
 
-
+      dispatch({ isLoading: false });
 
     } catch (error) {
       console.log(error)

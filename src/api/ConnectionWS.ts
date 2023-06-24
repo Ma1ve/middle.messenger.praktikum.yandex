@@ -1,16 +1,17 @@
 
 const BASE_SOCKET_URL = 'wss://ya-praktikum.tech/ws/chats/';
 
-
 class ConnectionWS {
   protected socket?: WebSocket;
   protected timerId?: NodeJS.Timeout;
+  protected endpoint: string | undefined;
 
   constructor(endpoint: string) {
     this.initSocket(endpoint);
   }
 
-  private initSocket(endpoint: string) {
+  private initSocket(endpoint?: string) {
+    this.endpoint = endpoint;
     this.socket = new WebSocket(`${BASE_SOCKET_URL}${endpoint}`);
     this.timerId = undefined;
     this.setListeners();
@@ -23,7 +24,7 @@ class ConnectionWS {
     }
 
     this.socket.addEventListener('open', () => {
-       window.store.dispatch({ isLoading: true})
+
       console.log('Соединение установлено');
 
 
@@ -51,7 +52,6 @@ class ConnectionWS {
       const data = JSON.parse(event.data);
 
       if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
-        console.log(data, 'data')
 
         if (Array.isArray(data)) {
            data.sort((a, b) => {
@@ -61,10 +61,8 @@ class ConnectionWS {
 
         if (Array.isArray(data)) {
           window.store.dispatch({ ActiveMessages: data });
-          console.log(window.store.state, 'STORE STATE 1');
         } else {
-          window.store.dispatch({ ActiveMessages: [...window.store.state.ActiveMessages, data] });
-          console.log(window.store.state, 'STORE STATE 2');
+          window.store.dispatch({ ActiveMessages: [...window.store.getState().ActiveMessages, data] });
         }
          window.store.dispatch({ isLoading: false })
       }
@@ -116,7 +114,14 @@ class ConnectionWS {
   private setPing() {
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.timerId = setInterval(() => {
-        this.socket!.send(JSON.stringify({ type: 'ping' }));
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+
+        this.socket.send(JSON.stringify({ type: 'ping' }));
+      } else {
+        console.log('Сокет не открыт. Переинициализация...');
+        clearInterval(this.timerId);
+        this.initSocket(this.endpoint);
+      }
       }, 2000);
     }
   }

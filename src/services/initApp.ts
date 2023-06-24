@@ -21,6 +21,14 @@ export async function initApp(dispatch: Dispatch<AppState>) {
       return;
     }
 
+    if (responseUser) {
+      const path = window.location.pathname;
+      if (path === '/' || path === '/sign-up') {
+        router.go('/messenger')
+      }
+    }
+
+
     let newResponseUser = responseUser.response
 
     if (responseUser.response.display_name === 'null' || !responseUser.response.display_name) {

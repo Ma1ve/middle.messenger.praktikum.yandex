@@ -39,14 +39,11 @@ class ChatController {
 
     if (this.socket) {
       this.socket.closeConnection();
-      // this.socket = null
+
     }
 
     const endpoint = `${userId}/${chatId}/${responseToken.response.token}`;
     this.socket = new ConnectionWS(endpoint);
-
-    // dispatch({isLoading: false})
-
 
   } catch (error) {
     console.log(error);
@@ -58,6 +55,9 @@ class ChatController {
     if (this.socket) {
       this.socket.sendMessage(action);
     }
+
+    this.getChats(dispatch)
+
   }
 
 
@@ -65,13 +65,8 @@ class ChatController {
     try {
 
       const response = await ChatApi.getChatInfo()
-
-      // if (dispatch) {
-         dispatch({ chats: response.response });
-      // }
-
-
-
+      dispatch({ chats: response.response });
+    
     } catch (error) {
       console.log(error)
     }
@@ -109,6 +104,10 @@ class ChatController {
         return;
       }
 
+      console.log(12313)
+
+      dispatch({chatId: null, currentChat: null});
+
       dispatch({ modalFormError: null });
 
       this.getChats(dispatch);
@@ -144,6 +143,7 @@ class ChatController {
       chatId: chatId,
     };
 
+
       const responseDeleteUser = await ChatApi.deleteUsers(requestData);
 
       if (apiHasError(responseDeleteUser)) {
@@ -153,6 +153,7 @@ class ChatController {
 
       this.getChats(dispatch);
 
+      dispatch({ chatId: undefined })
       dispatch({ isLoading: false })
 
     } catch (error) {

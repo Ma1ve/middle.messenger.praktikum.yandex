@@ -34,119 +34,90 @@ import { Loading } from "../../components/Loading/loading";
 import { getCurrentTime } from "../../utils/getCurrentTime";
 
 
-
-
-
-
 interface ChatProps {}
 
 class Chat extends Block {
   constructor(props: ChatProps) {
     super(props);
+
+    if (this.props.store.getState().currentChat) {
+      this.setProps({chatId: this.props.store.getState().currentChat!.id})
+      this.setProps({currentChat:this.props.store.getState().currentChat})
+    }
+
+
   }
+
+  updateChatTabs() {
+    const chats = this.props.store.state.chats;
+
+    console.log(chats, 'chats')
+
+    if (!chats) {
+      return;
+    }
+
+    this.children.chatTabs = chats.map((chat: IChat) => {
+
+      let currentTime;
+      if (chat.last_message) {
+        currentTime = getCurrentTime((chat.last_message as any).time)
+      }
+
+
+
+
+      return new ChatTab({
+        name: `${chat.title}`,
+        text: `${chat.last_message ? chat.last_message.content : '...'}`,
+        time: `${currentTime ? currentTime : ''}`,
+        classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
+        spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+        classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
+        notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
+        events: {
+          click: () => {
+
+            window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
+
+            this.setProps({chatId: chat.id})
+            this.setProps({currentChat: chat})
+
+            console.log(chat, 'CHAT')
+
+          }
+        }
+      });
+
+    })
+
+  }
+
+    updateActiveMessage() {
+      const activeMessages = this.props.store.state.ActiveMessages;
+
+      if (!activeMessages) {
+        return;
+      }
+
+       this.children.userMessages = activeMessages.map((message: Message) => {
+         let currentTime;
+          if (message.time) {
+            currentTime = getCurrentTime(message.time)
+          }
+
+
+          return new UserMessage({
+            userMessage: `${message.content}`,
+            userTime: `${currentTime}`,
+            isOwnUserMessage: `${this.props.store.state.user?.id === message.user_id ? 'active': ''}`
+          });
+       })
+
+    }
 
 
   init() {
-
-     // Решил для теста запихнуть логику создания чата и отрисовку сообщений сюда
-    this.props.store.on('changed', () => {
-      // console.log('%cstore UPDATED', 'background: #222; color: #red', nextState);
-       if (this.props.store.state.chats) {
-
-
-        this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
-
-          //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-
-          let currentTime;
-          if (chat.last_message) {
-            currentTime = getCurrentTime((chat.last_message as any).time)
-          }
-
-
-          //! отрисовываю каждый чат
-          return new ChatTab({
-            name: `${chat.title}`,
-            text: `${chat.last_message ? chat.last_message.content : '...'}`,
-            time: `${currentTime ? currentTime : ''}`,
-            classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
-            spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
-            classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
-            notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
-            events: {
-              click: () => {
-
-                window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
-
-                this.setProps({chatId: chat.id})
-                this.setProps({currentChat: chat})
-
-              }
-            }
-          });
-      });
-
-
-
-    }
-
-      if (this.props.store.state.ActiveMessages) {
-          //! Отрисовка сообщений в чате (ActiveMessages которые либо были, либо я их отправляю в данный момент)
-            this.children.userMessages = this.props.store.state.ActiveMessages.map((message: Message) => {
-
-            let currentTime;
-            if (message.time) {
-              currentTime = getCurrentTime(message.time)
-            }
-
-
-            return new UserMessage({
-                userMessage: `${message.content}`,
-                userTime: `${currentTime}`,
-                isOwnUserMessage: `${this.props.store.state.user?.id === message.user_id ? 'active': ''}`
-              });
-            })
-          }
-    });
-
-
-
-    if (this.props.store.state.chats) {
-
-        this.children.chatTabs = this.props.store.state.chats.map((chat: IChat) => {
-
-          //! Нахожу корректное время, когда было последнее сообщение (не обязательно)
-
-          let currentTime;
-          if (chat.last_message) {
-            currentTime = getCurrentTime((chat.last_message as any).time)
-          }
-
-
-
-          //! отрисовываю каждый чат
-          return new ChatTab({
-            name: `${chat.title}`,
-            text: `${chat.last_message ? chat.last_message.content : '...'}`,
-            time: `${currentTime ? currentTime : ''}`,
-            classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
-            spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
-            classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
-            notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
-            events: {
-              click: () => {
-
-                  window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
-                  this.setProps({chatId: chat.id})
-                  this.setProps({currentChat: chat})
-                }
-
-            }
-          });
-      });
-    }
-
-
 
     this.children.Loading = new Loading({})
 
@@ -168,6 +139,8 @@ class Chat extends Block {
           click:  () => {
             const input = document.querySelector('.input-modal') as HTMLInputElement;
             window.store.dispatch(ChatController.createChat.bind(ChatController), input.value);
+
+             this.children.modalAddChat.hide();
           }
         }
       })
@@ -195,7 +168,9 @@ class Chat extends Block {
           click: () => {
             const input = document.querySelector('.input-add-user') as HTMLInputElement;
 
-            window.store.dispatch(ChatController.addUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId })
+            window.store.dispatch(ChatController.addUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId });
+
+            this.children.modalAddUser.hide();
           }
         }
       })
@@ -223,7 +198,10 @@ class Chat extends Block {
 
             const input = document.querySelector('.input-delete-user') as HTMLInputElement;
 
-            window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId })
+            window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId });
+
+            this.children.modalDeleteUser.hide();
+
           }
         }
       })
@@ -239,7 +217,10 @@ class Chat extends Block {
         label: 'Удалить',
         events: {
           click: () => {
-            window.store.dispatch(ChatController.deleteChat.bind(ChatController), this.props.store.state.chatId)
+            window.store.dispatch(ChatController.deleteChat.bind(ChatController), this.props.store.state.chatId);
+            this.setProps({ chatId: null, currentChat: null });
+
+            this.children.modalDeleteChat.hide();
           }
         }
       })
@@ -334,11 +315,21 @@ class Chat extends Block {
       alt: "photo",
       width: "28",
       height: "28",
-      events: { click: () => {
-        const inputValueMessage = document.querySelector('.input-message') as HTMLInputElement;
+      events: {
 
-        window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
-        inputValueMessage.value = ''
+        click: async () => {
+          const inputValueMessage = document.querySelector('.input-message') as HTMLInputElement;
+
+          if (inputValueMessage.value === '') {
+            return;
+          }
+
+          window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
+          inputValueMessage.value = ''
+
+          await ChatController.getChats()
+
+          // this.updateChatTabs();
 
       } },
     });
@@ -407,6 +398,9 @@ class Chat extends Block {
 
 
   render() {
+    this.updateChatTabs();
+    this.updateActiveMessage();
+
 
     return this.compile(template, { ...this.props });
   }

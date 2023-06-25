@@ -9,6 +9,9 @@ import { apiHasError } from "../utils/apiHasError";
 class UserController {
   async updateUser( dispatch: Dispatch<AppState>, state: AppState, action: UpdateUserData ) {
     try {
+
+       dispatch({ isLoading: true })
+
       const response = await UserApi.updateUser(action);
 
       if (apiHasError(response)) {
@@ -17,7 +20,7 @@ class UserController {
       }
 
       if (response.response.display_name == 'null') {
-         dispatch({ profileFormError: `Display name must not be null` });
+         dispatch({ isLoading: false, profileFormError: `Display name must not be null` });
         return;
       }
 
@@ -26,11 +29,11 @@ class UserController {
       dispatch({ profileFormError: null });
 
       if (apiHasError(responseUser)) {
-         dispatch({ profileFormError: responseUser.response.reason });
+         dispatch({ isLoading: false,  profileFormError: responseUser.response.reason });
         return;
       }
 
-      dispatch({ user: responseUser.response });
+      dispatch({ isLoading: false, user: responseUser.response });
 
       router.go('/settings');
 
@@ -44,10 +47,12 @@ class UserController {
   async updateAvatar(dispatch: Dispatch<AppState>, state: AppState, action: FormData) {
     try {
 
+      dispatch({ isLoading: true });
+
       const response = await UserApi.updateAvatar(action);
 
       if (apiHasError(response)) {
-         dispatch({ avatarFormError: response.response.reason });
+         dispatch({ isLoading: false, avatarFormError: response.response.reason });
         return;
       }
 
@@ -56,11 +61,11 @@ class UserController {
       dispatch({ avatarFormError: null });
 
       if (apiHasError(responseUser)) {
-         dispatch({ avatarFormError: response.response.reason });
+         dispatch({ isLoading: false, avatarFormError: response.response.reason });
         return;
       }
 
-      dispatch({ user: responseUser.response });
+      dispatch({ isLoading: false, user: responseUser.response });
 
       router.go('/settings');
 
@@ -73,19 +78,21 @@ class UserController {
   async updatePassword(dispatch: Dispatch<AppState>, state: AppState, action: UpdatePassword) {
     try {
 
+      dispatch({ isLoading: true })
+
       if (action.newPassword !== action.confirmPassword) {
-        dispatch({ passwordFormError: 'Please check the new password and repeat the password' });
+        dispatch({ isLoading: false, passwordFormError: 'Please check the new password and repeat the password' });
          return;
       }
 
       const response = await UserApi.updatePassword(action);
 
       if (apiHasError(response)) {
-        dispatch({ passwordFormError: response.response.reason });
+        dispatch({ isLoading: false, passwordFormError: response.response.reason });
         return;
       }
 
-      dispatch({ passwordFormError: null });
+      dispatch({ isLoading: false, passwordFormError: null });
 
       router.go('/settings');
 

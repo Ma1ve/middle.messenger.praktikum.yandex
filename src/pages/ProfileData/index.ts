@@ -12,6 +12,7 @@ import Modal from "../../components/Modal";
 import template from "./profileData.hbs";
 
 import imgBackArrow from "../../assets/img/back-arrow.png";
+import Loading from "../../components/Loading";
 
 import { focusin, focusout, submit } from "../../core/validation";
 
@@ -23,6 +24,7 @@ import "./profileData.scss";
 
 
 
+
 interface ProfileDataProps {}
 class ProfileData extends Block {
   constructor(props: ProfileDataProps) {
@@ -30,6 +32,8 @@ class ProfileData extends Block {
   }
 
   init() {
+
+    this.children.Loading = new Loading({})
 
     this.children.avatar = new Avatar({
       name: "Илья",

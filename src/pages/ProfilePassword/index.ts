@@ -16,6 +16,7 @@ import { withStore } from "../../utils/withStore";
 import { BASE_URL } from "../../core/htttpTransport";
 
 import "./profilePassword.scss";
+import Loading from "../../components/Loading";
 
 
 interface ProfilePasswordProps {}
@@ -26,6 +27,9 @@ class ProfilePassword extends Block {
   }
 
   init() {
+
+    this.children.Loading = new Loading({})
+
     this.children.avatar = new Avatar({
       name: "Илья",
       img: `${BASE_URL}/resources${this.props.store.state.user.avatar}`,

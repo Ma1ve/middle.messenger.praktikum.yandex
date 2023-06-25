@@ -108,8 +108,6 @@ class ChatController {
         return;
       }
 
-      console.log(12313)
-
       dispatch({chatId: null, currentChat: null});
 
       dispatch({ modalFormError: null });

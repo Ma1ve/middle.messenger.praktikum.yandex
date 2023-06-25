@@ -1,6 +1,48 @@
 <main>
   <section class="profile">
-    <div class="profile__wrapper">
+
+    {{#if store.state.isLoading}}
+    <div class="profile-loader">
+       {{{ Loading }}}
+    </div>
+
+    {{else}}
+
+
+      <div class="profile__wrapper">
+
+        <div class="profile__panel">
+            {{{imgBackArrow}}}
+        </div>
+
+        <div class="profile__info">
+          <div class="profile__info-avatar">
+
+            {{{avatar}}}
+
+            <form class="form-info">
+              {{{inputEmail}}}
+              {{{inputLogin}}}
+              {{{inputFirstName}}}
+              {{{inputSurname}}}
+              {{{inputDisplayName}}}
+              {{{inputPhone}}}
+              {{{button}}}
+            </form>
+            <div class="error_profile-form">{{store.state.profileFormError}}</div>
+            <div class="error_profile-form">{{store.state.avatarFormError}}</div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+      {{{modal}}}
+
+    {{/if}}
+
+    {{!-- <div class="profile__wrapper">
 
       <div class="profile__panel">
           {{{imgBackArrow}}}
@@ -29,24 +71,7 @@
 
       </div>
     </div>
-    {{{modal}}}
-
-
-    {{!-- <div class='block-overflow'>
-      <div class='block-modal'>
-        <div class='block-modal__title'>Загрузите файл</div>
-
-        <input class='block-modal__file' type="file" name="avatar" placeholder="Выберите файл" accept="image/*">
-
-        {{{modalButton}}}
-
-        <div class="error_login-form">{{store.state.avatarFormError}}</div>
-
-      </div>
-    </div> --}}
-
-
-
+    {{{modal}}} --}}
 
   </section>
 </main>

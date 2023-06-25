@@ -30,26 +30,15 @@ export async function initApp(dispatch: Dispatch<AppState>) {
     }
 
 
-    // let newResponseUser = responseUser.response
-
-    if (responseUser.response.display_name === 'null' || !responseUser.response.display_name) {
-
-      // console.log(window.store.state.user)
-
-      console.log(responseUser.response, 'user')
+    if (responseUser.response.display_name == 'null' || !responseUser.response.display_name) {
 
       window.store.dispatch(UserController.updateUser.bind(UserController), {...responseUser.response, display_name: responseUser.response.first_name})
 
-      // newResponseUser = {...responseUser.response, display_name: responseUser.response.first_name}
-      // console.log(newResponseUser)
     }
 
     await ChatController.getChats(dispatch);
 
-    // dispatch({user: newResponseUser })
-
     dispatch({user: responseUser.response })
-
 
     dispatch({isLoading: false});
 

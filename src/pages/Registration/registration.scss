@@ -32,3 +32,12 @@
     color: $color-form-title;
   }
 }
+
+.error_registration-form{
+  color: $error-color;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+  bottom: 15px;
+  text-align: center;
+}

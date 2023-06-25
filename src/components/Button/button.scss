@@ -8,6 +8,12 @@
   height: 37px;
   border: none;
   cursor: pointer;
+  &_mt20{
+    margin-top: 20px;
+  }
+  &_mt100{
+    margin-top: 100px;
+  }
 }
 
 .form-registration__btn {
@@ -36,13 +42,7 @@
   }
 }
 
-.profile-modal__btn {
-  font-weight: 500;
-  :hover {
-    transform: scale(110%);
-    color: $color-hover-btn-modal;
-  }
-}
+
 
 .form-login__btn {
   margin-top: 115px;
@@ -52,11 +52,3 @@
   }
 }
 
-.chat-modal__btn {
-  margin-top: 30px;
-  font-weight: 500;
-  :hover {
-    transform: scale(110%);
-    color: $color-hover-btn-modal;
-  }
-}

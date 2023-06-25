@@ -133,7 +133,7 @@
     width: 100%;
   }
   &__message-nothing {
-    height: 100vh;
+    height: calc(100vh - 170px);
     font-weight: 500;
     font-size: 13px;
     line-height: 12px;
@@ -238,6 +238,9 @@
         cursor: pointer;
         height: 100%;
         width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         span {
           position: absolute;
           width: 4px;
@@ -273,26 +276,33 @@
       &-clip {
         margin-top: 15px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         cursor: pointer;
       }
     }
     &__clip-menu {
+      display: none;
       position: absolute;
-      z-index: 2;
+
       width: 162px;
-      height: 128px;
+      // height: 128px;
+      height: 50px;
       background: $white-color;
       border-radius: 12px;
       padding: 0 15px;
       bottom: 70px;
       box-shadow: 0 0 6px $color-box-shadow;
+      &.active{
+        display: block;
+      }
     }
   }
 }
 
 .span-menu__active {
-  z-index: 2;
+  z-index: 1;
+  display: none;
   position: absolute;
   width: 210px;
   min-height: 90px;
@@ -304,7 +314,9 @@
   border-radius: 12px;
 
   padding: 0 15px 15px 15px;
-
+  &.visible {
+    display: block;
+  }
   &-block {
     display: flex;
     align-items: center;
@@ -425,7 +437,7 @@
 }
 
 .chat__message-block {
-  height: calc(100vh - 270px);
+  height: calc(100vh - 170px);
 }
 
 .notification-dn {
@@ -440,3 +452,41 @@
   width: 100%;
   position: relative;
 }
+
+.chat-form__img-clip {
+  cursor: pointer;
+  transition: .3s all;
+  &:hover {
+    transform: scale(107%);
+  }
+}
+
+
+.chat-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+
+
+//  {{!-- <main>
+//           {{#if userMessages}}
+//             {{!-- <div class="chat__message-date">19 июня</div> --}}
+//             <div class="chat__message-block">
+
+//             {{#each userMessages}}
+//               {{{this}}}
+//             {{/each}}
+
+//             </div>
+//           {{else}}
+//             {{#unless chatId}}
+//               <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+//             {{else}}
+//               <div class="chat__message-nothing"></div>
+//             {{/unless}}
+//           {{/if}}
+//         </main> --}}

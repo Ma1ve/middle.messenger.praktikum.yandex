@@ -1,12 +1,51 @@
 <main>
   <section class="profile">
-    <div class="profile__wrapper">
+
+    {{#if store.state.isLoading}}
+    <div class="profile-loader">
+       {{{ Loading }}}
+    </div>
+
+    {{else}}
+
+
+      <div class="profile__wrapper">
+
+        <div class="profile__panel">
+            {{{imgBackArrow}}}
+        </div>
+
+        <div class="profile__info">
+          <div class="profile__info-avatar">
+
+            {{{avatar}}}
+
+            <form class="form-info">
+              {{{inputEmail}}}
+              {{{inputLogin}}}
+              {{{inputFirstName}}}
+              {{{inputSurname}}}
+              {{{inputDisplayName}}}
+              {{{inputPhone}}}
+              {{{button}}}
+            </form>
+            <div class="error_profile-form">{{store.state.profileFormError}}</div>
+            <div class="error_profile-form">{{store.state.avatarFormError}}</div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+      {{{modal}}}
+
+    {{/if}}
+
+    {{!-- <div class="profile__wrapper">
 
       <div class="profile__panel">
-        <a href="/profile">
-
           {{{imgBackArrow}}}
-        </a>
       </div>
 
       <div class="profile__info">
@@ -14,14 +53,25 @@
 
           {{{avatar}}}
 
-          {{{form}}}
+          <form class="form-info">
+            {{{inputEmail}}}
+            {{{inputLogin}}}
+            {{{inputFirstName}}}
+            {{{inputSurname}}}
+            {{{inputDisplayName}}}
+            {{{inputPhone}}}
+            {{{button}}}
+          </form>
+          <div class="error_profile-form">{{store.state.profileFormError}}</div>
+          <div class="error_profile-form">{{store.state.avatarFormError}}</div>
+
+
 
         </div>
 
       </div>
     </div>
-
-    {{!Тут должнен быть Modal при необходимости  }}
+    {{{modal}}} --}}
 
   </section>
 </main>

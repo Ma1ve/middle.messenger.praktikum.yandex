@@ -1,0 +1,44 @@
+@import "../../assets/scss/variables";
+
+.chat__message-user {
+  &-block {
+    margin-top: 10px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    &.active {
+      margin-right: 20px;
+      justify-content: flex-end;
+    }
+  }
+
+  &-text {
+    position: relative;
+    max-width: 40%;
+
+    padding: 15px 50px 20px 15px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    background: #f8f8f8;
+
+    color: $title-color;
+    &.active {
+      background: $message-active-color;
+    }
+  }
+
+  &-time {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    font-size: 12px;
+
+    text-align: right;
+    color: $color-title-second;
+    &.active {
+      color: $base-color;
+    }
+  }
+
+}

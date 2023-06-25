@@ -1,12 +1,16 @@
 import Block from "../../core/Block";
 
+import ChatController from "../../services/ChatController";
+
 import ChatTab from "../../components/ChatTab";
 import Img from "../../components/Img";
 import Input from "../../components/Input";
 import MenuTabs from "../../components/MenuTabs";
 import Button from "../../components/Button";
 import Link from "../../components/Link";
-import modal from "../../components/Modal/modal";
+import Modal from "../../components/Modal";
+import UserMessage from "../../components/UserMessage";
+import Loading from "../../components/Loading";
 
 import template from "./chat.hbs";
 
@@ -19,20 +23,14 @@ import imgPhotoClip from "../../assets/img/photo-clip.svg";
 import imgBackArrow from "../../assets/img/back-arrow.png";
 import dotsMenu from '../../assets/img/dots-menu-svg.svg'
 
-import { focusin, focusout, submit } from "../../core/validation";
-import { withRouter } from "../../utils/withRouter";
-
-import "./chat.scss";
-
-import ChatController from "../../services/ChatController";
 import { withStore } from "../../utils/withStore";
 import { IChat, Message } from "../../core/Store/store.types";
-
-
-import UserMessage from "../../components/UserMessage";
-import { Loading } from "../../components/Loading/loading";
+import { focusin, focusout } from "../../core/validation";
+import { withRouter } from "../../utils/withRouter";
 import { getCurrentTime } from "../../utils/getCurrentTime";
 
+import "./chat.scss";
+import ChatApi from "../../api/ChatApi";
 
 interface ChatProps {}
 
@@ -45,45 +43,50 @@ class Chat extends Block {
       this.setProps({currentChat:this.props.store.getState().currentChat})
     }
 
-
   }
 
-  updateChatTabs() {
+
+
+  async updateChatTabs() {
     const chats = this.props.store.state.chats;
 
-    console.log(chats, 'chats')
 
     if (!chats) {
       return;
     }
 
+
     this.children.chatTabs = chats.map((chat: IChat) => {
 
       let currentTime;
+      let displayName;
+
       if (chat.last_message) {
-        currentTime = getCurrentTime((chat.last_message as any).time)
+        currentTime = getCurrentTime((chat.last_message as any).time);
+
+        const userLastMessage = chat.last_message.user;
+
+        if (userLastMessage) {
+          displayName = userLastMessage.display_name == 'null' ? userLastMessage.first_name : userLastMessage.display_name;
+        }
+
       }
-
-
-
 
       return new ChatTab({
         name: `${chat.title}`,
         text: `${chat.last_message ? chat.last_message.content : '...'}`,
         time: `${currentTime ? currentTime : ''}`,
         classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
-        spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
-        classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
-        notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
+        spanText: `${displayName ? displayName + ': ' : ''}`,
+        // spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+        // classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
+        // notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
         events: {
-          click: () => {
-
+          click: async () => {
             window.store.dispatch(ChatController.socketConnection.bind(ChatController), chat.id)
 
             this.setProps({chatId: chat.id})
             this.setProps({currentChat: chat})
-
-            console.log(chat, 'CHAT')
 
           }
         }
@@ -121,7 +124,7 @@ class Chat extends Block {
 
     this.children.Loading = new Loading({})
 
-    this.children.modalAddChat = new modal({
+    this.children.modalAddChat = new Modal({
       modalTitle: 'Создать чат',
       isModalChat: true,
       input: new Input({
@@ -147,7 +150,7 @@ class Chat extends Block {
     });
 
 
-    this.children.modalAddUser = new modal({
+    this.children.modalAddUser = new Modal({
       modalTitle: 'Добавить пользователя',
       isModalChat: true,
       input: new Input({
@@ -176,7 +179,7 @@ class Chat extends Block {
       })
     });
 
-    this.children.modalDeleteUser = new modal({
+    this.children.modalDeleteUser = new Modal({
       modalTitle: 'Удалить пользователя',
       isModalChat: true,
       input: new Input({
@@ -208,7 +211,7 @@ class Chat extends Block {
     });
 
 
-    this.children.modalDeleteChat = new modal({
+    this.children.modalDeleteChat = new Modal({
       modalTitle: 'Удалить чат',
       isModalChat: true,
 
@@ -308,7 +311,6 @@ class Chat extends Block {
     })
 
 
-
     this.children.imgBackArrow = new Img({
       srcImg: imgBackArrow,
       class: "chat-form__img-arrow",
@@ -326,10 +328,6 @@ class Chat extends Block {
 
           window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
           inputValueMessage.value = ''
-
-          await ChatController.getChats()
-
-          // this.updateChatTabs();
 
       } },
     });
@@ -397,7 +395,8 @@ class Chat extends Block {
   }
 
 
-  render() {
+   render() {
+
     this.updateChatTabs();
     this.updateActiveMessage();
 

@@ -1,9 +1,11 @@
+import ChatController from "./ChatController";
+
 import AuthApi, { SignInData, SignUpData } from "../api/AuthApi";
 import { Dispatch } from "../core/Store/store";
 import { AppState } from "../core/Store/store.types";
 import { router } from "../router";
 import { apiHasError} from "../utils/apiHasError";
-import ChatController from "./ChatController";
+
 
 class AuthController {
 
@@ -86,7 +88,7 @@ class AuthController {
       dispatch({ isLoading: true })
       await AuthApi.logout();
 
-      dispatch({ isLoading: false, user: null });
+      dispatch({ isLoading: false, user: null, chatId: null, currentChat: null, ActiveMessages: null });
 
       router.go('/');
 

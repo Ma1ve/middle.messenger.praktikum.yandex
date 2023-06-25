@@ -4,11 +4,9 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
-import Form from "../../components/Form";
+
 
 import template from "./profilePassword.hbs";
-
-import "./profilePassword.scss";
 
 import imgBackArrow from "../../assets/img/back-arrow.png";
 
@@ -16,6 +14,9 @@ import { focusout, focusin, submit } from "../../core/validation";
 import { withRouter } from "../../utils/withRouter";
 import { withStore } from "../../utils/withStore";
 import { BASE_URL } from "../../core/htttpTransport";
+
+import "./profilePassword.scss";
+
 
 interface ProfilePasswordProps {}
 

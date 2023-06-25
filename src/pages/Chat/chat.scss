@@ -471,101 +471,22 @@
 
 
 
-    //  {{!-- {{#if store.state.isLoading}}
-    //     <div class="chat-loader">{{{Loading}}}</div>
-    //   {{else}}
 
-    //     {{#if chatId}}
+//  {{!-- <main>
+//           {{#if userMessages}}
+//             {{!-- <div class="chat__message-date">19 июня</div> --}}
+//             <div class="chat__message-block">
 
-    //       <header>
-    //         <div class="chat__message-header_right">
-    //           <div class="chat__message-header-wrapper">
-    //             <div class="chat__message-header-avatar"></div>
-    //             <div class="chat__message-header-name">{{currentChat.title}}</div>
-    //           </div>
-    //           <div class="chat__message-header-menu">
-    //             {{{imgDotsMenu}}}
-    //             <div class="span-menu__active">
-    //               {{{menuUpTab_1}}}
-    //               {{{menuUpTab_2}}}
-    //               {{{menuUpTab_3}}}
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </header>
+//             {{#each userMessages}}
+//               {{{this}}}
+//             {{/each}}
 
-    //     {{/if}}
-
-    //   {{/if}}
-
-    // <main>
-    //    {{#if store.state.isLoading}}
-    //     <div class="chat-loader">{{{Loading}}}</div>
-    //   {{else}}
-
-
-    //     {{#if userMessages}}
-    //       {{!-- <div class="chat__message-date">19 июня</div> --}}
-    //       <div class="chat__message-block">
-
-    //       {{#each userMessages}}
-    //         {{{this}}}
-    //       {{/each}}
-
-    //       </div>
-    //     {{else}}
-    //         {{#if store.state.isLoading}}
-    //           <div class="chat-loader">{{{Loading}}}</div>
-    //         {{else}}
-
-    //         {{#unless chatId}}
-    //           <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
-    //         {{else}}
-    //           <div class="chat__message-nothing"></div>
-    //         {{/unless}}
-
-
-    //         {{/if}}
-
-    //     {{/if}}
-
-    //   {{/if}}
-
-
-
-
-
-    // </main>
-    // {{#if store.state.isLoading}}
-    //     <div class="chat-loader">{{{Loading}}}</div>
-    // {{else}}
-
-    //  {{#if chatId}}
-
-    //     <form class="chat-form">
-    //       <div class="chat-form__clip-wrapper">
-
-    //         {{{imgClip}}}
-    //         <div class="chat-form__clip-menu">
-    //           {{{menuDowmTab}}}
-    //         </div>
-    //       </div>
-
-    //       {{{inputMessage}}}
-
-    //       <div class="chat__img_ml20">
-    //         {{{imgBackArrow}}}
-    //       </div>
-
-    //     </form>
-
-    //   {{/if}}
-    // {{/if}}
-
-    // {{{modalAddChat}}}
-
-    // {{{modalAddUser}}}
-
-    // {{{modalDeleteUser}}}
-
-    // {{{modalDeleteChat}}} --}}
+//             </div>
+//           {{else}}
+//             {{#unless chatId}}
+//               <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+//             {{else}}
+//               <div class="chat__message-nothing"></div>
+//             {{/unless}}
+//           {{/if}}
+//         </main> --}}

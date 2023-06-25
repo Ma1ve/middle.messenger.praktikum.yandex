@@ -6,7 +6,7 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
-import modal from "../../components/Modal/modal";
+import Modal from "../../components/Modal";
 
 
 import template from "./profileData.hbs";
@@ -42,7 +42,7 @@ class ProfileData extends Block {
     });
 
 
-    this.children.modal = new modal({
+    this.children.modal = new Modal({
         modalTitle: 'Загрузите файл',
         isModalChat: false,
         btn:  new Button({
@@ -51,7 +51,8 @@ class ProfileData extends Block {
             events: {
               click: () => {
                 const fileInput = document.querySelector<HTMLInputElement>(".block-modal__file");
-                const selectedFile = fileInput.files[0];
+
+                const selectedFile = fileInput!.files![0];
 
                 const form = new FormData();
                 form.append("avatar", selectedFile);

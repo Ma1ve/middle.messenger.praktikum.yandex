@@ -3,13 +3,14 @@ import Block from "../../core/Block";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Link from "../../components/Link";
+import Loading from "../../components/Loading";
 
 import template from "./registration.hbs";
 
 import { focusin, focusout, submit } from "../../core/validation";
 import { withStore } from "../../utils/withStore";
 import { withRouter } from "../../utils/withRouter";
-import { Loading } from "../../components/Loading/loading";
+
 
 interface RegistrationProps {}
 class Registration extends Block {

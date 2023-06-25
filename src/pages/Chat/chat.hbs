@@ -34,12 +34,11 @@
 
   <div class="chat__message-list">
 
-       {{#if store.state.isLoading}}
+    {{#if store.state.isLoading}}
         <div class="chat-loader">{{{Loading}}}</div>
       {{else}}
 
         {{#if chatId}}
-
           <header>
             <div class="chat__message-header_right">
               <div class="chat__message-header-wrapper">
@@ -57,35 +56,33 @@
               </div>
             </div>
           </header>
-
         {{/if}}
 
-            <main>
+      
+         <main>
+           {{#if chatId}}
 
-          {{#if userMessages}}
-            {{!-- <div class="chat__message-date">19 июня</div> --}}
-            <div class="chat__message-block">
+              {{#if userMessages}}
+                {{!-- <div class="chat__message-date">19 июня</div> --}}
+                <div class="chat__message-block">
+                  {{#each userMessages}}
+                    {{{this}}}
+                  {{/each}}
+                </div>
 
-            {{#each userMessages}}
-              {{{this}}}
-            {{/each}}
-
-            </div>
-          {{else}}
-            {{#unless chatId}}
-              <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
-            {{else}}
-              <div class="chat__message-nothing"></div>
-            {{/unless}}
-          {{/if}}
+              {{else}}
+                 <div class="chat__message-nothing"></div>
+              {{/if}}
 
 
+           {{else}}
+               <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
+           {{/if}}
+        </main>
 
 
 
-      </main>
-
-      {{#if chatId}}
+        {{#if chatId}}
           <form class="chat-form">
             <div class="chat-form__clip-wrapper">
 

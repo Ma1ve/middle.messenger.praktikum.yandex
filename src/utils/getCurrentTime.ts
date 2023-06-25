@@ -1,5 +1,3 @@
-import { IChat } from "../core/Store/store.types";
-
 export const getCurrentTime = (time: number) => {
     let timeOnly: string = '';
 

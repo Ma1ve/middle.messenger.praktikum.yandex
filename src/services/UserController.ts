@@ -1,5 +1,6 @@
 import AuthAPI from "../api/AuthApi";
-import UserApi, { SearchUserProps, UpdatePassword, UpdateUserData } from "../api/UserApi";
+
+import UserApi, { UpdatePassword, UpdateUserData } from "../api/UserApi";
 import { Dispatch } from "../core/Store/store";
 import { AppState } from "../core/Store/store.types";
 import { router } from "../router";
@@ -15,18 +16,22 @@ class UserController {
         return;
       }
 
+      if (response.response.display_name == 'null') {
+         dispatch({ profileFormError: `Display name must not be null` });
+        return;
+      }
+
       const responseUser = await AuthAPI.getUser();
 
       dispatch({ profileFormError: null });
 
       if (apiHasError(responseUser)) {
-         dispatch({ profileFormError: response.response.reason });
+         dispatch({ profileFormError: responseUser.response.reason });
         return;
       }
 
       dispatch({ user: responseUser.response });
 
-      // window.router.go('#settings');
       router.go('/settings');
 
     } catch (error) {
@@ -42,8 +47,6 @@ class UserController {
       const response = await UserApi.updateAvatar(action);
 
       if (apiHasError(response)) {
-        console.log(response)
-           console.log(response.response.reason)
          dispatch({ avatarFormError: response.response.reason });
         return;
       }
@@ -59,7 +62,6 @@ class UserController {
 
       dispatch({ user: responseUser.response });
 
-      // window.router.go('#settings');
       router.go('/settings');
 
 
@@ -85,7 +87,6 @@ class UserController {
 
       dispatch({ passwordFormError: null });
 
-      // window.router.go('#settings');
       router.go('/settings');
 
     } catch (error) {

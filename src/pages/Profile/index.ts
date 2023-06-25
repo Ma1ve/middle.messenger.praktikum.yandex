@@ -1,21 +1,21 @@
 import Block from "../../core/Block";
-import AuthController from "../../services/AuthController";
 
-import { withStore } from "../../utils/withStore";
-import { withRouter } from "../../utils/withRouter";
+import AuthController from "../../services/AuthController";
 
 import Avatar from "../../components/Avatar";
 import Link from "../../components/Link";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
-import Modal from "../../components/Modal";
 
 import template from "./profile.hbs";
 
 import imgBackArrow from "../../assets/img/back-arrow.png";
 
-import "./profile.scss";
+import { withStore } from "../../utils/withStore";
+import { withRouter } from "../../utils/withRouter";
 import { BASE_URL } from "../../core/htttpTransport";
+
+import "./profile.scss";
 
 interface ProfileProps {}
 class Profile extends Block {

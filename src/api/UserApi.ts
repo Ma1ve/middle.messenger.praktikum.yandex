@@ -18,7 +18,6 @@ export interface UpdatePassword {
 }
 
 
-
 class UserApi extends BaseAPI {
   constructor() {
     super('/user');

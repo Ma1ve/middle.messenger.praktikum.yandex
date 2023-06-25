@@ -27,9 +27,9 @@ export interface IChat {
     id: number;
     time: string;
     user: User;
+    display_name: string | null;
   };
-
-  display_name: string;
+  display_name: string | null;
   time: string;
 }
 
@@ -42,17 +42,18 @@ export interface AppState {
   avatarFormError?: string | null;
   modalFormError?: string | null;
   ActiveMessages?: any;
-  currentChat?: IChat
+  currentChat?: IChat | null;
   isLoading?: boolean;
   user: User | null;
   chats?: any | null
-  chatId?: string;
+  chatId?: string | null;
 }
 
 
 export const defaultState: AppState = {
     loginFormError: null,
     user: null,
+    // appIsInited:
 };
 
 

@@ -48,7 +48,7 @@ class ConnectionWS {
     });
 
     this.socket.addEventListener('message', (event) => {
-      console.log('Получены данные', event.data);
+
       const data = JSON.parse(event.data);
 
       if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {

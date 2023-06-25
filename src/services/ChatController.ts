@@ -35,15 +35,17 @@ class ChatController {
     const currentChat = state.chats.find((el: {id: string}) => el.id === chatId)
     dispatch({ currentChat: currentChat })
 
+
+
     const userId = state.user!.id;
 
     if (this.socket) {
       this.socket.closeConnection();
-
     }
 
     const endpoint = `${userId}/${chatId}/${responseToken.response.token}`;
     this.socket = new ConnectionWS(endpoint);
+
 
   } catch (error) {
     console.log(error);
@@ -51,7 +53,6 @@ class ChatController {
 }
 
   async sendMessage(dispatch: Dispatch<AppState>, state: AppState, action: string) {
-    console.log(action)
     if (this.socket) {
       this.socket.sendMessage(action);
     }
@@ -61,12 +62,15 @@ class ChatController {
   }
 
 
-  async getChats(dispatch: Dispatch<AppState>) {
+  async getChats(dispatch?: Dispatch<AppState>) {
     try {
 
       const response = await ChatApi.getChatInfo()
-      dispatch({ chats: response.response });
-    
+
+      if (dispatch) {
+        dispatch({ chats: response.response });
+      }
+
     } catch (error) {
       console.log(error)
     }

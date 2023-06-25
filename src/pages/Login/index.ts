@@ -1,9 +1,11 @@
 import Block from "../../core/Block";
+
 import template from "./login.hbs";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Link from "../../components/Link";
+import Loading from "../../components/Loading";
 
 import { focusin, focusout, submit } from "../../core/validation";
 import { withRouter } from "../../utils/withRouter";
@@ -11,7 +13,7 @@ import { withStore } from "../../utils/withStore";
 
 import "./login.scss";
 
-import { Loading } from "../../components/Loading/loading";
+
 
 
 interface LoginProps {}

@@ -135,7 +135,7 @@ export const submit = (event: Event): void => {
 
 
   if (Object.keys(data).length === formInputs.length) {
-    console.log(data);
+    // console.log(data);
     currentApiRequest(data)
   }
 };

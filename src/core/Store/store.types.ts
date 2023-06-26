@@ -1,3 +1,4 @@
+import { Dispatch } from "./store";
 
 export type User = {
   id: number;
@@ -34,7 +35,7 @@ export interface IChat {
 }
 
 export interface AppState {
-  appIsInited: boolean;
+  appIsInited?: boolean;
   loginFormError?: string | null;
   registrationFormError?: string | null;
   profileFormError?: string | null;
@@ -49,11 +50,11 @@ export interface AppState {
   chatId?: string | null;
 }
 
+export type DispatchStateHandler<TAction> = (dispatch: Dispatch<AppState>, state: AppState, action: TAction) => Promise<void>
 
 export const defaultState: AppState = {
     loginFormError: null,
     user: null,
-    // appIsInited:
 };
 
 

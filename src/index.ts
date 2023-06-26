@@ -18,15 +18,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   window.store = store;
 
-   store.on('changed', (prevState, nextState) => {
+   store.on("changed", (prevState, nextState) => {
       if(!prevState.appIsInited && nextState.appIsInited) {
         initRouter(store);
       }
-      // console.log(
-      //   '%cstore updated',
-      //   'background: #222; color: #bada55',
-      //   nextState,
-      // );
+      console.log(
+        "%cstore updated",
+        "background: #222; color: #bada55",
+        nextState,
+      );
   });
 
   store.dispatch(initApp);

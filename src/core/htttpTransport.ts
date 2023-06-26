@@ -6,7 +6,7 @@ enum METHODS {
 }
 
 
-export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+export const BASE_URL = "https://ya-praktikum.tech/api/v2";
 // export const BASE_SOCKET_URL = 'wss://ya-praktikum.tech/ws/chats/';
 
 interface Options {
@@ -16,7 +16,7 @@ interface Options {
   headers?: { [header: string]: string };
 }
 
-type httpMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
+type HttpMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
 
 function queryStringify(data: Record<string, any>) {
 
@@ -51,19 +51,19 @@ class HTTPTransport {
     return `${this.url}${path}`;
   }
 
-  public get: httpMethod = (url, options = {}) => {
+  public get: HttpMethod = (url, options = {}) => {
     return this.request( this.getCurrentUrl(url), { ...options, method: METHODS.GET }, options.timeout );
   };
 
-  public post: httpMethod = (url, options = {}) => {
+  public post: HttpMethod = (url, options = {}) => {
     return this.request( this.getCurrentUrl(url), { ...options, method: METHODS.POST }, options.timeout );
   };
 
-  public put: httpMethod = (url, options = {}) => {
+  public put: HttpMethod = (url, options = {}) => {
     return this.request( this.getCurrentUrl(url), { ...options, method: METHODS.PUT }, options.timeout );
   };
 
-  public delete: httpMethod = (url, options = {}) => {
+  public delete: HttpMethod = (url, options = {}) => {
     return this.request( this.getCurrentUrl(url), { ...options, method: METHODS.DELETE }, options.timeout );
   };
 
@@ -93,13 +93,6 @@ class HTTPTransport {
       resolve(xhr);
     };
 
-    // xhr.onload = function () {
-    //   if (xhr.status >= 200 && xhr.status < 300) {
-    //     resolve(xhr);
-    //   } else {
-    //     reject(xhr);
-    //   }
-    // };
 
     xhr.onabort = reject;
     xhr.onerror = reject;
@@ -107,23 +100,24 @@ class HTTPTransport {
     xhr.timeout = timeout;
 
       xhr.withCredentials = true;
-    if (data instanceof FormData) {
-      xhr.send(data);
-    } else {
 
-      xhr.withCredentials = true;
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.responseType = "json";
-
-      // xhr.responseType = isGet || !data ? "json" : "text";
-
-      if (isGet || !data) {
-        xhr.send();
+      if (data instanceof FormData) {
+        xhr.send(data);
       } else {
-        xhr.send(JSON.stringify(data));
-      }
 
-    }
+        xhr.withCredentials = true;
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json";
+
+        // xhr.responseType = isGet || !data ? "json" : "text";
+
+        if (isGet || !data) {
+          xhr.send();
+        } else {
+          xhr.send(JSON.stringify(data));
+        }
+
+      }
 
     // xhr.withCredentials = true;
     // xhr.setRequestHeader('Content-Type', 'application/json');

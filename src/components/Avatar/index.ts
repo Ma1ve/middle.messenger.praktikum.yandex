@@ -17,7 +17,7 @@ class Avatar extends Block {
   }
 
   render() {
-    return this.compile(template, { ...this.props, img: window.store.getState().user.avatar ? this.props.img: Union });
+    return this.compile(template, { ...this.props, img: window.store.getState().user!.avatar ? this.props.img: Union });
   }
 }
 

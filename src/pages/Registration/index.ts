@@ -125,7 +125,7 @@ class Registration extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/')
+          this.props.router.go("/")
         }
       }
     });

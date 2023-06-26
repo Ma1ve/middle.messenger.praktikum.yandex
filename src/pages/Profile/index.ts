@@ -55,7 +55,7 @@ class Profile extends Block {
 
     this.children.inputFirstName = new Input({
       classDiv: "form-info__block",
-      label: `Имя`,
+      label: "Имя",
       name: "first_name",
       type: "text",
       classLabel: "form-info__block-title",
@@ -108,7 +108,7 @@ class Profile extends Block {
        events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/settings/data')
+          this.props.router.go("/settings/data")
         }
       }
 
@@ -121,18 +121,18 @@ class Profile extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/settings/password')
+          this.props.router.go("/settings/password")
         }
       }
     });
 
     this.children.linkExit = new Link({
-      label: 'Выход',
+      label: "Выход",
       class: "link profile__info-block-title_red",
       events: {
         click: (event) => {
           event.preventDefault();
-          window.store.dispatch(AuthController.logout)
+          window.store.dispatch(AuthController.logout.bind(AuthController))
         }
       }
 
@@ -147,7 +147,7 @@ class Profile extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/messenger')
+          this.props.router.go("/messenger")
         }
       }
     })

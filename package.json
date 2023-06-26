@@ -5,7 +5,9 @@
   "scripts": {
     "start": "parcel --no-cache src/index.html --no-source-maps --open --port=3000",
     "build": "parcel build src/index.html",
-    "server": "node server.js"
+    "server": "node server.js",
+    "lint": "eslint src/**/*.ts",
+    "stylelint": "stylelint src/**/*.scss --fix"
   },
   "repository": {
     "type": "git",

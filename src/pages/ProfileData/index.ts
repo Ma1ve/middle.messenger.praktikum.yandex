@@ -45,23 +45,21 @@ class ProfileData extends Block {
       }
     });
 
-
     this.children.modal = new Modal({
-        modalTitle: 'Загрузите файл',
+        modalTitle: "Загрузите файл",
         isModalChat: false,
         btn:  new Button({
-            class: 'block-modal__btn',
-            label: 'Поменять',
+            class: "block-modal__btn",
+            label: "Поменять",
             events: {
               click: () => {
                 const fileInput = document.querySelector<HTMLInputElement>(".block-modal__file");
-
                 const selectedFile = fileInput!.files![0];
 
                 const form = new FormData();
                 form.append("avatar", selectedFile);
 
-                window.store.dispatch(UserController.updateAvatar, form)
+                window.store.dispatch(UserController.updateAvatar.bind(UserController), form)
               }
             }
           })
@@ -174,7 +172,7 @@ class ProfileData extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/settings')
+          this.props.router.go("/settings")
         }
       }
     });

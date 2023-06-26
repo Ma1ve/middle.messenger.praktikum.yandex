@@ -42,7 +42,11 @@
           <header>
             <div class="chat__message-header_right">
               <div class="chat__message-header-wrapper">
-                <div class="chat__message-header-avatar"></div>
+                {{!-- <div class="chat__message-header-avatar">
+                  {{#if currentChat.avatar}}
+                      <img class="chat__header-avatar-img" src="https://ya-praktikum.tech/api/v2/resources{{currentChat.avatar}}" alt="avatar">
+                  {{/if}}
+                </div> --}}
                 <div class="chat__message-header-name">{{currentChat.title}}</div>
               </div>
 
@@ -52,18 +56,20 @@
                   {{{menuUpTab_1}}}
                   {{{menuUpTab_2}}}
                   {{{menuUpTab_3}}}
+                  {{{menuUpTab_4}}}
+
                 </div>
               </div>
             </div>
           </header>
         {{/if}}
 
-      
+
          <main>
            {{#if chatId}}
 
               {{#if userMessages}}
-                {{!-- <div class="chat__message-date">19 июня</div> --}}
+          
                 <div class="chat__message-block">
                   {{#each userMessages}}
                     {{{this}}}
@@ -106,11 +112,13 @@
 
       {{{modalAddUser}}}
 
+      {{{modalChangeAvatar}}}
+
       {{{modalDeleteUser}}}
 
       {{{modalDeleteChat}}}
 
-      {{/if}}
+    {{/if}}
 
 
 

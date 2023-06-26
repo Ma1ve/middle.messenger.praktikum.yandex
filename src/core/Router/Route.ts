@@ -60,7 +60,7 @@ export default class Route {
 
     checkAuth() {
         if (this._needAuth) {
-            if (typeof this._onUnautorized === 'function') {
+            if (typeof this._onUnautorized === "function") {
                 return this._onUnautorized(this._pathname);
             }
         }

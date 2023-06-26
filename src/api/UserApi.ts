@@ -9,7 +9,7 @@ export interface UpdateUserData {
   phone: string;
 }
 
-export interface AvatarData extends FormData {}
+export type AvatarData = FormData
 
 export interface UpdatePassword {
   oldPassword: string;
@@ -20,23 +20,23 @@ export interface UpdatePassword {
 
 class UserApi extends BaseAPI {
   constructor() {
-    super('/user');
+    super("/user");
   }
 
   updateUser(data: UpdateUserData) {
-    return this.http.put('/profile', {data} );
+    return this.http.put("/profile", {data} );
   }
 
   updateAvatar(data: AvatarData) {
-    return this.http.put('/profile/avatar', {data} );
+    return this.http.put("/profile/avatar", {data} );
   }
 
   updatePassword(data: UpdatePassword) {
-    return this.http.put('/password', {data} );
+    return this.http.put("/password", {data} );
   }
 
   searchUser(login: string) {
-    return this.http.post('/search', {data: {login}} );
+    return this.http.post("/search", {data: { login }} );
   }
 
 }

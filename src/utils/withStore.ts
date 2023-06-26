@@ -19,13 +19,13 @@ export function withStore<P extends WithStateProps>(WrappedBlock: BlockClass<P>)
 
     componentDidMount(props: P) {
        super.componentDidMount(props);
-       window.store.on('changed', this.__onChangeStoreCallback);
+       window.store.on("changed", this.__onChangeStoreCallback);
     }
 
     componentWillUnmount() {
       super.componentWillUnmount();
-      window.store.off('changed', this.__onChangeStoreCallback);
+      window.store.off("changed", this.__onChangeStoreCallback);
     }
 
-  } as BlockClass<Omit<P, 'store'>>
+  } as BlockClass<Omit<P, "store">>
 }

@@ -12,5 +12,5 @@ export function withRouter<P extends WithRouterProps>(WrapperBlock: BlockClass<P
     constructor(props: P) {
       super({...props, router: router})
     }
-   } as BlockClass<Omit<P, 'router'>>
+   } as BlockClass<Omit<P, "router">>
 }

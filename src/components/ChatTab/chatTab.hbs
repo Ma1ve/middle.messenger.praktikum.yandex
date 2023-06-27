@@ -1,0 +1,29 @@
+<div class="chat__list-message {{classChoose}}">
+  <div class="chat__list-message-wrapper">
+
+    {{#if avatar}}
+      <div class="chat__list-message-avatar">
+        <img src={{avatar}} alt="avatar" class='chat__list-message-img' />
+      </div>
+    {{else}}
+      <div class="chat__list-message-avatar"></div>
+    {{/if}}
+
+
+    <div class="chat__list-message-user">
+      <div class="chat__list-message-name">{{name}}</div>
+      <div class="chat__list-message-text"><span
+          class="chat__list-message-span"
+        >{{spanText}}</span>{{text}}</div>
+    </div>
+  </div>
+  <div class="chat__list-message-time">
+    <div class="chat__list-message-clock">{{time}}</div>
+    {{!-- <div
+      class="chat__list-message-notification {{classNotificatonDisplayNone}}"
+    >{{notificaton}}</div> --}}
+  </div>
+</div>
+
+
+

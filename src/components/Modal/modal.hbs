@@ -1,0 +1,14 @@
+<div class='block-overflow'>
+  <div class='block-modal'>
+    <div class='block-modal__title'>{{modalTitle}}</div>
+    {{#if isModalChat}}
+      {{{input}}}
+    {{else}}
+       <input class='block-modal__file' type="file" placeholder="Выберите файл">
+    {{/if}}
+    {{{btn}}}
+    {{{close}}}
+
+    {{!-- <div class="error_login-form">{{store.state.modalFormError}}</div> --}}
+  </div>
+</div>

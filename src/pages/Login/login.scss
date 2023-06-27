@@ -7,7 +7,7 @@
   align-items: center;
   &__wrapper {
     width: 340px;
-    height: 450px;
+    height: 460px;
     background: $white-color;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 14%);
     border-radius: 12px;
@@ -21,6 +21,10 @@
   }
 }
 
+.login-main{
+  position: relative;
+}
+
 .form-login {
   &__wrapper {
     position: relative;
@@ -31,6 +35,15 @@
     font-size: 11px;
     color: $color-form-title;
   }
+}
+
+.error_login-form {
+  color: $error-color;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+  bottom: 15px;
+  text-align: center;
 }
 
 .error {

@@ -1,3 +1,7 @@
+import AuthController from "../services/AuthController";
+import ChatController from "../services/ChatController";
+import UserController from "../services/UserController";
+
 interface Patterns {
   regExp: RegExp;
   errorMessage: string;
@@ -12,7 +16,11 @@ const validationInputs: Record<string, Patterns> = {
     regExp: /^((8|\+7)[ -]?)?(\(?\d{3}\)?[ -]?)?[\d -]{10,15}$/,
     errorMessage: "Номер состоит из цифр от 10 до 15 символов",
   },
-  password: {
+   password: {
+    regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+    errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
+  },
+  oldPassword: {
     regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
     errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
   },
@@ -20,11 +28,10 @@ const validationInputs: Record<string, Patterns> = {
     regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
     errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
   },
-  repeatNewPassword: {
+  confirmPassword: {
     regExp: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
     errorMessage: "Пароль от 8 до 40, заглавная буква и цифра",
   },
-
   first_name: {
     regExp: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
     errorMessage: "Первая буква заглавная, без пробелов и цифр",
@@ -33,6 +40,10 @@ const validationInputs: Record<string, Patterns> = {
     regExp: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
     errorMessage: "Первая буква заглавная, без пробелов и цифр",
   },
+  display_name: {
+    regExp: /(?!^\d+$)^[a-zA-Z0-9_-]{3,40}$/,
+    errorMessage: "Имя должно состоять не менее чем из 3 символов",
+  },
   email: {
     regExp: /^[A-Za-z0-9-]+@[A-Za-z]+(\.[A-Za-z]+)+$/,
     errorMessage: "Введите корректный email",
@@ -40,11 +51,7 @@ const validationInputs: Record<string, Patterns> = {
   message: {
     regExp: /^.+$/,
     errorMessage: "Поле не должно быть пустым",
-  },
-  chat_name: {
-    regExp: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
-    errorMessage: "Первая буква заглавная, без пробелов и цифр",
-  },
+  }
 };
 
 const validationCheck = (event: InputEvent): void => {
@@ -72,12 +79,43 @@ export const focusout = (event: InputEvent): void => {
   validationCheck(event);
 };
 
+
+const currentApiRequest = (data: Record<string, string>) => {
+  const currentRouter = window.location.pathname;
+
+  switch (currentRouter) {
+    case "/": {
+      window.store.dispatch(AuthController.signIn.bind(AuthController), data)
+      break;
+    }
+    case "/sign-up": {
+      window.store.dispatch(AuthController.signUp.bind(AuthController), data)
+      break;
+    }
+    case "/settings/data": {
+      window.store.dispatch(UserController.updateUser.bind(UserController), data)
+      break;
+    }
+    case "/settings/password": {
+      window.store.dispatch(UserController.updatePassword.bind(UserController), data)
+      break;
+    }
+
+    default:
+      break;
+  }
+
+}
+
+
+
 export const submit = (event: Event): void => {
   event.preventDefault();
 
   const formInputs = document.querySelectorAll<HTMLInputElement>("#my-input");
 
   const data: Record<string, string> = {};
+
   formInputs.forEach((input: HTMLInputElement) => {
     const error = input.parentElement?.querySelector(".error-input");
     const currentValidationInput = validationInputs[input.name];
@@ -92,14 +130,45 @@ export const submit = (event: Event): void => {
     }
   });
 
+
   if (Object.keys(data).length === formInputs.length) {
-    console.log(data);
-    //! Сделал так, чтобы пользователь когда правильно заполнял форму переходил в чат
-    if (
-      window.location.pathname === "/login" ||
-      window.location.pathname === "/"
-    ) {
-      window.location.href = "/chat";
-    }
+    currentApiRequest(data)
   }
 };
+
+export const keydown = (event: Event) => {
+
+  if (event instanceof KeyboardEvent && event.key === "Enter") {
+
+    event.preventDefault();
+
+    const inputValueMessage = checkIsValid()
+
+    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
+    inputValueMessage.value = ""
+  }
+
+  if (event instanceof KeyboardEvent && event.key) {
+    checkIsValid()
+  }
+
+}
+
+function checkIsValid() {
+   const inputValueMessage = document.querySelector(".input-message") as HTMLInputElement;
+    const error = document.querySelector(".error-input__message");
+
+    const currentValidationInput = validationInputs[inputValueMessage.name];
+
+    const { regExp } = currentValidationInput;
+
+    if (inputValueMessage.value === "" || !regExp.test(inputValueMessage.value)) {
+      error!.textContent = currentValidationInput.errorMessage;
+      return;
+    } else {
+      error!.textContent = "";
+    }
+
+    return inputValueMessage;
+
+}

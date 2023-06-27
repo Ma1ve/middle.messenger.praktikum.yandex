@@ -1,12 +1,9 @@
 import BaseAPI from "./BaseApi";
 
 
-export interface SocketConnectionData {
-  chatId: number
-}
-
-export interface SendMessageData {
-  message: string;
+export interface ChatUserData {
+  users: number[];
+  chatId: number;
 }
 
 class ChatApi extends BaseAPI {
@@ -30,15 +27,15 @@ class ChatApi extends BaseAPI {
     return this.http.get(`/${id}/users`);
   }
 
-  addUsers(addUserData: { users: number[], chatId: number }) {
+  addUsers(addUserData: ChatUserData) {
     return this.http.put("/users", { data: addUserData });
   }
 
-  deleteUsers(deleteUserData: { users: number[], chatId: number }) {
+  deleteUsers(deleteUserData: ChatUserData) {
     return this.http.delete("/users", { data: deleteUserData });
   }
 
-  getToken(id: string){
+  getToken(id: number){
     return this.http.post(`/token/${id}`);
   }
 

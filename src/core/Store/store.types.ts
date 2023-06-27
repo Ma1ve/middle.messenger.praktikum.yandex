@@ -26,7 +26,7 @@ export interface IChat {
   last_message: {
     content: string;
     id: number;
-    time: string;
+    time: string | number;
     user: User;
     display_name: string | null;
   };
@@ -42,12 +42,12 @@ export interface AppState {
   passwordFormError?: string | null;
   avatarFormError?: string | null;
   modalFormError?: string | null;
-  ActiveMessages?: any;
+  ActiveMessages?: any | null;
   currentChat?: IChat | null;
   isLoading?: boolean;
   user: User | null;
   chats?: any | null
-  chatId?: string | null;
+  chatId?: number | string | null;
 }
 
 export type DispatchStateHandler<TAction> = (dispatch: Dispatch<AppState>, state: AppState, action: TAction) => Promise<void>

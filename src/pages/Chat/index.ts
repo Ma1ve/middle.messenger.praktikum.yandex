@@ -25,7 +25,7 @@ import imgClip from "../../assets/img/clip.svg";
 
 import { withStore } from "../../utils/withStore";
 import { IChat, Message } from "../../core/Store/store.types";
-import { focusin, focusout } from "../../core/validation";
+import { focusin, focusout, keydown } from "../../core/validation";
 import { withRouter } from "../../utils/withRouter";
 import { getCurrentTime } from "../../utils/getCurrentTime";
 import { BASE_URL } from "../../core/htttpTransport";
@@ -63,7 +63,7 @@ class Chat extends Block {
       let displayName;
 
       if (chat.last_message) {
-        currentTime = getCurrentTime((chat.last_message as any).time);
+        currentTime = getCurrentTime(chat.last_message.time as number);
 
         const userLastMessage = chat.last_message.user;
 
@@ -289,29 +289,7 @@ class Chat extends Block {
       classError: "error-input__message",
       classInput: "input input-message chat-form__input",
       placeholder: "Cообщение",
-      events: { focusin, focusout, keydown: (event: Event) => {
-          if (event instanceof KeyboardEvent && event.key === "Enter") {
-
-            event.preventDefault();
-
-           const inputValueMessage = document.querySelector(".input-message") as HTMLInputElement;
-
-
-            // const inpurError = document.querySelector(".error-input error-input__message");
-            // console.log(inpurError, 'inpurError')
-            //  inpurError!.textContent = "";
-
-            if (inputValueMessage.value === "") {
-              return;
-            }
-
-            window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
-            inputValueMessage.value = ""
-
-
-
-          }
-      } },
+      events: { focusin, focusout, keydown},
     });
     /* Image */
 

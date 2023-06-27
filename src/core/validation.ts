@@ -1,4 +1,5 @@
 import AuthController from "../services/AuthController";
+import ChatController from "../services/ChatController";
 import UserController from "../services/UserController";
 
 interface Patterns {
@@ -100,8 +101,6 @@ const currentApiRequest = (data: Record<string, string>) => {
       break;
     }
 
-
-
     default:
       break;
   }
@@ -132,12 +131,44 @@ export const submit = (event: Event): void => {
   });
 
 
-
-
   if (Object.keys(data).length === formInputs.length) {
-    // console.log(data);
     currentApiRequest(data)
   }
 };
 
+export const keydown = (event: Event) => {
 
+  if (event instanceof KeyboardEvent && event.key === "Enter") {
+
+    event.preventDefault();
+
+    const inputValueMessage = checkIsValid()
+
+    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
+    inputValueMessage.value = ""
+  }
+
+  if (event instanceof KeyboardEvent && event.key) {
+    checkIsValid()
+  }
+
+}
+
+function checkIsValid() {
+   const inputValueMessage = document.querySelector(".input-message") as HTMLInputElement;
+    const error = document.querySelector(".error-input__message");
+
+    const currentValidationInput = validationInputs[inputValueMessage.name];
+
+    const { regExp } = currentValidationInput;
+
+    if (inputValueMessage.value === "" || !regExp.test(inputValueMessage.value)) {
+      error!.textContent = currentValidationInput.errorMessage;
+      return;
+    } else {
+      error!.textContent = "";
+    }
+
+    return inputValueMessage;
+
+}

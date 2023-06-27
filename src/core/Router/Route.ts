@@ -2,7 +2,7 @@ import Block from "../Block";
 import renderDOM from "../renderDom";
 
 
-function isEqual(lhs: any, rhs: any) {
+function isEqual(lhs: string, rhs: string) {
     return lhs === rhs;
 }
 

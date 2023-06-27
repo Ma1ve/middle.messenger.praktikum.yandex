@@ -9,14 +9,15 @@ export interface UpdateUserData {
   phone: string;
 }
 
-export type AvatarData = FormData
-
 export interface UpdatePassword {
   oldPassword: string;
   newPassword: string;
   confirmPassword: string
 }
 
+export interface UserDataSearch {
+  loginUser: string, chatId: number
+}
 
 class UserApi extends BaseAPI {
   constructor() {
@@ -27,7 +28,7 @@ class UserApi extends BaseAPI {
     return this.http.put("/profile", {data} );
   }
 
-  updateAvatar(data: AvatarData) {
+  updateAvatar(data: FormData) {
     return this.http.put("/profile/avatar", {data} );
   }
 

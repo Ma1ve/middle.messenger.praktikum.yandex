@@ -40,7 +40,6 @@ class ConnectionWS {
         window.store.dispatch({ ActiveMessages: [] });
       } else {
         console.log("Обрыв соединения");
-        // this.initSocket(this.endpoint);
       }
 
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
@@ -78,9 +77,7 @@ class ConnectionWS {
     this.socket.addEventListener("error", (event) => {
       console.log("Ошибка", event);
 
-       this.initSocket(this.endpoint);
-
-      //  window.store.dispatch({ isLoading: false })
+      this.initSocket(this.endpoint);
     });
   }
 

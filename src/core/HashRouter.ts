@@ -5,7 +5,7 @@ export class HashRouter {
   start() {
     if (!this.isStarted) {
       this.isStarted = true;
-      window.addEventListener('hashchange', () => this.onRouteChange());
+      window.addEventListener("hashchange", () => this.onRouteChange());
       this.onRouteChange()
     }
   }
@@ -21,8 +21,8 @@ export class HashRouter {
       return false;
     })
 
-    if (!found && this.routes['*']) {
-      this.routes['*']();
+    if (!found && this.routes["*"]) {
+      this.routes["*"]();
     }
 
 

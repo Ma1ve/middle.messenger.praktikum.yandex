@@ -17,20 +17,20 @@ export async function initApp(dispatch: Dispatch<AppState>) {
 
     if (apiHasError(responseUser)) {
       dispatch({isLoading: false});
-      console.log('Error response')
-      router.go('/')
+      console.log("Error response")
+      router.go("/")
       return;
     }
 
     if (responseUser) {
       const path = window.location.pathname;
-      if (path === '/' || path === '/sign-up') {
-        router.go('/messenger')
+      if (path === "/" || path === "/sign-up") {
+        router.go("/messenger")
       }
     }
 
 
-    if (responseUser.response.display_name == 'null' || !responseUser.response.display_name) {
+    if (responseUser.response.display_name == "null" || !responseUser.response.display_name) {
 
       window.store.dispatch(UserController.updateUser.bind(UserController), {...responseUser.response, display_name: responseUser.response.first_name})
 
@@ -45,6 +45,6 @@ export async function initApp(dispatch: Dispatch<AppState>) {
   } catch (err) {
     console.log(err)
   } finally {
-    dispatch({ appIsInited: true });
+    dispatch({ isLoading: false, appIsInited: true });
   }
 }

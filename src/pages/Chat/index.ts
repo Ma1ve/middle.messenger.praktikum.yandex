@@ -18,19 +18,21 @@ import imgArrowRight from "../../assets/img/arrow-right.svg";
 import imgPlus from "../../assets/img/add-plus.png";
 import imgDelete from "../../assets/img/delete.svg";
 import imgPhoto from "../../assets/img/photo.png";
-import imgClip from "../../assets/img/clip.svg";
 import imgPhotoClip from "../../assets/img/photo-clip.svg";
 import imgBackArrow from "../../assets/img/back-arrow.png";
-import dotsMenu from '../../assets/img/dots-menu-svg.svg'
+import dotsMenu from "../../assets/img/dots-menu-svg.svg"
+import imgClip from "../../assets/img/clip.svg";
 
 import { withStore } from "../../utils/withStore";
 import { IChat, Message } from "../../core/Store/store.types";
-import { focusin, focusout } from "../../core/validation";
+import { focusin, focusout, keydown } from "../../core/validation";
 import { withRouter } from "../../utils/withRouter";
 import { getCurrentTime } from "../../utils/getCurrentTime";
+import { BASE_URL } from "../../core/htttpTransport";
 
 import "./chat.scss";
-import ChatApi from "../../api/ChatApi";
+
+
 
 interface ChatProps {}
 
@@ -40,11 +42,10 @@ class Chat extends Block {
 
     if (this.props.store.getState().currentChat) {
       this.setProps({chatId: this.props.store.getState().currentChat!.id})
-      this.setProps({currentChat:this.props.store.getState().currentChat})
+      this.setProps({currentChat:this.props.store.getState().currentChat});
     }
 
   }
-
 
 
   async updateChatTabs() {
@@ -62,22 +63,29 @@ class Chat extends Block {
       let displayName;
 
       if (chat.last_message) {
-        currentTime = getCurrentTime((chat.last_message as any).time);
+        currentTime = getCurrentTime(chat.last_message.time as number);
 
         const userLastMessage = chat.last_message.user;
 
         if (userLastMessage) {
-          displayName = userLastMessage.display_name == 'null' ? userLastMessage.first_name : userLastMessage.display_name;
+          displayName = userLastMessage.display_name == "null" ? userLastMessage.first_name : userLastMessage.display_name;
         }
 
       }
 
+
+      let avatar = '';
+      if (chat.avatar) {
+        avatar = `${BASE_URL}/resources${chat.avatar}`;
+      }
+
       return new ChatTab({
         name: `${chat.title}`,
-        text: `${chat.last_message ? chat.last_message.content : '...'}`,
-        time: `${currentTime ? currentTime : ''}`,
-        classChoose: `${chat.id === this.props.store.state.chatId ? 'active': ''}`,
-        spanText: `${displayName ? displayName + ': ' : ''}`,
+        text: `${chat.last_message ? chat.last_message.content : "..."}`,
+        time: `${currentTime ? currentTime : ""}`,
+        classChoose: `${chat.id === this.props.store.state.chatId ? "active": ""}`,
+        spanText: `${displayName ? displayName + ": " : ""}`,
+        avatar: `${avatar}`,
         // spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
         // classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
         // notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
@@ -109,11 +117,10 @@ class Chat extends Block {
             currentTime = getCurrentTime(message.time)
           }
 
-
           return new UserMessage({
             userMessage: `${message.content}`,
             userTime: `${currentTime}`,
-            isOwnUserMessage: `${this.props.store.state.user?.id === message.user_id ? 'active': ''}`
+            isOwnUserMessage: `${this.props.store.state.user?.id === message.user_id ? "active": ""}`
           });
        })
 
@@ -125,7 +132,7 @@ class Chat extends Block {
     this.children.Loading = new Loading({})
 
     this.children.modalAddChat = new Modal({
-      modalTitle: 'Создать чат',
+      modalTitle: "Создать чат",
       isModalChat: true,
       input: new Input({
         classDiv: "form-login__wrapper input_mb",
@@ -136,11 +143,11 @@ class Chat extends Block {
         placeholder: "Введите название чата",
       }),
       btn: new Button({
-        class: 'block-modal__btn button_mt20',
-        label: 'Создать',
+        class: "block-modal__btn button_mt20",
+        label: "Создать",
         events: {
           click:  () => {
-            const input = document.querySelector('.input-modal') as HTMLInputElement;
+            const input = document.querySelector(".input-modal") as HTMLInputElement;
             window.store.dispatch(ChatController.createChat.bind(ChatController), input.value);
 
              this.children.modalAddChat.hide();
@@ -151,7 +158,7 @@ class Chat extends Block {
 
 
     this.children.modalAddUser = new Modal({
-      modalTitle: 'Добавить пользователя',
+      modalTitle: "Добавить пользователя",
       isModalChat: true,
       input: new Input({
         classDiv: "form-login__wrapper input_mb",
@@ -165,13 +172,15 @@ class Chat extends Block {
         }
       }),
       btn: new Button({
-        class: 'block-modal__btn button_mt20',
-        label: 'Добавить',
+        class: "block-modal__btn button_mt20",
+        label: "Добавить",
         events: {
           click: () => {
-            const input = document.querySelector('.input-add-user') as HTMLInputElement;
+            const inputAddUser = document.querySelector(".input-add-user") as HTMLInputElement;
 
-            window.store.dispatch(ChatController.addUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId });
+            window.store.dispatch(ChatController.addUser.bind(ChatController), { loginUser: inputAddUser.value, chatId: this.props.store.state.chatId });
+
+            inputAddUser.value = ""
 
             this.children.modalAddUser.hide();
           }
@@ -179,8 +188,35 @@ class Chat extends Block {
       })
     });
 
+
+
+    this.children.modalChangeAvatar = new Modal({
+        modalTitle: "Загрузите файл",
+        isModalChat: false,
+        btn:  new Button({
+            class: "block-modal__btn",
+            label: "Поменять",
+            events: {
+              click: () => {
+                const fileInput = document.querySelector<HTMLInputElement>(".block-modal__file");
+                const selectedFile = fileInput!.files![0];
+
+                const form = new FormData();
+
+                form.append("chatId", this.props.store.state.chatId);
+                form.append("avatar", selectedFile);
+
+                window.store.dispatch(ChatController.changeAvatar.bind(ChatController), form);
+
+                this.children.modalChangeAvatar.hide();
+
+              }
+            }
+          })
+      });
+
     this.children.modalDeleteUser = new Modal({
-      modalTitle: 'Удалить пользователя',
+      modalTitle: "Удалить пользователя",
       isModalChat: true,
       input: new Input({
         classDiv: "form-login__wrapper input_mb",
@@ -194,14 +230,16 @@ class Chat extends Block {
         }
       }),
       btn: new Button({
-        class: 'block-modal__btn button_mt20',
-        label: 'Удалить',
+        class: "block-modal__btn button_mt20",
+        label: "Удалить",
         events: {
           click: () => {
 
-            const input = document.querySelector('.input-delete-user') as HTMLInputElement;
+            const inputDeleteUser = document.querySelector(".input-delete-user") as HTMLInputElement;
 
-            window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: input.value, chatId: this.props.store.state.chatId });
+            window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: inputDeleteUser.value, chatId: this.props.store.state.chatId });
+
+            inputDeleteUser.value = ''
 
             this.children.modalDeleteUser.hide();
 
@@ -212,17 +250,17 @@ class Chat extends Block {
 
 
     this.children.modalDeleteChat = new Modal({
-      modalTitle: 'Удалить чат',
+      modalTitle: "Удалить чат",
       isModalChat: true,
 
       btn: new Button({
-        class: 'block-modal__btn button_mt100',
-        label: 'Удалить',
+        class: "block-modal__btn button_mt100",
+        label: "Удалить",
         events: {
           click: () => {
             window.store.dispatch(ChatController.deleteChat.bind(ChatController), this.props.store.state.chatId);
-            this.setProps({ chatId: null, currentChat: null });
 
+            this.setProps({ chatId: null, currentChat: null });
             this.children.modalDeleteChat.hide();
           }
         }
@@ -232,12 +270,12 @@ class Chat extends Block {
 
 
     this.children.linkProfile = new Link({
-      class: 'chat__list-title',
-      label: 'Профиль',
+      class: "chat__list-title",
+      label: "Профиль",
       events: {
          click: (event) => {
           event.preventDefault();
-          this.props.router.go('/settings')
+          this.props.router.go("/settings")
         }
       }
     })
@@ -251,9 +289,8 @@ class Chat extends Block {
       classError: "error-input__message",
       classInput: "input input-message chat-form__input",
       placeholder: "Cообщение",
-      events: { focusin, focusout },
+      events: { focusin, focusout, keydown},
     });
-
     /* Image */
 
     this.children.imgPlus = new Img({
@@ -284,28 +321,29 @@ class Chat extends Block {
       alt: "photo",
     });
 
-    this.children.imgClip = new Img({
-      srcImg: imgClip,
-      class: "chat-form__img-clip",
-      alt: "clip",
-       events: {
-        click: () => {
-          const clipMenu = document.querySelector('.chat-form__clip-menu');
-          clipMenu?.classList.toggle('active')
-        }
-      }
-    });
+    //! Clip for photo
+    // this.children.imgClip = new Img({
+    //   srcImg: imgClip,
+    //   class: "chat-form__img-clip",
+    //   alt: "clip",
+    //    events: {
+    //     click: () => {
+    //       const clipMenu = document.querySelector('.chat-form__clip-menu');
+    //       clipMenu?.classList.toggle('active')
+    //     }
+    //   }
+    // });
 
     this.children.imgDotsMenu = new Img({
       srcImg: dotsMenu,
-      alt: 'dotsMenu',
-      width: '50',
-      height: '30',
-      class: 'img-dots',
+      alt: "dotsMenu",
+      width: "50",
+      height: "30",
+      class: "img-dots",
       events: {
         click: () => {
-          const clipMenu = document.querySelector('.span-menu__active');
-          clipMenu?.classList.toggle('visible')
+          const clipMenu = document.querySelector(".span-menu__active");
+          clipMenu?.classList.toggle("visible")
         }
       }
     })
@@ -319,15 +357,15 @@ class Chat extends Block {
       height: "28",
       events: {
 
-        click: async () => {
-          const inputValueMessage = document.querySelector('.input-message') as HTMLInputElement;
+        click: () => {
+          const inputValueMessage = document.querySelector(".input-message") as HTMLInputElement;
 
-          if (inputValueMessage.value === '') {
+          if (inputValueMessage.value === "") {
             return;
           }
 
           window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
-          inputValueMessage.value = ''
+          inputValueMessage.value = ""
 
       } },
     });
@@ -340,7 +378,7 @@ class Chat extends Block {
         width: "22",
         height: "22",
       }),
-      textClip: 'Добавить пользователя',
+      textClip: "Добавить пользователя",
       events: {
         click: () => {
           this.children.modalAddUser.show();
@@ -348,7 +386,26 @@ class Chat extends Block {
       }
     });
 
-    this.children.menuUpTab_2 = new MenuTabs({
+
+
+     this.children.menuUpTab_2 = new MenuTabs({
+      imgClip: new Img({
+        srcImg: imgPlus,
+        class: "span-menu__active-block-img",
+        alt: "add-plus",
+        width: "22",
+        height: "22",
+      }),
+      textClip: "Изменить аватар чата",
+      events: {
+        click: () => {
+          this.children.modalChangeAvatar.show();
+        }
+      }
+    });
+
+
+    this.children.menuUpTab_3 = new MenuTabs({
       imgClip: new Img({
         srcImg: imgDelete,
         class: "span-menu__active-block-img",
@@ -356,7 +413,7 @@ class Chat extends Block {
         width: "22",
         height: "22",
       }),
-      textClip: 'Удалить пользователя',
+      textClip: "Удалить пользователя",
       events: {
         click: () => {
            this.children.modalDeleteUser.show();
@@ -364,13 +421,13 @@ class Chat extends Block {
       }
     });
 
-    this.children.menuUpTab_3 = new MenuTabs({
+    this.children.menuUpTab_4 = new MenuTabs({
       imgClip: new Img({
         srcImg: imgDelete,
         class: "span-menu__active-block-img",
         alt: "delete",
       }),
-      textClip: 'Удалить чат',
+      textClip: "Удалить чат",
       events: {
         click: () => {
           this.children.modalDeleteChat.show();
@@ -386,7 +443,7 @@ class Chat extends Block {
         width: "22",
         height: "22",
       }),
-      textClip: 'Фото или Видео',
+      textClip: "Фото или Видео",
       events: {
         click: () => {}
       }

@@ -1,9 +1,15 @@
 <div class="chat__list-message {{classChoose}}">
   <div class="chat__list-message-wrapper">
-    <div class="chat__list-message-avatar">
-      {{! Тут будут фотографии пользователей }}
-    {{!-- <img src="" alt="" class='chat__list-message-img' /> --}}
-    </div>
+
+    {{#if avatar}}
+      <div class="chat__list-message-avatar">
+        <img src={{avatar}} alt="avatar" class='chat__list-message-img' />
+      </div>
+    {{else}}
+      <div class="chat__list-message-avatar"></div>
+    {{/if}}
+
+
     <div class="chat__list-message-user">
       <div class="chat__list-message-name">{{name}}</div>
       <div class="chat__list-message-text"><span

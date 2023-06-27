@@ -469,24 +469,8 @@
   height: 100vh;
 }
 
-
-
-
-//  {{!-- <main>
-//           {{#if userMessages}}
-//             {{!-- <div class="chat__message-date">19 июня</div> --}}
-//             <div class="chat__message-block">
-
-//             {{#each userMessages}}
-//               {{{this}}}
-//             {{/each}}
-
-//             </div>
-//           {{else}}
-//             {{#unless chatId}}
-//               <div class="chat__message-nothing">Выберите чат чтобы отправить сообщение</div>
-//             {{else}}
-//               <div class="chat__message-nothing"></div>
-//             {{/unless}}
-//           {{/if}}
-//         </main> --}}
+.chat__header-avatar-img{
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+}

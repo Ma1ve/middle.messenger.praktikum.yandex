@@ -67,7 +67,7 @@ class Login extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go('/sign-up')
+          this.props.router.go("/sign-up")
 
         }
       }

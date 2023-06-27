@@ -8,44 +8,44 @@ import ProfileData from "./pages/ProfileData";
 import ProfilePassword from "./pages/ProfilePassword";
 
 
-export const router = new PathRouter('#app')
+export const router = new PathRouter("#app")
 
 export function initRouter(store) {
   router
     .use({
-      pathname: '/',
+      pathname: "/",
       block: Login,
     })
     .use({
-      pathname: '/sign-up',
+      pathname: "/sign-up",
       block: Registration,
     })
     .use({
-      pathname: '/messenger',
+      pathname: "/messenger",
       block: Chat,
       needAuth: true,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
      .use({
-      pathname: '/settings',
+      pathname: "/settings",
       block: Profile,
       needAuth: true,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
      .use({
-      pathname: '/settings/data',
+      pathname: "/settings/data",
       block: ProfileData,
       needAuth: true,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
     .use({
-      pathname: '/settings/password',
+      pathname: "/settings/password",
       block: ProfilePassword,
       needAuth: true,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
     .start();

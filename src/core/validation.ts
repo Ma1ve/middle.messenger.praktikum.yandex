@@ -1,4 +1,5 @@
 import AuthController from "../services/AuthController";
+import ChatController from "../services/ChatController";
 import UserController from "../services/UserController";
 
 interface Patterns {
@@ -41,7 +42,7 @@ const validationInputs: Record<string, Patterns> = {
   },
   display_name: {
     regExp: /(?!^\d+$)^[a-zA-Z0-9_-]{3,40}$/,
-    errorMessage: 'Имя должно состоять не менее чем из 3 символов',
+    errorMessage: "Имя должно состоять не менее чем из 3 символов",
   },
   email: {
     regExp: /^[A-Za-z0-9-]+@[A-Za-z]+(\.[A-Za-z]+)+$/,
@@ -83,24 +84,22 @@ const currentApiRequest = (data: Record<string, string>) => {
   const currentRouter = window.location.pathname;
 
   switch (currentRouter) {
-    case '/': {
-      window.store.dispatch(AuthController.signIn, data)
+    case "/": {
+      window.store.dispatch(AuthController.signIn.bind(AuthController), data)
       break;
     }
-    case '/sign-up': {
-      window.store.dispatch(AuthController.signUp, data)
+    case "/sign-up": {
+      window.store.dispatch(AuthController.signUp.bind(AuthController), data)
       break;
     }
-    case '/settings/data': {
-      window.store.dispatch(UserController.updateUser, data)
+    case "/settings/data": {
+      window.store.dispatch(UserController.updateUser.bind(UserController), data)
       break;
     }
-    case '/settings/password': {
-      window.store.dispatch(UserController.updatePassword, data)
+    case "/settings/password": {
+      window.store.dispatch(UserController.updatePassword.bind(UserController), data)
       break;
     }
-
-
 
     default:
       break;
@@ -132,12 +131,44 @@ export const submit = (event: Event): void => {
   });
 
 
-
-
   if (Object.keys(data).length === formInputs.length) {
-    // console.log(data);
     currentApiRequest(data)
   }
 };
 
+export const keydown = (event: Event) => {
 
+  if (event instanceof KeyboardEvent && event.key === "Enter") {
+
+    event.preventDefault();
+
+    const inputValueMessage = checkIsValid()
+
+    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
+    inputValueMessage.value = ""
+  }
+
+  if (event instanceof KeyboardEvent && event.key) {
+    checkIsValid()
+  }
+
+}
+
+function checkIsValid() {
+   const inputValueMessage = document.querySelector(".input-message") as HTMLInputElement;
+    const error = document.querySelector(".error-input__message");
+
+    const currentValidationInput = validationInputs[inputValueMessage.name];
+
+    const { regExp } = currentValidationInput;
+
+    if (inputValueMessage.value === "" || !regExp.test(inputValueMessage.value)) {
+      error!.textContent = currentValidationInput.errorMessage;
+      return;
+    } else {
+      error!.textContent = "";
+    }
+
+    return inputValueMessage;
+
+}

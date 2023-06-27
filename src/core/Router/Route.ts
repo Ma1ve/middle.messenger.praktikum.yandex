@@ -2,7 +2,7 @@ import Block from "../Block";
 import renderDOM from "../renderDom";
 
 
-function isEqual(lhs: any, rhs: any) {
+function isEqual(lhs: string, rhs: string) {
     return lhs === rhs;
 }
 
@@ -60,7 +60,7 @@ export default class Route {
 
     checkAuth() {
         if (this._needAuth) {
-            if (typeof this._onUnautorized === 'function') {
+            if (typeof this._onUnautorized === "function") {
                 return this._onUnautorized(this._pathname);
             }
         }

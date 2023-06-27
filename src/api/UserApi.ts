@@ -9,34 +9,35 @@ export interface UpdateUserData {
   phone: string;
 }
 
-export interface AvatarData extends FormData {}
-
 export interface UpdatePassword {
   oldPassword: string;
   newPassword: string;
   confirmPassword: string
 }
 
+export interface UserDataSearch {
+  loginUser: string, chatId: number
+}
 
 class UserApi extends BaseAPI {
   constructor() {
-    super('/user');
+    super("/user");
   }
 
   updateUser(data: UpdateUserData) {
-    return this.http.put('/profile', {data} );
+    return this.http.put("/profile", {data} );
   }
 
-  updateAvatar(data: AvatarData) {
-    return this.http.put('/profile/avatar', {data} );
+  updateAvatar(data: FormData) {
+    return this.http.put("/profile/avatar", {data} );
   }
 
   updatePassword(data: UpdatePassword) {
-    return this.http.put('/password', {data} );
+    return this.http.put("/password", {data} );
   }
 
   searchUser(login: string) {
-    return this.http.post('/search', {data: {login}} );
+    return this.http.post("/search", {data: { login }} );
   }
 
 }

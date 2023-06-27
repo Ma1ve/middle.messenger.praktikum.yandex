@@ -1,13 +1,13 @@
 import AuthAPI from "../api/AuthApi";
 
 import UserApi, { UpdatePassword, UpdateUserData } from "../api/UserApi";
-import { Dispatch } from "../core/Store/store";
-import { AppState } from "../core/Store/store.types";
+import {  DispatchStateHandler } from "../core/Store/store.types";
 import { router } from "../router";
 import { apiHasError } from "../utils/apiHasError";
 
 class UserController {
-  async updateUser( dispatch: Dispatch<AppState>, state: AppState, action: UpdateUserData ) {
+
+  updateUser: DispatchStateHandler<UpdateUserData> = async ( dispatch, state, action ) =>  {
     try {
 
        dispatch({ isLoading: true })
@@ -19,8 +19,8 @@ class UserController {
         return;
       }
 
-      if (response.response.display_name == 'null') {
-         dispatch({ isLoading: false, profileFormError: `Display name must not be null` });
+      if (response.response.display_name == "null") {
+         dispatch({ isLoading: false, profileFormError: "Display name must not be null" });
         return;
       }
 
@@ -35,7 +35,7 @@ class UserController {
 
       dispatch({ isLoading: false, user: responseUser.response });
 
-      router.go('/settings');
+      router.go("/settings");
 
     } catch (error) {
       console.log(error)
@@ -44,7 +44,7 @@ class UserController {
 
   }
 
-  async updateAvatar(dispatch: Dispatch<AppState>, state: AppState, action: FormData) {
+   updateAvatar: DispatchStateHandler<FormData> = async (dispatch, state, action) => {
     try {
 
       dispatch({ isLoading: true });
@@ -67,21 +67,23 @@ class UserController {
 
       dispatch({ isLoading: false, user: responseUser.response });
 
-      router.go('/settings');
+      router.go("/settings");
 
 
     } catch (error) {
+       dispatch({ isLoading: false});
        console.log(error)
     }
   }
 
-  async updatePassword(dispatch: Dispatch<AppState>, state: AppState, action: UpdatePassword) {
+
+  updatePassword:  DispatchStateHandler<UpdatePassword> = async (dispatch, state, action) => {
     try {
 
       dispatch({ isLoading: true })
 
       if (action.newPassword !== action.confirmPassword) {
-        dispatch({ isLoading: false, passwordFormError: 'Please check the new password and repeat the password' });
+        dispatch({ isLoading: false, passwordFormError: "Please check the new password and repeat the password" });
          return;
       }
 
@@ -94,22 +96,14 @@ class UserController {
 
       dispatch({ isLoading: false, passwordFormError: null });
 
-      router.go('/settings');
+      router.go("/settings");
 
     } catch (error) {
+      dispatch({ isLoading: false});
       console.log(error)
     }
   }
 
-  async searchUser(dispatch: Dispatch<AppState>, state: AppState, action: string) {
-    try {
-
-      return await UserApi.searchUser(action)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 }
 

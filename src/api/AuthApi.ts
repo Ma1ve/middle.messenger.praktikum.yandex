@@ -16,23 +16,23 @@ export interface SignUpData {
 class AuthApi extends BaseAPI {
 
   constructor() {
-    super('/auth');
+    super("/auth");
   }
 
   public signIn(data: SignInData): Promise<XMLHttpRequest> {
-    return this.http.post('/signin', {data});
+    return this.http.post("/signin", {data});
   }
 
   public signUp(data: SignUpData) {
-    return this.http.post('/signup', {data});
+    return this.http.post("/signup", {data});
   }
 
   public getUser() {
-    return this.http.get('/user')
+    return this.http.get("/user")
   }
 
   public logout(): Promise<XMLHttpRequest> {
-    return this.http.post('/logout');
+    return this.http.post("/logout");
   }
 }
 

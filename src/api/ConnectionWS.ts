@@ -1,5 +1,5 @@
 
-const BASE_SOCKET_URL = 'wss://ya-praktikum.tech/ws/chats/';
+const BASE_SOCKET_URL = "wss://ya-praktikum.tech/ws/chats/";
 
 class ConnectionWS {
   protected socket?: WebSocket;
@@ -23,54 +23,61 @@ class ConnectionWS {
       return;
     }
 
-    this.socket.addEventListener('open', () => {
+    this.socket.addEventListener("open", () => {
 
-      console.log('Соединение установлено');
+      console.log("Соединение установлено");
 
 
 
       clearInterval(this.timerId);
       this.setPing();
-      this.getPrevMessages('0');
+      this.getPrevMessages("0");
     });
 
-    this.socket.addEventListener('close', (event) => {
+    this.socket.addEventListener("close", (event) => {
       if (event.wasClean) {
-        console.log('Соединение закрыто чисто');
+        console.log("Соединение закрыто чисто");
         window.store.dispatch({ ActiveMessages: [] });
       } else {
-        console.log('Обрыв соединения');
+        console.log("Обрыв соединения");
       }
 
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+      console.log("Соединение закрыто");
 
-      console.log('Соединение закрыто');
+
     });
 
-    this.socket.addEventListener('message', (event) => {
+    this.socket.addEventListener("message", (event) => {
+      try {
+          const data = JSON.parse(event.data);
 
-      const data = JSON.parse(event.data);
+          if (data && data.type !== "error" && data.type !== "pong" && data.type !== "user connected") {
 
-      if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
+            if (Array.isArray(data)) {
+              data.sort((a, b) => {
+                return Date.parse(a.time) - Date.parse(b.time);
+              });
+            }
 
-        if (Array.isArray(data)) {
-           data.sort((a, b) => {
-            return Date.parse(a.time) - Date.parse(b.time);
-          });
-        }
-
-        if (Array.isArray(data)) {
-          window.store.dispatch({ ActiveMessages: data });
-        } else {
-          window.store.dispatch({ ActiveMessages: [...window.store.getState().ActiveMessages, data] });
-        }
-         window.store.dispatch({ isLoading: false })
+            if (Array.isArray(data)) {
+              window.store.dispatch({ ActiveMessages: data });
+            } else {
+              window.store.dispatch({ ActiveMessages: [...window.store.getState().ActiveMessages, data] });
+            }
+            window.store.dispatch({ isLoading: false })
+          }
+      } catch (error) {
+        window.store.dispatch({ isLoading: false })
+        console.log(error)
       }
+
     });
 
-    this.socket.addEventListener('error', (event) => {
-      console.log('Ошибка', event);
-       window.store.dispatch({ isLoading: false })
+    this.socket.addEventListener("error", (event) => {
+      console.log("Ошибка", event);
+
+      this.initSocket(this.endpoint);
     });
   }
 
@@ -79,11 +86,11 @@ class ConnectionWS {
       this.socket.send(
         JSON.stringify({
           content: message,
-          type: 'message',
+          type: "message",
         })
       );
     } else {
-      console.log('Сокет не открыт, невозможно отправить сообщение.');
+      console.log("Сокет не открыт, невозможно отправить сообщение.");
     }
   }
 
@@ -92,11 +99,11 @@ class ConnectionWS {
       this.socket.send(
         JSON.stringify({
           content: count,
-          type: 'get old',
+          type: "get old",
         })
       );
     } else {
-      console.log('Сокет не открыт, невозможно запросить предыдущие сообщения.');
+      console.log("Сокет не открыт, невозможно запросить предыдущие сообщения.");
     }
   }
 
@@ -107,7 +114,7 @@ class ConnectionWS {
       this.socket = undefined;
       this.timerId = undefined;
     } else {
-      console.log('Сокет не открыт или уже закрыт.');
+      console.log("Сокет не открыт или уже закрыт.");
     }
   }
 
@@ -116,9 +123,9 @@ class ConnectionWS {
       this.timerId = setInterval(() => {
         if (this.socket && this.socket.readyState === WebSocket.OPEN) {
 
-        this.socket.send(JSON.stringify({ type: 'ping' }));
+        this.socket.send(JSON.stringify({ type: "ping" }));
       } else {
-        console.log('Сокет не открыт. Переинициализация...');
+        console.log("Сокет не открыт. Переинициализация...");
         clearInterval(this.timerId);
         this.initSocket(this.endpoint);
       }

@@ -1,5 +1,7 @@
 import Block from "../../core/Block";
 
+import { withStore } from "../../utils/withStore";
+
 import template from "./chatTab.hbs";
 
 import "./chatTab.scss";
@@ -11,6 +13,7 @@ interface ChatTabProps {
   spanText: string;
   notificaton?: string;
   classNotificatonDisplayNone?: string;
+  avatar: string | null;
   classChoose?: string;
   events: Record<string, (e: Event) => void>
 }
@@ -30,4 +33,4 @@ class ChatTab extends Block {
   }
 }
 
-export default ChatTab;
+export default withStore(ChatTab);

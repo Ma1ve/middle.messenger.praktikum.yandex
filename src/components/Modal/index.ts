@@ -6,7 +6,7 @@ import Input from "../Input";
 
 import template from "./modal.hbs";
 
-import Close from '../../assets/img/close.svg'
+import Close from "../../assets/img/close.svg"
 
 import { withStore } from "../../utils/withStore";
 
@@ -31,8 +31,8 @@ class Modal extends Block {
 
     this.children.close = new Img({
       srcImg: Close,
-      alt: 'close',
-      class: 'block-close',
+      alt: "close",
+      class: "block-close",
       events: {
         click: () => {
           this.hide()

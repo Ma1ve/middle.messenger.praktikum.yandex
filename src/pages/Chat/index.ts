@@ -21,7 +21,6 @@ import imgPhoto from "../../assets/img/photo.png";
 import imgPhotoClip from "../../assets/img/photo-clip.svg";
 import imgBackArrow from "../../assets/img/back-arrow.png";
 import dotsMenu from "../../assets/img/dots-menu-svg.svg"
-import imgClip from "../../assets/img/clip.svg";
 
 import { withStore } from "../../utils/withStore";
 import { IChat, Message } from "../../core/Store/store.types";
@@ -74,7 +73,7 @@ class Chat extends Block {
       }
 
 
-      let avatar = '';
+      let avatar = "";
       if (chat.avatar) {
         avatar = `${BASE_URL}/resources${chat.avatar}`;
       }
@@ -239,7 +238,7 @@ class Chat extends Block {
 
             window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: inputDeleteUser.value, chatId: this.props.store.state.chatId });
 
-            inputDeleteUser.value = ''
+            inputDeleteUser.value = ""
 
             this.children.modalDeleteUser.hide();
 
@@ -321,7 +320,7 @@ class Chat extends Block {
       alt: "photo",
     });
 
-    //! Clip for photo
+    //! Clip for photo | imgClip
     // this.children.imgClip = new Img({
     //   srcImg: imgClip,
     //   class: "chat-form__img-clip",

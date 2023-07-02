@@ -80,4 +80,5 @@ class Login extends Block {
   }
 }
 
+//@ts-ignore
 export default withRouter(withStore(Login))

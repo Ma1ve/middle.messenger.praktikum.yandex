@@ -1,4 +1,4 @@
-import Block from "../Block";
+import Block, { BlockClass } from "../Block";
 import renderDOM from "../renderDom";
 
 
@@ -10,13 +10,13 @@ export interface IRouterProps {
     rootQuery: string;
     exact: boolean;
 }
-
 export default class Route {
     private _pathname: string;
-    private _blockClass: Block;
+    private _blockClass: BlockClass<any>;
     private _block: Block;
     private _props: IRouterProps;
     private _componentProps: any;
+    // @ts-ignore
     private _params: {};
     private _needAuth: boolean;
     private _onUnautorized: any;
@@ -24,7 +24,7 @@ export default class Route {
 
     constructor(
         pathname: string,
-        view: Block,
+        view: BlockClass<any>,
         props: IRouterProps,
         componentProps: any,
         needAuth: boolean,
@@ -32,6 +32,7 @@ export default class Route {
         redirect: () => void,
     ) {
         this._pathname = pathname;
+
         this._blockClass = view;
         this._props = props;
         this._needAuth = needAuth;

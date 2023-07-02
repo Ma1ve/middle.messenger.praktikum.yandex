@@ -13,7 +13,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false
   },
-  "lib": ["ESNext", "DOM"]
+  "lib": ["ESNext", "DOM"],
 }
 
 

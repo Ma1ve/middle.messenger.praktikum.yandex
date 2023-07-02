@@ -1,14 +1,14 @@
-import Block from "../Block";
+import { BlockClass } from "../Block";
 import Route from "./Route";
 
 type TRouteConstructor = {
     pathname: string,
-    block: Block,
-    props: any,
-    exact: true,
+    block: BlockClass<any>,
+    props?: any,
+    exact?: true,
     needAuth: boolean,
     redirectPath: string,
-    onUnautorized: () => void
+    onUnautorized: boolean | (() => boolean)
 }
 
 export default class PathRouter {
@@ -42,7 +42,7 @@ export default class PathRouter {
             {rootQuery: this._rootQuery, exact},
             props,
             needAuth,
-            onUnautorized,
+            typeof onUnautorized === 'function' ? onUnautorized() : onUnautorized,
             redirect
         );
         this.routes.push(route);

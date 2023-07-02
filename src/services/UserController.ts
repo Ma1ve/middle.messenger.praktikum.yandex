@@ -7,7 +7,7 @@ import { apiHasError } from "../utils/apiHasError";
 
 class UserController {
 
-  updateUser: DispatchStateHandler<UpdateUserData> = async ( dispatch, state, action ) =>  {
+  updateUser: DispatchStateHandler<UpdateUserData> = async ( dispatch, _, action ) =>  {
     try {
 
        dispatch({ isLoading: true })
@@ -44,7 +44,7 @@ class UserController {
 
   }
 
-   updateAvatar: DispatchStateHandler<FormData> = async (dispatch, state, action) => {
+   updateAvatar: DispatchStateHandler<FormData> = async (dispatch, _, action) => {
     try {
 
       dispatch({ isLoading: true });
@@ -77,7 +77,7 @@ class UserController {
   }
 
 
-  updatePassword:  DispatchStateHandler<UpdatePassword> = async (dispatch, state, action) => {
+  updatePassword:  DispatchStateHandler<UpdatePassword> = async (dispatch, _, action) => {
     try {
 
       dispatch({ isLoading: true })

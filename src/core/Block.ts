@@ -141,7 +141,7 @@ class Block<P = any> {
       return;
     }
 
-    if (typeof this.props === 'object') {
+    if (typeof this.props === "object") {
       Object.assign(this.props as object, nextProps);
     }
 

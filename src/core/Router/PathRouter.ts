@@ -42,7 +42,7 @@ export default class PathRouter {
             {rootQuery: this._rootQuery, exact},
             props,
             needAuth,
-            typeof onUnautorized === 'function' ? onUnautorized() : onUnautorized,
+            typeof onUnautorized === "function" ? onUnautorized() : onUnautorized,
             redirect
         );
         this.routes.push(route);

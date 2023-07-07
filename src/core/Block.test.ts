@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-import proxyquire from 'proxyquire';
+import { expect } from "chai";
+import proxyquire from "proxyquire";
 import Sinon from "sinon";
 
 const eventBusMock = {
@@ -7,8 +7,8 @@ const eventBusMock = {
   emit: Sinon.fake()
 }
 
-const {default: Block} = proxyquire('./Block.ts', {
-  './EventBus.ts': {
+const {default: Block} = proxyquire("./Block.ts", {
+  "./EventBus.ts": {
     default: class {
       emit = eventBusMock.emit;
        on = eventBusMock.on;
@@ -17,10 +17,10 @@ const {default: Block} = proxyquire('./Block.ts', {
 })
 
 
-describe('Block', () => {
-  class ComponentMock extends Block{};
+describe("Block", () => {
+  class ComponentMock extends Block{}
 
-  it('Должен диспатчить init событие после инициализации', () => {
+  it("Должен диспатчить init событие после инициализации", () => {
     //@ts-ignore
     new ComponentMock({});
 

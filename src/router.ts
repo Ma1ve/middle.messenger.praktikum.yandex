@@ -19,14 +19,14 @@ export function initRouter(store: Store<AppState>) {
       pathname: "/",
       block: Login,
       needAuth: false,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
     .use({
       pathname: "/sign-up",
       block: Registration,
       needAuth: false,
-      redirectPath: '/',
+      redirectPath: "/",
       onUnautorized:() => Boolean(store.getState().user),
 
     })

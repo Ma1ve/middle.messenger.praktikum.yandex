@@ -3,20 +3,20 @@ import Block from "../Block"
 import PathRouter, { TRouteConstructor } from "./PathRouter";
 import { expect } from "chai";
 
-describe('Router', () => {
+describe("Router", () => {
   let BlockMock: Block;
   //@ts-ignore
-  let getContentFake = Sinon.stub();
+  const getContentFake = Sinon.stub();
   let router: PathRouter;
 
   beforeEach(() => {
-    getContentFake.returns(document.createElement('div'));
+    getContentFake.returns(document.createElement("div"));
     BlockMock = class {
         //@ts-ignore
         getContent = getContentFake
     } as unknown as Block
 
-    router = new PathRouter('#app');
+    router = new PathRouter("#app");
 
     getContentFake.resetHistory();
   })
@@ -27,32 +27,32 @@ describe('Router', () => {
   })
 
 
-  it('Метод use должен вернуть инстанс роутера', () => {
+  it("Метод use должен вернуть инстанс роутера", () => {
     const params: TRouteConstructor = {
         //@ts-ignore
         block: BlockMock,
         exact: true,
         needAuth: true,
         onUnautorized: () => true,
-        pathname: '/',
+        pathname: "/",
         props: {},
-        redirectPath: '/'
+        redirectPath: "/"
     }
       const result = router.use(params);
 
       expect(result).to.eq(router);
   });
 
-  it('Должен отрисовать страницу после запуска роутера', () => {
+  it("Должен отрисовать страницу после запуска роутера", () => {
         const params: TRouteConstructor = {
             //@ts-ignore
             block: BlockMock,
             exact: true,
             needAuth: true,
             onUnautorized: () => true,
-            pathname: '/',
+            pathname: "/",
             props: {},
-            redirectPath: '/'
+            redirectPath: "/"
         }
 
         router.use(params).start();
@@ -60,8 +60,8 @@ describe('Router', () => {
         expect(getContentFake.callCount).to.eql(1)
     });
 
-  describe('back()', () => {
-    it('Должен отрисовать предыдушию страницу', () => {
+  describe("back()", () => {
+    it("Должен отрисовать предыдушию страницу", () => {
 
        const params: TRouteConstructor = {
         //@ts-ignore
@@ -69,9 +69,9 @@ describe('Router', () => {
         exact: true,
         needAuth: true,
         onUnautorized: () => true,
-        pathname: '/',
+        pathname: "/",
         props: {},
-        redirectPath: '/'
+        redirectPath: "/"
       }
 
       router.use(params).start();
@@ -82,17 +82,17 @@ describe('Router', () => {
     })
   })
 
-  describe('forward()', () => {
-    it('Должен перемещаться на одну страницу вперед', () => {
+  describe("forward()", () => {
+    it("Должен перемещаться на одну страницу вперед", () => {
         const params: TRouteConstructor = {
         //@ts-ignore
         block: BlockMock,
         exact: true,
         needAuth: true,
         onUnautorized: () => true,
-        pathname: '/',
+        pathname: "/",
         props: {},
-        redirectPath: '/'
+        redirectPath: "/"
       }
 
        router.use(params).start();
@@ -104,25 +104,25 @@ describe('Router', () => {
     })
   })
 
-  describe('go()', () => {
-    it('Должен перейти на указанный путь и вызвать соответствующий роут', () => {
+  describe("go()", () => {
+    it("Должен перейти на указанный путь и вызвать соответствующий роут", () => {
         const params: TRouteConstructor = {
         //@ts-ignore
         block: BlockMock,
         exact: true,
         needAuth: false,
         onUnautorized: () => false,
-        pathname: '/sign-up',
+        pathname: "/sign-up",
         props: {},
-        redirectPath: '/'
+        redirectPath: "/"
       }
 
       router.use(params).start();
 
-      router.go('/sign-up');
+      router.go("/sign-up");
 
       expect(getContentFake.callCount).to.eq(1);
-      expect(router.getRoute('/sign-up')).to.exist;
+      expect(router.getRoute("/sign-up")).to.exist;
     })
   })
 

@@ -1,15 +1,15 @@
 import sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic,
-} from 'sinon';
-import HTTPTransport from './htttpTransport';
+} from "sinon";
+import HTTPTransport from "./htttpTransport";
 
-import { expect } from 'chai';
+import { expect } from "chai";
 
-describe('HTTPTransport', () => {
+describe("HTTPTransport", () => {
   let xhr: SinonFakeXMLHttpRequestStatic;
   let http: HTTPTransport;
-  let requests: SinonFakeXMLHttpRequest[] = [];
+  const requests: SinonFakeXMLHttpRequest[] = [];
 
 
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('HTTPTransport', () => {
       requests.push(request);
     };
 
-    http = new HTTPTransport('');
+    http = new HTTPTransport("");
 
   });
 
@@ -32,57 +32,57 @@ describe('HTTPTransport', () => {
   });
 
 
-  describe('get()', () => {
+  describe("get()", () => {
 
-    it('Метод должен отправить GET запрос', () => {
+    it("Метод должен отправить GET запрос", () => {
 
-      http.get('/auth/user');
+      http.get("/auth/user");
 
       const [request] = requests;
 
-      expect(request.method).to.eq('GET');
+      expect(request.method).to.eq("GET");
 
     });
 
   });
 
-  describe('post()', () => {
+  describe("post()", () => {
 
-    it('Метод должен отправить POST запрос', () => {
+    it("Метод должен отправить POST запрос", () => {
 
-      http.post('/auth/signin');
+      http.post("/auth/signin");
 
       const [request] = requests;
 
-      expect(request.method).to.eq('POST');
+      expect(request.method).to.eq("POST");
 
     });
 
   });
 
-   describe('put()', () => {
+   describe("put()", () => {
 
-    it('Метод должен отправить PUT запрос', () => {
+    it("Метод должен отправить PUT запрос", () => {
 
-      http.put('/user/password');
+      http.put("/user/password");
 
       const [request] = requests;
 
-      expect(request.method).to.eq('PUT');
+      expect(request.method).to.eq("PUT");
 
     });
 
   });
 
-  describe('delete()', () => {
+  describe("delete()", () => {
 
-    it('Метод должен отправить DELETE запрос', () => {
+    it("Метод должен отправить DELETE запрос", () => {
 
-      http.delete('/chats');
+      http.delete("/chats");
 
       const [request] = requests;
 
-      expect(request.method).to.eq('DELETE');
+      expect(request.method).to.eq("DELETE");
 
     });
 

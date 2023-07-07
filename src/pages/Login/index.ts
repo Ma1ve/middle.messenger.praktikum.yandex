@@ -16,7 +16,9 @@ import "./login.scss";
 
 
 
-interface LoginProps {}
+interface LoginProps {
+  //empty
+}
 class Login extends Block {
   constructor(props: LoginProps) {
     super(props);

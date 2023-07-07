@@ -443,9 +443,6 @@ class Chat extends Block {
         height: "22",
       }),
       textClip: "Фото или Видео",
-      events: {
-        click: () => {}
-      }
     });
 
   }

@@ -1,9 +1,9 @@
-import { expect } from "chai";
 import Link from "./index";
+
 import sinon from "sinon";
+import { expect } from "chai";
 
-
-describe('Link component', () => {
+describe("Link component", () => {
   const callback = sinon.stub();
   const label = "Link";
   const href = "/login";
@@ -41,7 +41,7 @@ describe('Link component', () => {
       },
     });
 
-    const clickEvent = new window.MouseEvent('click');
+    const clickEvent = new window.MouseEvent("click");
     link.element?.dispatchEvent(clickEvent);
 
     expect(clickHandler.calledOnce).to.eq(true);

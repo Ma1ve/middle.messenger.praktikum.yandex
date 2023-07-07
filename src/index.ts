@@ -4,8 +4,8 @@ import { HashRouter } from "./core/HashRouter";
 import { initApp } from "./services/initApp";
 import { initRouter } from "./router";
 
-import './index.html'
-import './assets/scss/index.scss'
+import "./index.html"
+import "./assets/scss/index.scss"
 
 declare global {
   interface Window {

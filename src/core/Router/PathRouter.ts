@@ -19,6 +19,7 @@ export default class PathRouter {
     private _rootQuery: string;
 
     constructor(rootQuery: string) {
+        // Pattern Singleton
         // if (PathRouter.__instance) {
         //     return PathRouter.__instance;
         // }

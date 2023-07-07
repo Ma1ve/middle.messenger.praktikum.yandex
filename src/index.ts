@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if(!prevState.appIsInited && nextState.appIsInited) {
         initRouter(store);
       }
+      // Можно посмотреть как обновляется store 
       // console.log(
       //   "%cstore updated",
       //   "background: #222; color: #bada55",

@@ -22,9 +22,6 @@ import { BASE_URL } from "../../core/htttpTransport";
 
 import "./profileData.scss";
 
-
-
-
 interface ProfileDataProps {}
 class ProfileData extends Block {
   constructor(props: ProfileDataProps) {

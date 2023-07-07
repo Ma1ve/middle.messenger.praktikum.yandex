@@ -39,7 +39,6 @@
   transition: .3s;
   object-fit: contain;
   &:hover{
-    // transform: scale(105%);
     transform: rotate(180deg);
   }
 }

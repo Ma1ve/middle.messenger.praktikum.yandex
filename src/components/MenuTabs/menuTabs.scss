@@ -1,0 +1,9 @@
+@import "../../assets/scss/variables";
+
+.chat-form__active-clip:hover > .span-menu__active-block-title {
+  color: $base-color;
+}
+
+.span-menu__active-block:hover > .span-menu__active-block-title {
+  color: $base-color;
+}

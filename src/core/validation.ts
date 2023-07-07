@@ -144,8 +144,8 @@ export const keydown = (event: Event) => {
 
     const inputValueMessage = checkIsValid()
 
-    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
-    inputValueMessage.value = ""
+    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage!.value);
+    inputValueMessage!.value = ""
   }
 
   if (event instanceof KeyboardEvent && event.key) {

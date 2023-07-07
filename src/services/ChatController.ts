@@ -17,8 +17,6 @@ class ChatController {
   socketConnection: DispatchStateHandler<number> = async(dispatch, state, action) => {
     try {
 
-      console.log(action, 'action')
-
       dispatch({isLoading: true});
 
       const responseToken = await ChatApi.getToken(action)
@@ -54,7 +52,7 @@ class ChatController {
   }
 
 
-  sendMessage: DispatchStateHandler<string> = async (dispatch, state, action) => {
+  sendMessage: DispatchStateHandler<string> = async (dispatch, _, action) => {
 
       if (this.socket) {
         this.socket.sendMessage(action);
@@ -80,7 +78,7 @@ class ChatController {
   }
 
 
-  createChat: DispatchStateHandler<string> = async(dispatch, state, action) =>  {
+  createChat: DispatchStateHandler<string> = async(dispatch, _, action) =>  {
     try {
 
       dispatch({isLoading: true});
@@ -102,7 +100,7 @@ class ChatController {
   }
 
 
-  deleteChat: DispatchStateHandler<number> = async (dispatch, state, action) => {
+  deleteChat: DispatchStateHandler<number> = async (dispatch, _, action) => {
     try {
 
       dispatch({isLoading: true});
@@ -128,7 +126,7 @@ class ChatController {
   }
 
 
-  deleteUser: DispatchStateHandler<UserDataSearch> = async (dispatch, state, action) => {
+  deleteUser: DispatchStateHandler<UserDataSearch> = async (dispatch, _, action) => {
     try {
 
       dispatch({isLoading: true});
@@ -174,7 +172,7 @@ class ChatController {
   }
 
 
-  addUser: DispatchStateHandler<UserDataSearch> = async (dispatch, state, action) =>  {
+  addUser: DispatchStateHandler<UserDataSearch> = async (dispatch, _, action) =>  {
     try {
 
        dispatch({ isLoading: true });
@@ -219,7 +217,7 @@ class ChatController {
   }
 
 
-  changeAvatar: DispatchStateHandler<FormData> = async (dispatch, state, action) => {
+  changeAvatar: DispatchStateHandler<FormData> = async (dispatch, _, action) => {
     try {
 
       dispatch({ isLoading: true });
@@ -244,7 +242,7 @@ class ChatController {
       dispatch({ isLoading: false });
 
     } catch (error) {
-      alert('Incorrect avatar')
+      alert("Incorrect avatar")
       dispatch({ isLoading: false });
        console.log(error)
     }

@@ -9,7 +9,7 @@ import { apiHasError} from "../utils/apiHasError";
 
 class AuthController {
 
-  signIn: DispatchStateHandler<SignInData> = async (dispatch, state, action) => {
+  signIn: DispatchStateHandler<SignInData> = async (dispatch, _, action) => {
     try {
 
       dispatch({ isLoading: true })
@@ -44,7 +44,7 @@ class AuthController {
   }
 
 
-  signUp: DispatchStateHandler<SignUpData> = async (dispatch, state, action) => {
+  signUp: DispatchStateHandler<SignUpData> = async (dispatch, _, action) => {
       try {
 
         dispatch({ isLoading: true })

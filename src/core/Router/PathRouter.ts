@@ -1,7 +1,7 @@
 import { BlockClass } from "../Block";
 import Route from "./Route";
 
-type TRouteConstructor = {
+export type TRouteConstructor = {
     pathname: string,
     block: BlockClass<any>,
     props?: any,

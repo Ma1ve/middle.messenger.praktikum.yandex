@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
     "outDir": "dist",
     "target": "es2017",
@@ -13,7 +16,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false
   },
-  "lib": ["ESNext", "DOM"],
+  "lib": ["ESNext", "DOM"]
 }
 
 

@@ -42,7 +42,7 @@ class HTTPTransport {
     this.url = `${HTTPTransport.BASE_URL}${endpoint}`;
   }
 
-  private getCurrentUrl(path: string): string {
+  public getCurrentUrl(path: string): string {
     if (!path) {
       return this.url
     }
@@ -80,6 +80,7 @@ class HTTPTransport {
     }
 
     const xhr = new XMLHttpRequest();
+
     const isGet = method === METHODS.GET;
 
     xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
@@ -98,35 +99,26 @@ class HTTPTransport {
     xhr.ontimeout = reject;
     xhr.timeout = timeout;
 
+    xhr.withCredentials = true;
+
+    if (data instanceof FormData) {
+      xhr.send(data);
+    } else {
+
       xhr.withCredentials = true;
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.responseType = "json";
 
-      if (data instanceof FormData) {
-        xhr.send(data);
+      // xhr.responseType = isGet || !data ? "json" : "text";
+
+      if (isGet || !data) {
+        xhr.send();
       } else {
-
-        xhr.withCredentials = true;
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.responseType = "json";
-
-        // xhr.responseType = isGet || !data ? "json" : "text";
-
-        if (isGet || !data) {
-          xhr.send();
-        } else {
-          xhr.send(JSON.stringify(data));
-        }
-
+        xhr.send(JSON.stringify(data));
       }
 
-    // xhr.withCredentials = true;
-    // xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.responseType = 'json';
+    }
 
-    // if (isGet || !data) {
-    //   xhr.send();
-    // } else {
-    //   xhr.send(JSON.stringify(data));
-    // }
   });
 };
 }

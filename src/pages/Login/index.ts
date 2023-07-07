@@ -65,7 +65,7 @@ class Login extends Block {
       class: "link form-login__link",
       label: "Нет аккаунта?",
       events: {
-        click: (event) => {
+        click: (event: Event) => {
           event.preventDefault();
           this.props.router.go("/sign-up")
 

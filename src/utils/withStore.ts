@@ -27,5 +27,6 @@ export function withStore<P extends WithStateProps>(WrappedBlock: BlockClass<P>)
       window.store.off("changed", this.__onChangeStoreCallback);
     }
 
-  } as BlockClass<Omit<P, "store">>
+  } as BlockClass<P>
 }
+

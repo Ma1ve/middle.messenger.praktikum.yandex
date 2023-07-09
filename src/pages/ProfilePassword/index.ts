@@ -4,7 +4,7 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Img from "../../components/Img";
-
+import Loading from "../../components/Loading";
 
 import template from "./profilePassword.hbs";
 
@@ -16,7 +16,7 @@ import { withStore } from "../../utils/withStore";
 import { BASE_URL } from "../../core/htttpTransport";
 
 import "./profilePassword.scss";
-import Loading from "../../components/Loading";
+
 
 
 interface ProfilePasswordProps {}
@@ -31,7 +31,7 @@ class ProfilePassword extends Block {
     this.children.Loading = new Loading({})
 
     this.children.avatar = new Avatar({
-      name: "Илья",
+      name: `${this.props.store.state.user.display_name}`,
       img: `${BASE_URL}/resources${this.props.store.state.user.avatar}`,
     });
 

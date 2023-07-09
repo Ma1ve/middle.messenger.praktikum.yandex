@@ -7,18 +7,28 @@ import Profile from "./pages/Profile";
 import ProfileData from "./pages/ProfileData";
 import ProfilePassword from "./pages/ProfilePassword";
 
+import { Store } from "./core/Store/store";
+import { AppState } from "./core/Store/store.types";
+
 
 export const router = new PathRouter("#app")
 
-export function initRouter(store) {
+export function initRouter(store: Store<AppState>) {
   router
     .use({
       pathname: "/",
       block: Login,
+      needAuth: false,
+      redirectPath: "/",
+      onUnautorized: () => Boolean(store.getState().user),
     })
     .use({
       pathname: "/sign-up",
       block: Registration,
+      needAuth: false,
+      redirectPath: "/",
+      onUnautorized:() => Boolean(store.getState().user),
+
     })
     .use({
       pathname: "/messenger",
@@ -26,6 +36,8 @@ export function initRouter(store) {
       needAuth: true,
       redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
+
+
     })
      .use({
       pathname: "/settings",
@@ -33,16 +45,17 @@ export function initRouter(store) {
       needAuth: true,
       redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
+
     })
      .use({
-      pathname: "/settings/data",
+      pathname: "/settings-data",
       block: ProfileData,
       needAuth: true,
       redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
     .use({
-      pathname: "/settings/password",
+      pathname: "/settings-password",
       block: ProfilePassword,
       needAuth: true,
       redirectPath: "/",

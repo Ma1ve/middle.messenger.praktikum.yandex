@@ -21,7 +21,6 @@ import imgPhoto from "../../assets/img/photo.png";
 import imgPhotoClip from "../../assets/img/photo-clip.svg";
 import imgBackArrow from "../../assets/img/back-arrow.png";
 import dotsMenu from "../../assets/img/dots-menu-svg.svg"
-import imgClip from "../../assets/img/clip.svg";
 
 import { withStore } from "../../utils/withStore";
 import { IChat, Message } from "../../core/Store/store.types";
@@ -31,8 +30,6 @@ import { getCurrentTime } from "../../utils/getCurrentTime";
 import { BASE_URL } from "../../core/htttpTransport";
 
 import "./chat.scss";
-
-
 
 interface ChatProps {}
 
@@ -49,8 +46,8 @@ class Chat extends Block {
 
 
   async updateChatTabs() {
-    const chats = this.props.store.state.chats;
 
+    const chats = this.props.store.state.chats;
 
     if (!chats) {
       return;
@@ -74,7 +71,7 @@ class Chat extends Block {
       }
 
 
-      let avatar = '';
+      let avatar = "";
       if (chat.avatar) {
         avatar = `${BASE_URL}/resources${chat.avatar}`;
       }
@@ -86,7 +83,7 @@ class Chat extends Block {
         classChoose: `${chat.id === this.props.store.state.chatId ? "active": ""}`,
         spanText: `${displayName ? displayName + ": " : ""}`,
         avatar: `${avatar}`,
-        // spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+        // Можно включить для отображения уведомлений
         // classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
         // notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
         events: {
@@ -239,7 +236,7 @@ class Chat extends Block {
 
             window.store.dispatch(ChatController.deleteUser.bind(ChatController), { loginUser: inputDeleteUser.value, chatId: this.props.store.state.chatId });
 
-            inputDeleteUser.value = ''
+            inputDeleteUser.value = ""
 
             this.children.modalDeleteUser.hide();
 
@@ -321,7 +318,7 @@ class Chat extends Block {
       alt: "photo",
     });
 
-    //! Clip for photo
+    //! Clip for photo | imgClip
     // this.children.imgClip = new Img({
     //   srcImg: imgClip,
     //   class: "chat-form__img-clip",
@@ -444,9 +441,6 @@ class Chat extends Block {
         height: "22",
       }),
       textClip: "Фото или Видео",
-      events: {
-        click: () => {}
-      }
     });
 
   }

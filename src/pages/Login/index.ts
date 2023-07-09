@@ -16,7 +16,9 @@ import "./login.scss";
 
 
 
-interface LoginProps {}
+interface LoginProps {
+  //empty
+}
 class Login extends Block {
   constructor(props: LoginProps) {
     super(props);
@@ -65,7 +67,7 @@ class Login extends Block {
       class: "link form-login__link",
       label: "Нет аккаунта?",
       events: {
-        click: (event) => {
+        click: (event: Event) => {
           event.preventDefault();
           this.props.router.go("/sign-up")
 
@@ -80,4 +82,5 @@ class Login extends Block {
   }
 }
 
+//@ts-ignore
 export default withRouter(withStore(Login))

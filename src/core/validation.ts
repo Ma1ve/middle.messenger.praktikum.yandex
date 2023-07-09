@@ -92,11 +92,11 @@ const currentApiRequest = (data: Record<string, string>) => {
       window.store.dispatch(AuthController.signUp.bind(AuthController), data)
       break;
     }
-    case "/settings/data": {
+    case "/settings-data": {
       window.store.dispatch(UserController.updateUser.bind(UserController), data)
       break;
     }
-    case "/settings/password": {
+    case "/settings-password": {
       window.store.dispatch(UserController.updatePassword.bind(UserController), data)
       break;
     }
@@ -144,8 +144,8 @@ export const keydown = (event: Event) => {
 
     const inputValueMessage = checkIsValid()
 
-    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage.value);
-    inputValueMessage.value = ""
+    window.store.dispatch(ChatController.sendMessage.bind(ChatController), inputValueMessage!.value);
+    inputValueMessage!.value = ""
   }
 
   if (event instanceof KeyboardEvent && event.key) {

@@ -24,8 +24,9 @@ class Profile extends Block {
   }
 
   init() {
+
     this.children.avatar = new Avatar({
-      name: "Илья",
+      name: `${this.props.store.state.user.display_name}`,
       img: `${BASE_URL}/resources${this.props.store.state.user.avatar}`,
     });
 
@@ -108,7 +109,7 @@ class Profile extends Block {
        events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go("/settings/data")
+          this.props.router.go("/settings-data")
         }
       }
 
@@ -121,7 +122,7 @@ class Profile extends Block {
       events: {
         click: (event) => {
           event.preventDefault();
-          this.props.router.go("/settings/password")
+          this.props.router.go("/settings-password")
         }
       }
     });

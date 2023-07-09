@@ -31,8 +31,6 @@ import { BASE_URL } from "../../core/htttpTransport";
 
 import "./chat.scss";
 
-
-
 interface ChatProps {}
 
 class Chat extends Block {
@@ -48,8 +46,8 @@ class Chat extends Block {
 
 
   async updateChatTabs() {
-    const chats = this.props.store.state.chats;
 
+    const chats = this.props.store.state.chats;
 
     if (!chats) {
       return;
@@ -85,7 +83,7 @@ class Chat extends Block {
         classChoose: `${chat.id === this.props.store.state.chatId ? "active": ""}`,
         spanText: `${displayName ? displayName + ": " : ""}`,
         avatar: `${avatar}`,
-        // spanText: `${chat.last_message ? chat.last_message.user.display_name + ':' : ''} `,
+        // Можно включить для отображения уведомлений
         // classNotificatonDisplayNone: `${!!chat.unread_count ? '': 'notification-dn'}`,
         // notificaton: `${!!chat.unread_count ? chat.unread_count: ''}`,
         events: {

@@ -79,6 +79,7 @@
     bottom: -1px;
   }
   &__message {
+    display: none;
     bottom: 42px;
     left: 15px;
   }
@@ -101,7 +102,8 @@
     font-weight: 400;
     color: $title-color;
     border: none;
-    width: 125px;
+    width: auto;
+    text-align: right;
     font-weight: 500;
   }
   &_fz18 {

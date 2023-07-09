@@ -48,14 +48,14 @@ export function initRouter(store: Store<AppState>) {
 
     })
      .use({
-      pathname: "/settings/data",
+      pathname: "/settings-data",
       block: ProfileData,
       needAuth: true,
       redirectPath: "/",
       onUnautorized: () => Boolean(store.getState().user),
     })
     .use({
-      pathname: "/settings/password",
+      pathname: "/settings-password",
       block: ProfilePassword,
       needAuth: true,
       redirectPath: "/",

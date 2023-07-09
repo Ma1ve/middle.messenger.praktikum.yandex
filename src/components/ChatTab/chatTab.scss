@@ -5,8 +5,11 @@
   justify-content: space-between;
   padding: 12px 10px;
   border-top: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
+  // border-bottom: 1px solid $border-color;
   cursor: pointer;
+  &:nth-last-child(1) {
+    border-bottom: 1px solid $border-color;
+  }
   &.active {
     background: $message-active-color;
   }

@@ -33,7 +33,7 @@ class ProfileData extends Block {
     this.children.Loading = new Loading({})
 
     this.children.avatar = new Avatar({
-      name: "Илья",
+      name: `${this.props.store.state.user.display_name}`,
       img: `${BASE_URL}/resources${this.props.store.state.user.avatar}`,
       events: {
          click: () => {

@@ -10,7 +10,7 @@ export const BASE_URL = "https://ya-praktikum.tech/api/v2";
 
 interface Options {
   method?: METHODS;
-  data?: any;
+  data?: unknown;
   timeout?: number;
   headers?: { [header: string]: string };
 }
@@ -108,8 +108,6 @@ class HTTPTransport {
       xhr.withCredentials = true;
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.responseType = "json";
-
-      // xhr.responseType = isGet || !data ? "json" : "text";
 
       if (isGet || !data) {
         xhr.send();

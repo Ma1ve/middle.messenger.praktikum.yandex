@@ -17,6 +17,7 @@ export interface Message {
   user_id: number;
 }
 
+
 export interface IChat {
   id: number;
   title: string;
@@ -46,7 +47,7 @@ export interface AppState {
   currentChat?: IChat | null;
   isLoading?: boolean;
   user: User | null;
-  chats?: any | null
+  chats?: IChat[] | null
   chatId?: number | string | null;
 }
 

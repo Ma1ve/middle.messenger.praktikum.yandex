@@ -21,8 +21,7 @@
   transform: rotate(180deg);
   transition: 0.4s;
   &:hover {
-    transform: rotate(90deg);
-    transform: scale(1.2);
+    transform: scale(1.1) rotate(90deg);
   }
 }
 

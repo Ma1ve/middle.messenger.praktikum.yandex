@@ -31,9 +31,10 @@ class ChatController {
       const chatId = action;
       dispatch({ chatId: chatId });
 
-      const currentChat = state.chats.find((chat: IChat) => chat.id === chatId)
-      dispatch({ currentChat: currentChat })
-
+      if (state.chats) {
+        const currentChat = state.chats.find((chat: IChat) => chat.id === chatId)
+        dispatch({ currentChat: currentChat })
+      }
 
 
       const userId = state.user!.id;

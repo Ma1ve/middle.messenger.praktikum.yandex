@@ -92,11 +92,11 @@ const currentApiRequest = (data: Record<string, string>) => {
       window.store.dispatch(AuthController.signUp.bind(AuthController), data)
       break;
     }
-    case "/settings/data": {
+    case "/settings-data": {
       window.store.dispatch(UserController.updateUser.bind(UserController), data)
       break;
     }
-    case "/settings/password": {
+    case "/settings-password": {
       window.store.dispatch(UserController.updatePassword.bind(UserController), data)
       break;
     }
